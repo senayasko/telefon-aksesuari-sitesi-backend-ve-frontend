@@ -127,6 +127,7 @@ app.post('/api/coupons/validate', (req, res) => {
       code: coupon.code,
       type: coupon.type,
       value: coupon.value,
+      description: coupon.description,
       discount: parseFloat(discount.toFixed(2))
     }
   });

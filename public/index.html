@@ -5,9 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags (Criterion 10) -->
-  <title>vitrin. — iPhone Kılıfları & 3 Al 2 Öde Kampanyası</title>
+  <title>vitrin. — Gen-Z iPhone Kılıfları & 3 Al 2 Öde Kampanyası</title>
   <meta name="description" content="Gençlere özel puffer kılıflar, Y2K dalgalı ayna kılıflar ve MagSafe aksesuarlar. 3 Al 2 Öde ve 1.000 TL üzeri ücretsiz kargo vitrinde.">
+  <meta name="keywords" content="iphone kılıf, puffer kılıf, y2k ayna kılıf, magsafe kılıf, kamera koruyucu, gen-z aksesuar, 3 al 2 öde">
+  <meta name="author" content="vitrin.">
   <meta name="robots" content="index, follow">
+
+  <!-- OpenGraph Meta Tags (Criterion 10) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="vitrin. — iPhone Kılıfları & 3 Al 2 Öde">
+  <meta property="og:description" content="Gençlere özel trend kılıflar, MagSafe aksesuarlar ve 3 Al 2 Öde kampanyası. 1.000 TL üzeri ücretsiz kargo.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=1200&q=80">
+  <meta property="og:url" content="http://localhost:3000/">
+  <meta property="og:site_name" content="vitrin.">
+  <meta property="og:locale" content="tr_TR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="vitrin. — iPhone Kılıfları & 3 Al 2 Öde">
+  <meta name="twitter:description" content="Gen-Z trend kılıflar ve aksesuar kampanyaları.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Favicon (SVG shopping bag) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛍️</text></svg>" type="image/svg+xml">
+
+  <!-- JSON-LD Structured Data (Criterion 10) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "vitrin.",
+    "url": "http://localhost:3000/",
+    "description": "Gençlere özel iPhone kılıfları ve teknoloji aksesuarları e-ticaret platformu.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "http://localhost:3000/?search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "vitrin.",
+    "url": "http://localhost:3000/",
+    "logo": "http://localhost:3000/assets/logo.jpg",
+    "sameAs": [
+      "https://instagram.com/vitrin.store",
+      "https://tiktok.com/@vitrin.store"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+90-212-555-00-00",
+      "contactType": "customer service",
+      "areaServed": "TR",
+      "availableLanguage": "Turkish"
+    }
+  }
+  </script>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/css/style.css">
@@ -22,7 +78,7 @@
 
   <!-- ======================== 2. HEADER & NAVIGATION ======================== -->
   <header class="sticky top-0 z-40 glass-nav-gray">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
       
       <!-- Brand Logo (Sadece Sade Yazı) -->
       <a href="/" class="flex items-center gap-1 group">
@@ -31,7 +87,7 @@
         </span>
       </a>
 
-      <!-- Clean Search Bar -->
+      <!-- Clean Search Bar (Desktop) -->
       <div class="hidden md:flex flex-1 max-w-md relative">
         <input 
           type="text" 
@@ -86,9 +142,22 @@
         </button>
       </div>
     </div>
+
+    <!-- Mobile Search Bar (Criterion 9 UX) -->
+    <div class="px-4 pb-2.5 md:hidden">
+      <div class="relative">
+        <input 
+          type="text" 
+          id="mobile-search-input" 
+          placeholder="Kılıf, ayna, şarj cihazı ara..." 
+          class="w-full py-2 pl-9 pr-4 rounded-full bg-white border border-[#cbd5e1] text-xs text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 shadow-sm"
+        />
+        <svg class="w-4 h-4 text-zinc-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+      </div>
+    </div>
   </header>
 
-  <!-- ======================== 3. HIGH IMPACT "3 AL 2 ÖDE" HERO BANNER (Gen-Z Vibe) ======================== -->
+  <!-- ======================== 3. HIGH IMPACT "3 AL 2 ÖDE" HERO BANNER (Pinterest Aesthetic) ======================== -->
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-8 w-full">
     <div class="relative rounded-3xl overflow-hidden bg-zinc-950 text-white shadow-xl border border-zinc-800">
       
@@ -98,7 +167,7 @@
         <div class="lg:col-span-5 p-7 sm:p-10 flex flex-col justify-between z-10">
           <div>
             <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-600 text-white text-[10px] font-black tracking-wider uppercase mb-3">
-              <span>GENÇLİK KAMPANYASI</span>
+              <span>GENÇLİK KAMPANYASI • PINTEREST EDIT</span>
             </div>
 
             <h1 class="text-4xl sm:text-5xl font-black tracking-tight font-display leading-none text-white">
@@ -107,7 +176,7 @@
             </h1>
 
             <p class="mt-3 text-xs sm:text-sm text-zinc-300 font-medium max-w-xs leading-relaxed">
-              3 iPhone kılıfı veya aksesuar seç, en ucuz olanı <strong>hediye gelsin!</strong>
+              3 iPhone kılıfı veya aksesuar seç, en ucuz olanı <strong>hediye gelsin!</strong> Kutuda sürpriz sticker paketi hediyeli.
             </p>
           </div>
 
@@ -128,14 +197,24 @@
         </div>
 
         <!-- Right: Gen-Z Aesthetic Cases Visual (7 Cols) -->
-        <div class="lg:col-span-7 relative overflow-hidden bg-zinc-900 min-h-[240px] lg:min-h-full">
+        <div class="lg:col-span-7 relative overflow-hidden bg-zinc-900 min-h-[260px] lg:min-h-full">
           <img 
-            src="https://images.unsplash.com/photo-1584006682522-dc17d6c0d9ac?auto=format&fit=crop&w=1200&q=85" 
-            alt="3 Al 2 Öde iPhone Kılıfları" 
+            src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=1200&q=85" 
+            alt="Pinterest Aesthetic iPhone Cases 3 Al 2 Öde" 
             class="w-full h-full object-cover object-center brightness-95 hover:scale-105 transition-transform duration-700"
           />
-          <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-zinc-950 via-transparent to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-zinc-950 via-zinc-950/20 to-transparent"></div>
           
+          <!-- Floating Pinterest Aesthetic Badges -->
+          <div class="absolute top-4 right-4 flex flex-col gap-2 items-end">
+            <span class="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-zinc-900 text-[10px] font-black uppercase tracking-wider shadow-sm flex items-center gap-1">
+              <span>✨</span> Pinterest Trendi 2026
+            </span>
+            <span class="px-2.5 py-0.5 rounded-full bg-zinc-900/90 text-cyan-300 text-[9px] font-bold border border-cyan-400/30">
+              iPhone 15 &amp; 14 Serisi Tam Uyum
+            </span>
+          </div>
+
           <div class="absolute bottom-4 right-4 p-3 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-right">
             <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider block">Otomatik İndirim</span>
             <span class="text-xs font-extrabold text-white block">Kupon: 3AL2ODE</span>
@@ -212,23 +291,161 @@
     </div>
   </section>
 
-  <!-- ======================== 6. PROGRESSIVE DISCLOSURE FOOTER ======================== -->
-  <footer class="bg-white border-t border-[#cbd5e1] py-8 text-xs text-zinc-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4 pb-6 border-b border-zinc-100">
-        <span class="text-2xl font-black text-zinc-950 font-display">vitrin<span class="text-cyan-600">.</span></span>
-        <div class="flex flex-wrap gap-4 text-xs font-medium">
-          <button onclick="openLegalModal('kvkk')" class="hover:text-zinc-950">KVKK</button>
-          <button onclick="openLegalModal('cerez')" class="hover:text-zinc-950">Çerez Politikası</button>
-          <button onclick="openLegalModal('mesafeli')" class="hover:text-zinc-950">Mesafeli Satış</button>
-          <button onclick="openLegalModal('iade')" class="hover:text-zinc-950">İade Şartları</button>
-          <a href="/takip" class="hover:text-zinc-950">Kargom Nerede?</a>
-          <a href="/admin" class="hover:text-purple-600 font-bold">Admin</a>
-        </div>
+  <!-- ======================== 6. SSS & CORPORATE ACCORDION (Criterion 8) ======================== -->
+  <section id="sss" class="max-w-4xl mx-auto px-4 sm:px-6 pb-12 w-full">
+    <div class="p-6 sm:p-8 rounded-3xl bg-white border border-[#cbd5e1] shadow-sm">
+      <div class="text-center mb-6">
+        <span class="text-[10px] font-mono text-zinc-400 font-bold uppercase tracking-wider block">Merak Edilenler</span>
+        <h3 class="text-xl font-black text-zinc-950 font-display mt-0.5">Sıkça Sorulan Sorular</h3>
+        <p class="text-xs text-zinc-500 mt-1">Kargo, iade ve 3 Al 2 Öde hakkında bilmeniz gereken her şey.</p>
       </div>
-      <div class="pt-4 flex justify-between items-center text-[11px] text-zinc-400">
-        <p>© 2026 vitrin. Tüm hakları saklıdır.</p>
-        <p>Gen-Z Minimalist D2C Mimari</p>
+
+      <div class="space-y-2 text-xs">
+        <details class="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 cursor-pointer group">
+          <summary class="font-bold text-zinc-900 flex justify-between items-center select-none">
+            <span>🎁 3 Al 2 Öde Kampanyası Nasıl Çalışıyor?</span>
+            <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-2 text-zinc-600 leading-relaxed pl-2 border-l-2 border-cyan-500">
+            Sepetinize herhangi 3 kılıf veya aksesuar eklediğinizde otomatik olarak <code class="bg-zinc-200 px-1 py-0.5 rounded font-mono font-bold text-zinc-900">3AL2ODE</code> kuponu devreye girer ve sepetteki en ucuz ürün bedavaya gelir. Sınır yok! 6 ürün eklerseniz 2 tanesi hediye olur.
+          </p>
+        </details>
+
+        <details class="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 cursor-pointer group">
+          <summary class="font-bold text-zinc-900 flex justify-between items-center select-none">
+            <span>🚀 Kargom Ne Zaman Ulaşır & Takip Edebilir Miyim?</span>
+            <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-2 text-zinc-600 leading-relaxed pl-2 border-l-2 border-cyan-500">
+            Hafta içi 16:00'a kadar verilen tüm siparişler aynı gün Yurtiçi Kargo'ya teslim edilir. Sipariş sonrası verilen <code class="font-mono font-bold">VTR-XXXX</code> koduyla sitemizin <strong>Kargom Nerede?</strong> sayfasından anlık adım adım canlı takip edebilirsiniz.
+          </p>
+        </details>
+
+        <details class="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 cursor-pointer group">
+          <summary class="font-bold text-zinc-900 flex justify-between items-center select-none">
+            <span>🔒 Ödeme Yöntemleri ve Güvenlik Nasıl?</span>
+            <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-2 text-zinc-600 leading-relaxed pl-2 border-l-2 border-cyan-500">
+            Tüm kredi kartı işlemlerimiz BDDK lisanslı <strong>iyzico 256-Bit SSL ve 3D Secure</strong> altyapısıyla korunur. Kart bilgileriniz asla sunucularımızda saklanmaz. Ayrıca Havale/EFT ve Kapıda Ödeme seçeneklerimiz de mevcuttur.
+          </p>
+        </details>
+
+        <details class="p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 cursor-pointer group">
+          <summary class="font-bold text-zinc-900 flex justify-between items-center select-none">
+            <span>🔄 İade ve Değişim Koşulları Nelerdir?</span>
+            <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="mt-2 text-zinc-600 leading-relaxed pl-2 border-l-2 border-cyan-500">
+            Siparişinizi teslim aldığınız tarihten itibaren 14 gün boyunca koşulsuz, ücretsiz iade veya model değişimi yapabilirsiniz. Kargo ücreti tarafımızca karşılanır.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== 7. NEWSLETTER "VITRIN CLUB" (Criterion 11) ======================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full">
+    <div class="rounded-3xl bg-zinc-950 p-6 sm:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-6 border border-zinc-800 shadow-xl">
+      <div>
+        <span class="px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-black uppercase tracking-wider inline-block mb-2">
+          VITRIN CLUB • %10 İNDİRİM
+        </span>
+        <h3 class="text-2xl font-black font-display tracking-tight text-white">Gen-Z Drop'larından İlk Sen Haberdar Ol</h3>
+        <p class="text-xs text-zinc-400 mt-1 max-w-md">E-bültene kaydol, anında tüm kılıflarda geçerli <strong class="text-white">VITRIN10</strong> kodunu kap.</p>
+      </div>
+
+      <form onsubmit="submitNewsletter(event)" class="w-full md:w-auto flex-1 max-w-md flex gap-2">
+        <input 
+          type="email" 
+          id="newsletter-email" 
+          required 
+          placeholder="E-posta adresini yaz..." 
+          class="flex-1 py-3 px-4 rounded-2xl bg-zinc-900 border border-zinc-700 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-400"
+        />
+        <button 
+          type="submit" 
+          class="py-3 px-5 rounded-2xl bg-white hover:bg-zinc-200 text-zinc-950 font-black text-xs uppercase tracking-wider transition-all whitespace-nowrap"
+        >
+          Katıl ⚡
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ======================== 8. AESTHETIC GEN-Z FOOTER (Criteria 7, 8, 11) ======================== -->
+  <footer class="bg-white border-t border-[#cbd5e1] pt-10 pb-8 text-xs text-zinc-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-zinc-200">
+        
+        <!-- Col 1: Brand & Socials -->
+        <div class="space-y-3">
+          <span class="text-2xl font-black text-zinc-950 font-display">vitrin<span class="text-cyan-600">.</span></span>
+          <p class="text-xs text-zinc-500 leading-relaxed">
+            Gen-Z estetiğinde tasarlanan iPhone kılıfları, MagSafe ekosistemi ve darbe korumalı teknoloji aksesuarları.
+          </p>
+          <div class="flex items-center gap-3 pt-1">
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-zinc-100 hover:bg-pink-100 hover:text-pink-600 text-zinc-700 flex items-center justify-center transition-all" title="Instagram">
+              <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <!-- TikTok -->
+            <a href="https://tiktok.com" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-900 hover:text-white text-zinc-700 flex items-center justify-center transition-all" title="TikTok">
+              <svg class="w-3.5 h-3.5 fill-currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298-.002.595.042.88.13V9.4a6.33 6.33 0 0 0-1-.08A6.34 6.34 0 0 0 3 15.66a6.34 6.34 0 0 0 10.82 4.47 6.27 6.27 0 0 0 1.88-4.46V8.75a8.16 8.16 0 0 0 4.67 1.47V6.77a4.83 4.83 0 0 1-.78-.08z"/></svg>
+            </a>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/905550000000" target="_blank" rel="noopener" class="w-8 h-8 rounded-full bg-zinc-100 hover:bg-emerald-100 hover:text-emerald-600 text-zinc-700 flex items-center justify-center transition-all" title="WhatsApp Canlı Destek">
+              <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Kurumsal Sayfalar (Criterion 8) -->
+        <div class="space-y-2">
+          <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Kurumsal &amp; İletişim</span>
+          <ul class="space-y-1.5 font-medium">
+            <li><button onclick="openCorporateModal('hakkimizda')" class="hover:text-zinc-950 transition-colors">Hakkımızda &amp; Vizyon</button></li>
+            <li><button onclick="openCorporateModal('iletisim')" class="hover:text-zinc-950 transition-colors">İletişim &amp; Mağaza</button></li>
+            <li><a href="#sss" class="hover:text-zinc-950 transition-colors">Sıkça Sorulan Sorular (SSS)</a></li>
+            <li><a href="/takip" class="hover:text-zinc-950 transition-colors">Kargom Nerede? (Canlı Takip)</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Yasal & Güvenlik (Criterion 7) -->
+        <div class="space-y-2">
+          <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Yasal Belgeler</span>
+          <ul class="space-y-1.5 font-medium">
+            <li><button onclick="openLegalModal('kvkk')" class="hover:text-zinc-950 transition-colors">KVKK Aydınlatma Metni</button></li>
+            <li><button onclick="openLegalModal('cerez')" class="hover:text-zinc-950 transition-colors">Çerez (Cookie) Politikası</button></li>
+            <li><button onclick="openLegalModal('mesafeli')" class="hover:text-zinc-950 transition-colors">Mesafeli Satış Sözleşmesi</button></li>
+            <li><button onclick="openLegalModal('iade')" class="hover:text-zinc-950 transition-colors">İade ve Değişim Şartları</button></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Hızlı Erişim -->
+        <div class="space-y-2">
+          <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">Yönetici Paneli</span>
+          <p class="text-[11px] text-zinc-500">
+            Sipariş durumu, canlı stok ve 12 kriter denetim paneline buradan erişebilirsiniz.
+          </p>
+          <a href="/admin" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-black text-white text-xs font-bold transition-all shadow-sm">
+            <span>⚡ Admin Paneli</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row -->
+      <div class="pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-[11px] text-zinc-400">
+        <p>© 2026 vitrin. Tüm hakları saklıdır. Kadıköy, İstanbul.</p>
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center gap-1 text-emerald-600 font-semibold">
+            <span>🔒</span> 256-Bit SSL iyzico Korumalı
+          </span>
+          <span>•</span>
+          <span>Hızlı Kargo</span>
+        </div>
       </div>
     </div>
   </footer>
@@ -552,16 +769,28 @@
     </div>
   </div>
 
-  <!-- Legal Modal -->
+  <!-- Legal Modal (Criterion 7) -->
   <div id="legal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
     <div onclick="closeLegalModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative w-full max-w-md rounded-3xl bg-white border p-6 z-10 shadow-2xl">
-      <div class="flex justify-between items-center pb-2 border-b mb-3">
-        <h3 id="legal-modal-title" class="font-bold text-zinc-950"></h3>
-        <button onclick="closeLegalModal()" class="text-zinc-400">✕</button>
+    <div class="relative w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-3xl bg-white border border-[#cbd5e1] p-6 z-10 shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-zinc-100 mb-3">
+        <h3 id="legal-modal-title" class="font-bold text-zinc-950 font-display text-sm"></h3>
+        <button onclick="closeLegalModal()" class="text-zinc-400 hover:text-black">✕</button>
       </div>
-      <div id="legal-modal-body"></div>
-      <button onclick="closeLegalModal()" class="mt-4 w-full py-2 bg-zinc-950 text-white text-xs font-bold rounded-xl">Kapat</button>
+      <div id="legal-modal-body" class="text-xs text-zinc-600 space-y-3 leading-relaxed"></div>
+      <button onclick="closeLegalModal()" class="mt-4 w-full py-2.5 bg-zinc-950 text-white text-xs font-bold rounded-xl">Anladım &amp; Kapat</button>
+    </div>
+  </div>
+
+  <!-- Corporate Modal: Hakkımızda & İletişim (Criterion 8) -->
+  <div id="corporate-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="closeCorporateModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="relative w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-[#cbd5e1] p-6 z-10 shadow-2xl">
+      <div class="flex justify-between items-center pb-3 border-b border-zinc-100 mb-4">
+        <h3 id="corporate-modal-title" class="font-bold text-zinc-950 font-display text-base"></h3>
+        <button onclick="closeCorporateModal()" class="text-zinc-400 hover:text-black">✕</button>
+      </div>
+      <div id="corporate-modal-body"></div>
     </div>
   </div>
 

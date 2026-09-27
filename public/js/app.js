@@ -349,15 +349,23 @@ function spinWheel() {
   const btn = document.getElementById('spin-btn');
   if (btn) btn.disabled = true;
 
-  // Pick winning slice: favor 3AL2ODE (index 0) or %20 İNDİRİM (index 1)
-  const winningIndex = Math.random() < 0.6 ? 0 : 1;
+  // Realistic weighted probability (no rigged 2-item loop)
+  // Indices: 0: 3AL2ODE (35%), 1: GENCLIK20 (25%), 2: ILKSIPARIS (15%), 3: HOCA100 (15%), 4: VITRIN10 (10%)
+  const rand = Math.random();
+  let winningIndex = 0;
+  if (rand < 0.35) winningIndex = 0;
+  else if (rand < 0.60) winningIndex = 1;
+  else if (rand < 0.75) winningIndex = 2;
+  else if (rand < 0.90) winningIndex = 3;
+  else winningIndex = 4;
+
   const numPrizes = WHEEL_PRIZES.length;
   const arcDeg = 360 / numPrizes;
 
   // Calculation for the needle pointing to top (270 deg)
   const targetDeg = 270 - (winningIndex * arcDeg + arcDeg / 2);
-  const extraSpins = 5 * 360; // 5 full revolutions
-  const finalRotation = extraSpins + (targetDeg % 360);
+  const extraSpins = 6 * 360; // 6 full revolutions
+  const finalRotation = extraSpins + ((targetDeg % 360) + 360) % 360;
 
   const canvas = document.getElementById('wheel-canvas');
   canvas.style.transform = `rotate(${finalRotation}deg)`;
@@ -379,16 +387,36 @@ function showWheelWinningModal(prize) {
   document.getElementById('wheel-play-view').classList.add('hidden');
   document.getElementById('wheel-win-view').classList.remove('hidden');
 
-  // Auto set to coupon state
+  // Accurately map coupon values
+  let couponType = 'percentage';
+  let couponVal = 20;
+
+  if (prize.code === '3AL2ODE') {
+    couponType = 'percentage';
+    couponVal = 33.33;
+  } else if (prize.code === 'GENCLIK20') {
+    couponType = 'percentage';
+    couponVal = 20;
+  } else if (prize.code === 'ILKSIPARIS') {
+    couponType = 'fixed';
+    couponVal = 100;
+  } else if (prize.code === 'HOCA100') {
+    couponType = 'percentage';
+    couponVal = 25;
+  } else if (prize.code === 'VITRIN10') {
+    couponType = 'percentage';
+    couponVal = 10;
+  }
+
   state.appliedCoupon = {
     code: prize.code,
-    type: prize.code === '3AL2ODE' ? 'percentage' : 'percentage',
-    value: prize.code === '3AL2ODE' ? 33.33 : 20,
+    type: couponType,
+    value: couponVal,
     description: `${prize.text} (Çarkıfelek Hediyesi)`
   };
   localStorage.setItem('vitrin_coupon', JSON.stringify(state.appliedCoupon));
   updateCartUI();
-  showToast(`${prize.text} sepetinize otomatik uygulandı!`, 'success');
+  showToast(`${prize.text} kuponunuz sepetinize uygulandı!`, 'success');
 }
 
 function applyWheelCouponAndClose() {
@@ -1137,25 +1165,159 @@ async function submitContactForm(e) {
 // Legal Modals (Criterion 7)
 function openLegalModal(type) {
   const titles = {
-    kvkk: 'KVKK Aydınlatma Metni',
-    cerez: 'Çerez (Cookie) Politikası',
+    kvkk: 'KVKK Aydınlatma Metni (6698 Sayılı Kanun)',
+    cerez: 'Çerez (Cookie) Kullanım Politikası',
     mesafeli: 'Mesafeli Satış Sözleşmesi',
-    iade: 'İptal ve Cayma/İade Koşulları'
-  };
-  const texts = {
-    kvkk: '<p class="text-xs text-zinc-600">6698 sayılı KVKK uyarınca kişisel verileriniz yasal çerçevede işlenmektedir.</p>',
-    cerez: '<p class="text-xs text-zinc-600">Alışveriş deneyimini geliştirmek için çerezler kullanılır.</p>',
-    mesafeli: '<p class="text-xs text-zinc-600">6502 sayılı TKHK kapsamında alıcı ve satıcı hakları düzenlenir.</p>',
-    iade: '<p class="text-xs text-zinc-600">14 gün içerisinde koşulsuz ücretsiz iade hakkı mevcuttur.</p>'
+    iade: 'Cayma Hakkı, İade ve Değişim Koşulları'
   };
 
-  document.getElementById('legal-modal-title').innerText = titles[type] || 'Yasal Metin';
+  const texts = {
+    kvkk: `
+      <div class="space-y-3">
+        <p><strong>1. Veri Sorumlusu:</strong> 6698 sayılı Kişisel Verilerin Korunması Kanunu (“KVKK”) uyarınca, <strong>Vitrin Teknoloji ve Aksesuar Ltd. Şti.</strong> (“vitrin.”) olarak, kişisel verilerinizi mevzuata uygun şekilde işlemekte ve korumaktayız.</p>
+        <p><strong>2. İşlenen Kişisel Veriler:</strong> Sipariş tamamlama, teslimat ve faturalandırma amacıyla adınız, soyadınız, telefon numaranız, e-posta adresiniz, teslimat adresiniz ve işlem güvenliği bilgileriniz işlenmektedir.</p>
+        <p><strong>3. Veri İşleme Amaçları:</strong> Sözleşmenin ifası, kargo gönderiminin sağlanması, yasal yükümlülüklerin yerine getirilmesi (e-fatura vb.), müşteri destek hizmetleri ve müşteri onayı bulunan hallerde kampanya bildirimlerinin iletilmesi.</p>
+        <p><strong>4. Verilerin Aktarımı:</strong> Kişisel verileriniz yalnızca siparişin teslimi için anlaşmalı kargo şirketlerine (Yurtiçi Kargo, MNG, Aras, HepsiJet) ve güvenli ödeme altyapısı sağlayıcımız BDDK lisanslı <strong>iyzico</strong>'ya aktarılmaktadır. Üçüncü şahıslara veya yurt dışına asla satılmaz.</p>
+        <p><strong>5. Haklarınız:</strong> KVKK Madde 11 uyarınca; verilerinizin işlenip işlenmediğini öğrenme, düzeltilmesini talep etme ve silinmesini isteme hakkına sahipsiniz. Başvurularınız için: <em>kvkk@vitrin.store</em></p>
+      </div>
+    `,
+    cerez: `
+      <div class="space-y-3">
+        <p><strong>1. Çerez Nedir?</strong> Çerezler (cookies), vitrin. web sitemizi ziyaret ettiğinizde tarayıcınız aracılığıyla cihazınıza kaydedilen küçük metin dosyalarıdır.</p>
+        <p><strong>2. Kullandığımız Çerez Türleri:</strong></p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Zorunlu Çerezler:</strong> Sepetinizin hatırlanması, oturum yönetimi ve ödeme güvenliği için teknik olarak şarttır.</li>
+          <li><strong>Performans ve Analiz Çerezleri:</strong> Sitemizin hızını ve ziyaretçi deneyimini ölçmek amacıyla anonim olarak kullanılır.</li>
+          <li><strong>Fonksiyonel Çerezler:</strong> Çarkıfelek çarkı ve kupon kullanım tercihlerinizi hatırlar.</li>
+        </ul>
+        <p><strong>3. Çerezleri Nasıl Yönetebilirsiniz?</strong> Tarayıcınızın ayarlarından çerezleri dilediğiniz zaman engelleyebilir veya silebilirsiniz. Ancak zorunlu çerezlerin kapatılması sepet fonksiyonlarının çalışmasını engelleyebilir.</p>
+      </div>
+    `,
+    mesafeli: `
+      <div class="space-y-3">
+        <p><strong>1. Taraflar:</strong><br>
+        <strong>SATICI:</strong> Vitrin Teknoloji ve Aksesuar Ltd. Şti. (Caferağa Mah. Moda Cad. No:42 Kadıköy / İstanbul - destek@vitrin.store)<br>
+        <strong>ALICI:</strong> Siteden sipariş veren tüketici.</p>
+        <p><strong>2. Sözleşmenin Konusu:</strong> 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği uyarınca, Alıcı'nın vitrin. üzerinden elektronik ortamda siparişini verdiği ürünlerin satışı ve teslimi ile ilgili hak ve yükümlülükleri düzenler.</p>
+        <p><strong>3. Teslimat ve Kargo:</strong> 1.000 TL ve üzeri siparişlerde kargo bedelsizdir. Ürünler azami 3 iş günü içinde anlaşmalı kargo şirketine teslim edilir.</p>
+        <p><strong>4. Cayma Hakkı:</strong> Alıcı, hiçbir gerekçe göstermeksizin ürünün kendisine veya gösterdiği adresteki kişiye tesliminden itibaren <strong>14 (on dört) gün</strong> içinde sözleşmeden cayma hakkına sahiptir.</p>
+        <p><strong>5. Yetkili Mahkeme:</strong> Uyuşmazlıklarda Ticaret Bakanlığı'nca ilan edilen değere kadar Tüketici Hakem Heyetleri ile Alıcı'nın veya Satıcı'nın yerleşim yerindeki Tüketici Mahkemeleri yetkilidir.</p>
+      </div>
+    `,
+    iade: `
+      <div class="space-y-3">
+        <p><strong>1. 14 Gün Koşulsuz Ücretsiz İade:</strong> vitrin.'den aldığınız tüm kılıf ve aksesuarları teslimat tarihinden itibaren 14 gün içinde hiçbir ceza ödemeden iade edebilirsiniz.</p>
+        <p><strong>2. Nasıl İade Edebilirim?</strong></p>
+        <ol class="list-decimal pl-5 space-y-1">
+          <li>Fatura veya sipariş numaranızla (Örn: VTR-XXXX) birlikte ürünü orijinal kutusuna koyun.</li>
+          <li>En yakın <strong>Yurtiçi Kargo</strong> şubesine gidin.</li>
+          <li>Vitrin ücretsiz iade anlaşma kodumuzu söyleyin: <strong class="bg-zinc-100 px-1 py-0.5 rounded font-mono text-zinc-950">452 910 338</strong></li>
+        </ol>
+        <p><strong>3. Ücret İadesi:</strong> Ürün depomuza ulaşıp kontrol edildikten sonra <strong>3 iş günü</strong> içerisinde ödeme yaptığınız karta/hesaba aynen iade edilir.</p>
+      </div>
+    `
+  };
+
+  document.getElementById('legal-modal-title').innerText = titles[type] || 'Yasal Bilgilendirme';
   document.getElementById('legal-modal-body').innerHTML = texts[type] || '';
   document.getElementById('legal-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeLegalModal() {
   document.getElementById('legal-modal').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+// Corporate Modals: Hakkımızda & İletişim (Criterion 8)
+function openCorporateModal(type) {
+  const modal = document.getElementById('corporate-modal');
+  const titleEl = document.getElementById('corporate-modal-title');
+  const bodyEl = document.getElementById('corporate-modal-body');
+  if (!modal || !titleEl || !bodyEl) return;
+
+  if (type === 'hakkimizda') {
+    titleEl.innerText = 'vitrin. — Biz Kimiz & Hikayemiz';
+    bodyEl.innerHTML = `
+      <div class="space-y-4 text-xs text-zinc-700 leading-relaxed">
+        <div class="w-full h-40 rounded-2xl overflow-hidden bg-zinc-900 relative">
+          <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover brightness-75" />
+          <div class="absolute inset-0 flex items-center justify-center p-4 text-center">
+            <span class="text-white text-base font-black font-display tracking-tight">"Aksesuar Değil, Tarzının Vitrini."</span>
+          </div>
+        </div>
+
+        <p>
+          <strong>vitrin.</strong>, 2026 yılında genç kreatifler tarafından İstanbul Kadıköy'de kuruldu. Amacımız; sıkıcı, birbirinin kopyası telefon kılıfları yerine <strong>Pinterest ve TikTok trendlerini</strong> anında yakalayan, dayanıklı ve estetik ürünleri doğrudan gençlerle buluşturmak.
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-200">
+            <h4 class="font-bold text-zinc-950 mb-1">🌿 %100 Geri Dönüştürülebilir</h4>
+            <p class="text-[11px] text-zinc-500">Kutularımız sıfır plastik ve çevre dostu soya mürekkebiyle üretilir.</p>
+          </div>
+          <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-200">
+            <h4 class="font-bold text-zinc-950 mb-1">⚡ Düşme ve Darbe Garantisi</h4>
+            <p class="text-[11px] text-zinc-500">Tüm kılıflarımız 2.5 metre düşme testinden tam notla geçmiştir.</p>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-cyan-50 border border-cyan-200 text-cyan-900 text-xs">
+          <strong>Öğrenci Dostu Felsefe:</strong> Yüksek fiyatlara karşı her zaman <strong>3 Al 2 Öde</strong> ve gençlik indirimlerini aktif tutuyoruz.
+        </div>
+      </div>
+    `;
+  } else if (type === 'iletisim') {
+    titleEl.innerText = 'İletişim & Showroom';
+    bodyEl.innerHTML = `
+      <div class="space-y-4 text-xs text-zinc-700">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200">
+            <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">📍 Kadıköy Showroom</span>
+            <p class="font-bold text-zinc-900 mt-1">Caferağa Mah. Moda Cad. No:42/A</p>
+            <p class="text-zinc-500 text-[11px]">Kadıköy, İstanbul (Moda Tramvay Durağı Karşısı)</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200">
+            <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block">📞 Müşteri Destek & WhatsApp</span>
+            <p class="font-bold text-zinc-900 mt-1">+90 (212) 555 00 00</p>
+            <p class="text-zinc-500 text-[11px]">Hafta İçi 09:00 - 19:00 | destek@vitrin.store</p>
+          </div>
+        </div>
+
+        <!-- Working Contact Form (Criterion 8) -->
+        <form onsubmit="submitContactForm(event)" id="modal-contact-form" class="space-y-2.5 p-4 rounded-2xl bg-zinc-50 border border-zinc-200">
+          <span class="font-bold text-zinc-950 block">Bize Mesaj Bırakın</span>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="contact-name" required placeholder="Adınız Soyadınız *" class="w-full py-2 px-3 rounded-xl bg-white border border-zinc-200 text-xs" />
+            <input type="email" id="contact-email" required placeholder="E-Posta Adresiniz *" class="w-full py-2 px-3 rounded-xl bg-white border border-zinc-200 text-xs" />
+          </div>
+          <textarea id="contact-message" rows="3" required placeholder="Mesajınız veya sipariş sorunuz... *" class="w-full py-2 px-3 rounded-xl bg-white border border-zinc-200 text-xs"></textarea>
+          <button type="submit" class="w-full py-2.5 rounded-xl bg-zinc-950 text-white font-bold text-xs uppercase tracking-wider hover:bg-zinc-800 transition-all">
+            Mesajı Gönder ✉️
+          </button>
+        </form>
+
+        <!-- Simulated Map View -->
+        <div class="rounded-xl overflow-hidden border border-zinc-200 h-32 relative bg-zinc-200 flex items-center justify-center">
+          <iframe 
+            src="https://maps.google.com/maps?q=Moda+Caddesi+Kadikoy+Istanbul&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            class="w-full h-full border-0" 
+            loading="lazy"
+            title="Vitrin Kadıköy Konum"
+          ></iframe>
+        </div>
+      </div>
+    `;
+  }
+
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCorporateModal() {
+  const modal = document.getElementById('corporate-modal');
+  if (modal) modal.classList.add('hidden');
+  document.body.style.overflow = '';
 }
 
 function checkCookieConsent() {
@@ -1188,6 +1350,18 @@ function setupEventListeners() {
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       state.searchQuery = e.target.value;
+      const mobileInput = document.getElementById('mobile-search-input');
+      if (mobileInput) mobileInput.value = e.target.value;
+      renderProducts();
+    });
+  }
+
+  // Mobile search input listener
+  const mobileSearchInput = document.getElementById('mobile-search-input');
+  if (mobileSearchInput) {
+    mobileSearchInput.addEventListener('input', (e) => {
+      state.searchQuery = e.target.value;
+      if (searchInput) searchInput.value = e.target.value;
       renderProducts();
     });
   }
