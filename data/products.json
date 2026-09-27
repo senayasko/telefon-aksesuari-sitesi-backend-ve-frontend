@@ -1,48 +1,133 @@
 [
   {
     "id": 1,
-    "slug": "vitrin-armor-magsafe-titanyum-kilif",
-    "name": "Vitrin Armor MagSafe Titanyum Kılıf",
+    "slug": "vitrin-puffer-ceket-dokulu-magsafe-kilif",
+    "name": "Vitrin Puffer Ceket Dokulu MagSafe Kılıf",
     "category": "Kılıf & Koruma",
-    "price": 599.00,
-    "oldPrice": 849.00,
+    "price": 389.00,
+    "oldPrice": 549.00,
     "rating": 4.9,
-    "reviewCount": 184,
-    "stock": 85,
+    "reviewCount": 340,
+    "stock": 65,
     "featured": true,
     "hasVariants": true,
-    "badge": "%29 İNDİRİM",
-    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80",
+    "badge": "TIKTOK TRENDİ",
+    "image": "https://images.unsplash.com/photo-1584006682522-dc17d6c0d9ac?auto=format&fit=crop&w=800&q=80",
     "gallery": [
-      "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1584006682522-dc17d6c0d9ac?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1584006682522-dc17d6c0d9ac?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80"
     ],
-    "shortDescription": "Havacılık sınıfı titanyum çerçeve, güçlü N52 MagSafe manyetik halka ve 3.5 metre askeri düşme testi sertifikası.",
-    "description": "Vitrin Armor MagSafe Titanyum Kılıf, akıllı telefonunuz için en üst düzey mühendislik ve zarafeti bir araya getiriyor. Havacılık standartlarında işlenmiş hafif titanyum kenarlıklar, güçlü N52 neodimyum mıknatıslarla donatılmış MagSafe halkası ve parmak izi tutmayan nano-mat arka paneliyle kusursuz bir deneyim sunar. MIL-STD-810G askeri darbe testlerinden tam not almıştır.",
+    "shortDescription": "Yumuşacık puffer ceket dokusu, dahili N52 MagSafe mıknatısı ve darbe emici hava kanalları.",
+    "description": "Gençlerin ve influencer'ların favorisi! İkonik mont ceketlerden esinlenilen yumuşak dolgulu puffer gövdesiyle telefon tutuşunu maksimum konfora taşır. Gizli N52 güçlü MagSafe halkasıyla tüm manyetik şarj ve aksesuarlara tam uyumludur. Düşmelerde hava yastığı görevi görerek cihazınızı korur.",
     "specs": [
-      { "label": "Malzeme", "value": "Titanyum Çerçeve + Polikarbonat Mat Panel" },
-      { "label": "MagSafe Desteği", "value": "38 adet N52 Neodimyum Mıknatıs (15W Hızlı Şarj Uyumlu)" },
-      { "label": "Düşme Koruması", "value": "3.5 Metre Askeri Sertifikalı (MIL-STD-810G)" },
-      { "label": "Kamera Koruması", "value": "1.8 mm Yükseltilmiş Safir Koruma Halkası" }
+      { "label": "Doku & Yüzey", "value": "Yumuşak Dokulu Puffer Hava Yastığı" },
+      { "label": "MagSafe Desteği", "value": "Güçlü Dahili N52 Manyetik Çember" },
+      { "label": "Ağırlık", "value": "Yalnızca 28 gram süper hafif" },
+      { "label": "Kamera Çıkıntısı", "value": "1.5 mm yükseltilmiş kenar koruması" }
     ],
     "variantOptions": {
       "colors": [
-        { "name": "Mat Titanyum", "hex": "#78716c", "code": "titanium" },
-        { "name": "Gece Siyahı", "hex": "#0f172a", "code": "black" },
-        { "name": "Pasifik Mavisi", "hex": "#1e3a8a", "code": "blue" },
-        { "name": "Zümrüt Yeşili", "hex": "#065f46", "code": "green" }
+        { "name": "Metalik Gümüş", "hex": "#e2e8f0", "code": "silver" },
+        { "name": "Mat Gece Siyahı", "hex": "#18181b", "code": "black" },
+        { "name": "Krem Latte", "hex": "#fef3c7", "code": "cream" },
+        { "name": "Sakura Pembesi", "hex": "#fbcfe8", "code": "pink" }
       ],
       "models": [
         "iPhone 15 Pro Max",
         "iPhone 15 Pro",
         "iPhone 15",
-        "Samsung Galaxy S24 Ultra"
+        "iPhone 14 Pro"
       ]
     }
   },
   {
     "id": 2,
+    "slug": "vitrin-y2k-holografik-dalgali-ayna-kilif",
+    "name": "Vitrin Y2K Holografik Dalgalı Ayna Kılıf",
+    "category": "Kılıf & Koruma",
+    "price": 329.00,
+    "oldPrice": 479.00,
+    "rating": 4.9,
+    "reviewCount": 278,
+    "stock": 48,
+    "featured": true,
+    "hasVariants": false,
+    "badge": "GEN-Z FAVORİSİ",
+    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
+    "shortDescription": "Arka paneli gerçek ayna efektli, dalgalı ergonomik kenarlıklar ve kırılmaz akrilik panel.",
+    "description": "Ayna selfie'leri ve günlük makyaj tazelemeleri için vazgeçilmez! Y2K estetiğini modern telefon korumasıyla harmanlayan bu kılıf, dalgalı kenar yapısıyla elde kaymayı tamamen önler. Darbelere dayanıklı polimer çerçeveye sahiptir.",
+    "specs": [
+      { "label": "Ayna Yüzey", "value": "Çizilmeye Dayanıklı Elektrostatik Akrilik Ayna" },
+      { "label": "Kenar Yapısı", "value": "Ergonomik Dalgalı Kaymaz Silikon" },
+      { "label": "Düşme Koruması", "value": "2.5 Metre Köşe Koruma Yastığı" }
+    ]
+  },
+  {
+    "id": 3,
+    "slug": "vitrin-armor-magsafe-titanyum-kilif",
+    "name": "Vitrin Armor MagSafe Titanyum Kılıf",
+    "category": "Kılıf & Koruma",
+    "price": 599.00,
+    "oldPrice": 849.00,
+    "rating": 5.0,
+    "reviewCount": 184,
+    "stock": 85,
+    "featured": true,
+    "hasVariants": false,
+    "badge": "%29 İNDİRİM",
+    "image": "https://images.unsplash.com/photo-1603302576837-37561b2e2302?auto=format&fit=crop&w=800&q=80",
+    "shortDescription": "Havacılık sınıfı titanyum çerçeve, N52 neodimyum MagSafe ve 3.5 metre askeri düşme sertifikası.",
+    "description": "Minimalist ve endüstriyel çizgileri sevenler için tasarlandı. Parmak izi tutmayan nano-mat arka paneli ve CNC ile işlenmiş titanyum kenarlıklarıyla cihazınıza tam uyum sağlar.",
+    "specs": [
+      { "label": "Malzeme", "value": "Titanyum Çerçeve + Mat Polikarbonat" },
+      { "label": "MagSafe", "value": "38 adet N52 Mıknatıs (15W Hızlı Şarj)" },
+      { "label": "Sertifika", "value": "MIL-STD-810G Askeri Düşme Testi" }
+    ]
+  },
+  {
+    "id": 4,
+    "slug": "vitrin-retro-polaroid-sticker-seffaf-kilif",
+    "name": "Vitrin Retro Polaroid Çıkartmalı Şeffaf Kılıf",
+    "category": "Kılıf & Koruma",
+    "price": 279.00,
+    "oldPrice": 399.00,
+    "rating": 4.8,
+    "reviewCount": 195,
+    "stock": 70,
+    "featured": true,
+    "hasVariants": false,
+    "badge": "POPÜLER",
+    "image": "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=800&q=80",
+    "shortDescription": "Sararmaz optik arka yüzey, retro fotoğraf ve çıkartma yerleştirme haznesi.",
+    "description": "Kendi tarzınızı yansıtın! Sevdiğiniz polaroid fotoğrafları, konser biletlerini veya çıkartmaları arkasına yerleştirebileceğiniz kristal şeffaflığında UV korumalı tasarım.",
+    "specs": [
+      { "label": "Malzeme", "value": "Bayer Sararmaz Optik Polikarbonat" },
+      { "label": "Köşe Koruması", "value": "Hava Kanallı Darbe Emici" }
+    ]
+  },
+  {
+    "id": 5,
+    "slug": "vitrin-pastel-mat-silikon-kadife-kilif",
+    "name": "Vitrin Pastel Mat Soft Touch Silikon Kılıf",
+    "category": "Kılıf & Koruma",
+    "price": 249.00,
+    "oldPrice": 349.00,
+    "rating": 4.9,
+    "reviewCount": 312,
+    "stock": 90,
+    "featured": false,
+    "hasVariants": false,
+    "badge": "SOFT TOUCH",
+    "image": "https://images.unsplash.com/photo-1584006682522-dc17d6c0d9ac?auto=format&fit=crop&w=800&q=80",
+    "shortDescription": "Bebek teni yumuşaklığında sıvı silikon dış yüzey ve cihazı çizmeyen mikrofiber kadife iç astar.",
+    "description": "Elinizde tuttuğunuz anda hissettiğiniz ipeksi dokunuş. Toz ve leke tutmayan sıvı silikon yüzeyi ıslak mendille silinerek anında ilk günkü temizliğine döner.",
+    "specs": [
+      { "label": "İç Kaplama", "value": "%100 Mikrofiber Yumuşak Kadife" },
+      { "label": "Dış Kaplama", "value": "Medikal Sınıf Sıvı Silikon" }
+    ]
+  },
+  {
+    "id": 6,
     "slug": "vitrin-karbon-fiber-ultra-slim-kilif",
     "name": "Vitrin 1500D Karbon Fiber Ultra Slim Kılıf",
     "category": "Kılıf & Koruma",
@@ -51,68 +136,21 @@
     "rating": 4.8,
     "reviewCount": 92,
     "stock": 42,
-    "featured": true,
-    "hasVariants": false,
-    "badge": "ÇOK SATAN",
-    "image": "https://images.unsplash.com/photo-1584006682522-dc17d6c0d9ac?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Gerçek 1500D aramid karbon liflerinden üretilmiş 0.65mm ultra ince ve çizilmez zırh koruma.",
-    "description": "Yalnızca 14 gram ağırlığında olan Vitrin 1500D Karbon Fiber Kılıf, telefonunuza hacim katmadan çelikten 5 kat daha güçlü aramid lifleri sayesinde çizilme ve ezilmelere karşı eşsiz bir koruma sağlar. İpeksi 3D dokulu yüzeyi elden kaymayı önler.",
-    "specs": [
-      { "label": "Kalınlık", "value": "0.65 mm Ultra İnce" },
-      { "label": "Ağırlık", "value": "14 Gram" },
-      { "label": "Doku", "value": "Kaymaz 3D Karbon Dokuma" },
-      { "label": "Kablosuz Şarj", "value": "Tam Uyumlu (Sinyal Engellemez)" }
-    ]
-  },
-  {
-    "id": 3,
-    "slug": "vitrin-minimalist-deri-cuzdan-kilif",
-    "name": "Vitrin Minimalist Mıknatıslı Deri Cüzdan Kılıf",
-    "category": "Kılıf & Koruma",
-    "price": 699.00,
-    "oldPrice": null,
-    "rating": 4.7,
-    "reviewCount": 64,
-    "stock": 18,
     "featured": false,
     "hasVariants": false,
-    "badge": "PREMIUM",
+    "badge": "0.6MM İNCE",
     "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Hakiki İtalyan vegan derisi, RFID korumalı 3 kart yuvası ve katlanabilir yatay stant desteği.",
-    "description": "Zarafeti ve fonksiyonelliği bir araya getiren Vitrin Deri Cüzdan Kılıf, el işçiliğiyle üretilmiş çevre dostu vegan deriden imal edilmiştir. RFID engelleyici koruma katmanı sayesinde kredi kartı verilerinizi temassız kopyalamaya karşı korur.",
+    "shortDescription": "1500D havacılık sınıfı aramid karbon lifi, tüy kadar hafif 14 gram gövde.",
+    "description": "Telefonuna kılıf takmayı sevmeyen ama çizilmesini de istemeyenler için 0.65mm inceliğinde zırh.",
     "specs": [
-      { "label": "Malzeme", "value": "İtalyan Dokulu Vegan Deri" },
-      { "label": "Kapasite", "value": "3 Kart + 1 Nakit Bölmesi" },
-      { "label": "Güvenlik", "value": "RFID Engelleyici Koruma Katmanı" },
-      { "label": "Stant Fonksiyonu", "value": "60° Yatay Açı Desteği" }
+      { "label": "Ağırlık", "value": "14 Gram" },
+      { "label": "Kalınlık", "value": "0.65 mm" }
     ]
   },
   {
-    "id": 4,
-    "slug": "vitrin-crystal-clear-sararmaz-zirh-kilif",
-    "name": "Vitrin Crystal Clear Sararmaz Zırh Kılıf",
-    "category": "Kılıf & Koruma",
-    "price": 299.00,
-    "oldPrice": 399.00,
-    "rating": 4.9,
-    "reviewCount": 210,
-    "stock": 65,
-    "featured": true,
-    "hasVariants": false,
-    "badge": "%25 İNDİRİM",
-    "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Alman Bayer optik polikarbonat malzeme ile 1 yıl sararmama garantisi ve hava yastıklı köşeler.",
-    "description": "Telefonunuzun orijinal rengini ve tasarımını kristal berraklığında sergileyin. Özel anti-UV sararma önleyici kaplaması güneş ışınlarına maruz kalsa dahi şeffaflığını korur. Air-Cushion köşe hava yastıkları sert darbeleri emer.",
-    "specs": [
-      { "label": "Optik Şeffaflık", "value": "%99.9 Işık Geçirgenliği" },
-      { "label": "Sararma Direnci", "value": "UV-Proof Bayer Malzeme" },
-      { "label": "Köşe Koruması", "value": "4 Köşe Air-Cushion Hava Yastığı" }
-    ]
-  },
-  {
-    "id": 5,
+    "id": 7,
     "slug": "vitrin-65w-gan-iii-hizli-sarj-adaptoru",
-    "name": "Vitrin 65W GaN III Dual-Port Hızlı Şarj Adaptörü",
+    "name": "Vitrin 65W GaN III Dual-Port Hızlı Şarj Cihazı",
     "category": "Şarj & Güç",
     "price": 799.00,
     "oldPrice": 999.00,
@@ -123,40 +161,36 @@
     "hasVariants": false,
     "badge": "%20 İNDİRİM",
     "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "GaN III yarı iletken teknolojisi, 2x Type-C + 1x USB-A çıkışı ile MacBook, iPhone ve Android için ortak hızlı şarj.",
-    "description": "Yeni nesil Galyum Nitrür (GaN III) teknolojisi sayesinde geleneksel silikon şarj aletlerine göre %45 daha küçük boyutta 65W muazzam güç üretir. Akıllı güç dağıtımı aynı anda telefon ve dizüstü bilgisayarınızı güvenle şarj eder.",
+    "shortDescription": "Yeni nesil GaN yarı iletkeni ile laptop, tablet ve telefonu aynı anda tam hızda şarj edin.",
+    "description": "Geleneksel şarj aletlerinden %45 daha küçük boyutta 65W güç üretir. Akıllı ısı dengeleme çipi sayesinde ısınmaz.",
     "specs": [
-      { "label": "Toplam Güç", "value": "65W Max Power Delivery" },
-      { "label": "Portlar", "value": "2x USB-C (PD 3.0) + 1x USB-A (QC 4.0)" },
-      { "label": "Teknoloji", "value": "GaN III Isı Önleyici Çip" },
-      { "label": "Aşırı Akım Koruması", "value": "10 Kademeli Akıllı Koruma Devresi" }
+      { "label": "Güç", "value": "65W Max Power Delivery" },
+      { "label": "Çıkışlar", "value": "2x Type-C + 1x USB-A" }
     ]
   },
   {
-    "id": 6,
+    "id": 8,
     "slug": "vitrin-magstation-3u-1-arada-sarj-standi",
-    "name": "Vitrin MagStation 3'ü 1 Arada Katlanabilir Şarj Standı",
+    "name": "Vitrin MagStation 3'ü 1 Arada Alüminyum Şarj Standı",
     "category": "Şarj & Güç",
     "price": 1299.00,
     "oldPrice": 1699.00,
     "rating": 5.0,
     "reviewCount": 88,
     "stock": 20,
-    "featured": true,
+    "featured": false,
     "hasVariants": false,
-    "badge": "YENİ NESİL",
+    "badge": "ALÜMİNYUM",
     "image": "https://images.unsplash.com/photo-1622445262464-84b150777731?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Alüminyum gövde, iPhone MagSafe, Apple Watch ve AirPods'u aynı anda 15W kablosuz hızlı şarj eden katlanır stant.",
-    "description": "Masanızdaki kablo karmaşasına son verin. CNC ile işlenmiş anodize alüminyum alaşımı, güçlü manyetik hizalama ve kompakt katlanabilir seyahat tasarımı ile telefonunuzu ister yatay ister dikey modda şarj edin.",
+    "shortDescription": "iPhone, Apple Watch ve AirPods'u aynı anda 15W kablosuz şarj eden seyahat tipi katlanır stant.",
+    "description": "Masanızdaki kablo dağınıklığına son veren, CNC ile işlenmiş şık anodize alüminyum gövde.",
     "specs": [
-      { "label": "Gövde", "value": "Havacılık Sınıfı Anodize Alüminyum" },
-      { "label": "Kablosuz Çıkış", "value": "Telefon: 15W, Saat: 5W, Kulaklık: 5W" },
-      { "label": "Stand Açısı", "value": "0° - 60° Ayarlanabilir Eğim" },
-      { "label": "Kutu İçeriği", "value": "Stand + 1.2m Type-C Örgülü Kablo" }
+      { "label": "Gövde", "value": "Anodize Alüminyum Alaşım" },
+      { "label": "Çıkış", "value": "15W Telefon + 5W Saat + 5W Kulaklık" }
     ]
   },
   {
-    "id": 7,
+    "id": 9,
     "slug": "vitrin-magsnap-10000mah-manyetik-powerbank",
     "name": "Vitrin MagSnap 10.000 mAh Manyetik Powerbank",
     "category": "Şarj & Güç",
@@ -167,21 +201,19 @@
     "stock": 29,
     "featured": false,
     "hasVariants": false,
-    "badge": "POPÜLER",
+    "badge": "15W MAGSAFE",
     "image": "https://images.unsplash.com/photo-1609592807664-8469d4d5ca9b?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "15W MagSafe kablosuz şarj, 20W PD hızlı kablolu şarj ve hassas dijital LED pil seviye göstergesi.",
-    "description": "Ultra ince ve ergonomik gövdesiyle telefonun arkasına mükemmel oturur. Telefon kamerasını kapatmaz. 10.000 mAh kapasitesiyle en güncel akıllı telefonları 2.2 kez tam şarj edebilecek güce sahiptir.",
+    "shortDescription": "Telefonun arkasına güçlü mıknatısla yapışan ince gövde ve dijital LED pil göstergesi.",
+    "description": "Kablo derdi olmadan gün boyu kesintisiz enerji. 10.000 mAh pil kapasitesiyle telefonunuzu 2 kereden fazla tam şarj eder.",
     "specs": [
-      { "label": "Kapasite", "value": "10.000 mAh / 38.5Wh Li-Polymer" },
-      { "label": "Manyetik Güç", "value": "12N Ultra Güçlü Tutuş" },
-      { "label": "Kablolu Çıkış", "value": "20W Type-C Power Delivery" },
-      { "label": "Ağırlık", "value": "185 Gram" }
+      { "label": "Kapasite", "value": "10.000 mAh" },
+      { "label": "Çıkış", "value": "20W Type-C + 15W Kablosuz" }
     ]
   },
   {
-    "id": 8,
+    "id": 10,
     "slug": "vitrin-apex-pro-100w-orgulu-type-c-kablo",
-    "name": "Vitrin Apex Pro 100W 1.8m Balistik Naylon Type-C Kablo",
+    "name": "Vitrin Apex Pro 100W Balistik Naylon Type-C Kablo",
     "category": "Şarj & Güç",
     "price": 249.00,
     "oldPrice": null,
@@ -190,19 +222,17 @@
     "stock": 110,
     "featured": false,
     "hasVariants": false,
-    "badge": "ÖMÜR BOYU GARANTİ",
+    "badge": "KOPMAZ",
     "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "25.000+ bükülme ömrü, 100W 5A süper hızlı şarj ve 480 Mbps yüksek hızlı veri transferi.",
-    "description": "Kopmalara ve ezilmelere dayanıklı balistik naylon örgülü dış kılıf, akıllı E-Marker güç dengeleme çipi ve altın kaplama dayanıklı konnektör uçlarıyla cihazınızı güvenle şarj edin.",
+    "shortDescription": "25.000 bükülme garantili balistik naylon örgü, E-Marker çip ve 100W 5A süper hızlı şarj.",
+    "description": "Kırılan ve soyulan kabloları unutun. Altın kaplama soketleri ve çelik takviyeli bükülme noktalarıyla ömürlük kablo.",
     "specs": [
-      { "label": "Maksimum Güç", "value": "100W (20V / 5A) Hızlı Şarj" },
       { "label": "Uzunluk", "value": "1.8 Metre" },
-      { "label": "Dayanıklılık Testi", "value": "25.000+ Eğilme ve Çekme Testi" },
-      { "label": "Veri Hızı", "value": "480 Mbps" }
+      { "label": "Güç", "value": "100W (20V/5A)" }
     ]
   },
   {
-    "id": 9,
+    "id": 11,
     "slug": "vitrin-safir-titanyum-kamera-lens-koruyucu",
     "name": "Vitrin Safir Titanyum Kamera Lens Koruyucu (Tam Set)",
     "category": "Ekran & Kamera",
@@ -213,21 +243,19 @@
     "stock": 58,
     "featured": true,
     "hasVariants": false,
-    "badge": "%25 İNDİRİM",
+    "badge": "SAFİR CAM",
     "image": "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Mohs 9M safir cam sertliği, titanyum halka çerçeve ve gece çekiminde parlama yapmayan optik siyah halka.",
-    "description": "Kameranızın optik netliğinden zerre ödün vermeden elmas sertliğindeki safir kaplama ile anahtar, bozuk para ve düşmelerden koruyun. Özel AR yansıma önleyici kaplaması sayesinde gece flaşlı fotoğraflarda sıfır buğulanma sağlar.",
+    "shortDescription": "Mohs 9M safir cam sertliği, parlamayı önleyen siyah optik halka ve kolay montaj tepsisi.",
+    "description": "Fotoğraf kalitesinden sıfır ödün! Telefonunuzun kameralarını çizilmelere karşı elmas sertliğinde safir camla koruyun.",
     "specs": [
       { "label": "Sertlik", "value": "Mohs 9M Safir Kristal" },
-      { "label": "Çerçeve", "value": "Eloksallı Titanyum Halka" },
-      { "label": "Işık Geçirgenliği", "value": "%99.8 Ultra HD Netlik" },
-      { "label": "Montaj", "value": "Hizalama Şablonu Dahil Kolay Uygulama" }
+      { "label": "Netlik", "value": "%99.8 Ultra HD Işık Geçirgenliği" }
     ]
   },
   {
-    "id": 10,
+    "id": 12,
     "slug": "vitrin-9h-mat-hayalet-gizlilik-ekran-koruyucu",
-    "name": "Vitrin 9H Mat Hayalet (Gizlilik) Ekran Koruyucu Cam",
+    "name": "Vitrin 9H Mat Hayalet (Gizlilik) Ekran Koruyucu",
     "category": "Ekran & Kamera",
     "price": 279.00,
     "oldPrice": null,
@@ -238,17 +266,16 @@
     "hasVariants": false,
     "badge": "GİZLİLİK",
     "image": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "28° iki yönlü gizlilik filtresi, parmak izi bırakmayan mat ipeksi yüzey ve 9H temperli dayanıklılık.",
-    "description": "Toplu taşımada veya kalabalık ortamlarda telefon ekranınızı meraklı gözlerden koruyun. Yalnızca doğrudan ekrana bakan kullanıcı içeriği görür; sağ ve sol açılardan ekran tamamen siyah görünür. Mat yüzey gün ışığında parlamayı engeller.",
+    "shortDescription": "28° mikro panjur teknolojisi ile ekrana yandan bakanlar sadece siyah bir ekran görür.",
+    "description": "Toplu taşımada, okulda ve kafelerde mesajlarınızı ve şifrelerinizi meraklı gözlerden koruyun.",
     "specs": [
-      { "label": "Gizlilik Açısı", "value": "28 Derece Mikro-Panjur Teknolojisi" },
-      { "label": "Yüzey Dokusu", "value": "Parlama Önleyici İpeksi Mat Doku" },
-      { "label": "Sertlik Seviyesi", "value": "9H Temperli Çizilmezlik" }
+      { "label": "Gizlilik Açısı", "value": "28 Derece İki Yönlü Filtre" },
+      { "label": "Yüzey", "value": "Parmak İzi Tutmayan İpeksi Mat" }
     ]
   },
   {
-    "id": 11,
-    "slug": "vitrin-armorshield-9h-temperli-cam",
+    "id": 13,
+    "slug": "vitrin-armorshield-9h-kolay-kurulum-cam",
     "name": "Vitrin ArmorShield 9H Kolay Kurulumlu Temperli Cam",
     "category": "Ekran & Kamera",
     "price": 229.00,
@@ -256,38 +283,15 @@
     "rating": 5.0,
     "reviewCount": 310,
     "stock": 90,
-    "featured": true,
-    "hasVariants": false,
-    "badge": "%28 İNDİRİM",
-    "image": "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Otomatik toz çekici montaj tepsisi ile 5 saniyede sıfır toz ve baloncuksuz profesyonel uygulama.",
-    "description": "Ekran koruyucu takarken baloncuk kalma ve toz kaçma stresine son! Özel kurulum kutusunu telefonun üzerine kapatıp şeridi çekin; elektrostatik toz temizleyici tozu çeker ve cam ekrana milimetrik olarak kendiliğinden yapışır.",
-    "specs": [
-      { "label": "Uygulama Şekli", "value": "Auto-Dust Pull Box (Kutu Dahil)" },
-      { "label": "Kaplama", "value": "Elektrokaplama Çift Kat Oleofobik" },
-      { "label": "Kırılma Direnci", "value": "60 Kg Basınç Testli Kırılmaz Kenar" }
-    ]
-  },
-  {
-    "id": 12,
-    "slug": "vitrin-uv-sivi-optik-kavisli-ekran-koruma-kiti",
-    "name": "Vitrin UV Sıvı Optik Kavisli Ekran Koruma Kiti",
-    "category": "Ekran & Kamera",
-    "price": 349.00,
-    "oldPrice": null,
-    "rating": 4.7,
-    "reviewCount": 54,
-    "stock": 25,
     "featured": false,
     "hasVariants": false,
-    "badge": "KAVİSLİ EKRAN",
-    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Kavisli telefonlar için özel sıvı optik yapıştırıcı ve mini UV kurutma lambası içeren profesyonel kit.",
-    "description": "Samsung Galaxy Ultra ve kavisli ekranlı modeller için geliştirilen Liquid Optically Clear Adhesive (LOCA) teknolojisi. Sıvı yapıştırıcı ekrandaki kılcal çizikleri doldurur ve UV ışıkla sertleşerek kenarlardan asla kalkmayan bütünleşik bir zırh oluşturur.",
+    "badge": "0 BALONCUK",
+    "image": "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
+    "shortDescription": "Otomatik toz temizleyici montaj kutusu ile 5 saniyede sıfır hatasız profesyonel montaj.",
+    "description": "Kutuyu telefonun üzerine koyup şeridi çekin, tozsuz ve milimetrik olarak kendisi yapışsın.",
     "specs": [
-      { "label": "Yapıştırma", "value": "UV Kürlemeli Sıvı Optik Yapıştırıcı" },
-      { "label": "Kutu Ekipmanı", "value": "Mini USB UV Lamba + Montaj Çerçevesi" },
-      { "label": "Dokunmatik Hassasiyet", "value": "Ultrasonik Parmak İzi Okuyucuyla %100 Uyumlu" }
+      { "label": "Uygulama", "value": "Auto-Dust Pull Box (Kutu Dahil)" },
+      { "label": "Dayanıklılık", "value": "60 Kg Basınç Direnci" }
     ]
   }
 ]

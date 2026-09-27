@@ -1,9 +1,16 @@
 [
   {
+    "code": "3AL2ODE",
+    "type": "percentage",
+    "value": 33.33,
+    "description": "3 Al 2 Öde Kampanyası (Sepette %33.3 İndirim)",
+    "minOrder": 600
+  },
+  {
     "code": "VITRIN10",
     "type": "percentage",
     "value": 10,
-    "description": "Tüm siparişlerde %10 Hoş Geldin İndirimi",
+    "description": "Tüm siparişlerde geçerli %10 Hoş Geldin İndirimi",
     "minOrder": 0
   },
   {

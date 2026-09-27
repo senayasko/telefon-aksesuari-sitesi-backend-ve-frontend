@@ -1,13 +1,13 @@
 /**
- * VİTRİN — Modern D2C Telefon Aksesuarları E-Ticaret Uygulaması
- * Tüm 12 kriteri kapsayan tam fonksiyonel istemci mantığı.
+ * VİTRİN — Minimalist Açık Tema D2C Telefon Aksesuarları E-Ticaret Uygulaması
+ * 3 Al 2 Öde Kampanyası, Upsell Motoru ve 12 Kriter Tam Uyum.
  */
 
 // State Management
 const state = {
   products: [],
-  categories: ['Tümü', 'Kılıf & Koruma', 'Şarj & Güç', 'Ekran & Kamera'],
-  activeCategory: 'Tümü',
+  categories: ['Kılıf & Koruma', 'Şarj & Güç', 'Ekran & Kamera', 'Tümü'],
+  activeCategory: 'Kılıf & Koruma', // Kılıflar ilk sırada!
   searchQuery: '',
   sortBy: 'featured',
   cart: JSON.parse(localStorage.getItem('vitrin_cart') || '[]'),
@@ -59,7 +59,7 @@ function renderProducts() {
 
   let filtered = [...state.products];
 
-  // Category filter
+  // Category filter (Default: Kılıf & Koruma)
   if (state.activeCategory !== 'Tümü') {
     filtered = filtered.filter(p => p.category.toLowerCase() === state.activeCategory.toLowerCase());
   }
@@ -68,7 +68,7 @@ function renderProducts() {
   if (state.searchQuery.trim() !== '') {
     const q = state.searchQuery.toLowerCase().trim();
     filtered = filtered.filter(p => 
-      p.name.toLowerCase().includes(q) ||
+      p.name.toLowerCase().includes(q) || 
       p.shortDescription.toLowerCase().includes(q) ||
       p.category.toLowerCase().includes(q)
     );
@@ -89,10 +89,9 @@ function renderProducts() {
 
   if (filtered.length === 0) {
     container.innerHTML = `
-      <div class="col-span-full py-16 text-center text-zinc-400">
-        <svg class="w-12 h-12 mx-auto mb-4 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        <p class="text-lg font-medium text-white">Aradığınız kriterde ürün bulunamadı.</p>
-        <p class="text-sm mt-1">Farklı bir arama terimi deneyebilir veya kategoriyi değiştirebilirsiniz.</p>
+      <div class="col-span-full py-16 text-center text-zinc-500">
+        <p class="text-base font-semibold text-zinc-800">Aradığınız kriterde ürün bulunamadı.</p>
+        <p class="text-xs mt-1">Farklı bir arama terimi deneyebilir veya kategoriyi değiştirebilirsiniz.</p>
       </div>
     `;
     return;
@@ -106,7 +105,7 @@ function renderProducts() {
     return `
       <div class="product-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer" onclick="openProductModal(${product.id})">
         <!-- Image Container -->
-        <div class="relative w-full aspect-square bg-zinc-900/60 overflow-hidden">
+        <div class="relative w-full aspect-square bg-zinc-100 overflow-hidden">
           <img 
             src="${product.image}" 
             alt="${product.name}" 
@@ -118,12 +117,12 @@ function renderProducts() {
           <!-- Badges -->
           <div class="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
             ${product.badge ? `
-              <span class="px-2.5 py-1 text-xs font-bold rounded-md bg-cyan-500/90 text-black backdrop-blur-md">
+              <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-zinc-900 text-white tracking-wider uppercase">
                 ${product.badge}
               </span>
             ` : ''}
             ${discountPercent ? `
-              <span class="px-2.5 py-1 text-xs font-bold rounded-md bg-rose-600/90 text-white backdrop-blur-md">
+              <span class="px-2.5 py-1 text-[10px] font-extrabold rounded-md bg-red-600 text-white tracking-wider">
                 -%${discountPercent}
               </span>
             ` : ''}
@@ -131,61 +130,59 @@ function renderProducts() {
 
           <!-- Quick Stock Alert -->
           ${isLowStock ? `
-            <div class="absolute bottom-3 left-3 px-2 py-0.5 text-[11px] font-medium rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 backdrop-blur-md">
-              🔥 Son ${product.stock} Adet!
+            <div class="absolute bottom-3 left-3 px-2 py-0.5 text-[10px] font-semibold rounded-md bg-amber-50 text-amber-800 border border-amber-200">
+              Son ${product.stock} Adet
             </div>
           ` : ''}
           ${isOutOfStock ? `
-            <div class="absolute inset-0 bg-black/75 backdrop-blur-sm flex items-center justify-center">
-              <span class="px-3 py-1 bg-red-600/90 text-white text-xs font-bold rounded-md uppercase tracking-wider">Tükendi</span>
+            <div class="absolute inset-0 bg-white/80 backdrop-blur-sm flex items-center justify-center">
+              <span class="px-3 py-1 bg-zinc-900 text-white text-xs font-bold rounded-md uppercase tracking-wider">Tükendi</span>
             </div>
           ` : ''}
         </div>
 
         <!-- Details -->
-        <div class="p-5 flex flex-col flex-1 justify-between">
+        <div class="p-5 flex flex-col flex-1 justify-between bg-white">
           <div>
-            <div class="flex items-center justify-between text-xs text-zinc-400 mb-1.5">
-              <span class="text-cyan-400 font-medium">${product.category}</span>
-              <div class="flex items-center gap-1 text-amber-400">
-                <span>★</span>
-                <span class="font-semibold text-zinc-300">${product.rating}</span>
-                <span class="text-zinc-500">(${product.reviewCount})</span>
+            <div class="flex items-center justify-between text-xs text-zinc-500 mb-1.5">
+              <span class="text-zinc-600 font-medium">${product.category}</span>
+              <div class="flex items-center gap-1 text-zinc-700">
+                <span class="text-amber-500">★</span>
+                <span class="font-bold text-zinc-900 text-[11px]">${product.rating}</span>
+                <span class="text-zinc-400 text-[10px]">(${product.reviewCount})</span>
               </div>
             </div>
 
-            <h3 class="font-bold text-white text-base leading-snug group-hover:text-cyan-400 transition-colors line-clamp-2">
+            <h3 class="font-bold text-zinc-900 text-sm leading-snug group-hover:text-zinc-600 transition-colors line-clamp-2">
               ${product.name}
             </h3>
             
-            <p class="text-xs text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
+            <p class="text-xs text-zinc-500 mt-2 line-clamp-2 leading-relaxed">
               ${product.shortDescription}
             </p>
           </div>
 
-          <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+          <div class="mt-4 pt-4 border-t border-zinc-100 flex items-center justify-between">
             <div>
               <div class="flex items-baseline gap-2">
-                <span class="text-lg font-extrabold text-white">${formatCurrency(product.price)}</span>
+                <span class="text-base font-extrabold text-zinc-950">${formatCurrency(product.price)}</span>
                 ${product.oldPrice ? `
-                  <span class="text-xs text-zinc-500 line-through">${formatCurrency(product.oldPrice)}</span>
+                  <span class="text-xs text-zinc-400 line-through">${formatCurrency(product.oldPrice)}</span>
                 ` : ''}
               </div>
-              <span class="text-[10px] text-zinc-400">Stok: ${product.stock} adet</span>
+              <span class="text-[10px] text-zinc-400 font-mono">Stok: ${product.stock}</span>
             </div>
 
             <button 
               onclick="event.stopPropagation(); quickAddToCart(${product.id})"
               ${isOutOfStock ? 'disabled' : ''}
-              class="px-3 py-2 rounded-xl bg-white/10 hover:bg-cyan-500 hover:text-black text-white text-xs font-semibold transition-all flex items-center gap-1.5 disabled:opacity-40 disabled:pointer-events-none"
-              title="${product.hasVariants ? 'Seçenekleri Görüntüle' : 'Sepete Ekle'}"
+              class="px-3 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-semibold transition-all flex items-center gap-1.5 disabled:opacity-40 disabled:pointer-events-none"
             >
               ${product.hasVariants ? `
-                <span>Seçenekler</span>
+                <span>İncele</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
               ` : `
-                <span>Ekle</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                <span>Sepete Ekle</span>
               `}
             </button>
           </div>
@@ -204,7 +201,6 @@ function openProductModal(productId) {
   state.selectedProduct = product;
   state.modalQuantity = 1;
 
-  // Initialize variants if applicable
   if (product.hasVariants && product.variantOptions) {
     state.selectedVariant.color = product.variantOptions.colors[0];
     state.selectedVariant.model = product.variantOptions.models[0];
@@ -235,8 +231,8 @@ function renderProductModalContent() {
   content.innerHTML = `
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <!-- Image Gallery -->
-      <div class="flex flex-col gap-4">
-        <div class="w-full aspect-square rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 relative">
+      <div class="flex flex-col gap-3">
+        <div class="w-full aspect-square rounded-2xl overflow-hidden bg-zinc-100 border border-zinc-200 relative">
           <img 
             id="modal-main-image"
             src="${product.image}" 
@@ -244,18 +240,18 @@ function renderProductModalContent() {
             class="w-full h-full object-cover"
           />
           ${product.badge ? `
-            <span class="absolute top-4 left-4 px-3 py-1 bg-cyan-500 text-black text-xs font-bold rounded-lg uppercase tracking-wide">
+            <span class="absolute top-4 left-4 px-3 py-1 bg-zinc-900 text-white text-[10px] font-extrabold rounded-md uppercase tracking-wider">
               ${product.badge}
             </span>
           ` : ''}
         </div>
 
         ${product.gallery && product.gallery.length > 1 ? `
-          <div class="flex gap-3 overflow-x-auto pb-1">
-            ${product.gallery.map((img, i) => `
+          <div class="flex gap-2 overflow-x-auto pb-1">
+            ${product.gallery.map(img => `
               <button 
                 onclick="document.getElementById('modal-main-image').src='${img}'"
-                class="w-16 h-16 rounded-xl overflow-hidden border border-white/20 hover:border-cyan-400 focus:border-cyan-400 transition-all flex-shrink-0"
+                class="w-16 h-16 rounded-xl overflow-hidden border border-zinc-200 hover:border-zinc-900 focus:border-zinc-900 transition-all flex-shrink-0"
               >
                 <img src="${img}" class="w-full h-full object-cover" />
               </button>
@@ -267,49 +263,55 @@ function renderProductModalContent() {
       <!-- Product Info -->
       <div class="flex flex-col justify-between">
         <div>
-          <div class="flex items-center justify-between text-xs text-zinc-400 mb-2">
-            <span class="text-cyan-400 font-semibold uppercase tracking-wider">${product.category}</span>
-            <div class="flex items-center gap-1.5 text-amber-400">
-              <span>★</span>
-              <span class="font-bold text-white">${product.rating}</span>
+          <div class="flex items-center justify-between text-xs text-zinc-500 mb-2">
+            <span class="text-zinc-600 font-bold uppercase tracking-wider">${product.category}</span>
+            <div class="flex items-center gap-1.5 text-zinc-700">
+              <span class="text-amber-500">★</span>
+              <span class="font-bold text-zinc-900">${product.rating}</span>
               <span class="text-zinc-400">(${product.reviewCount} Değerlendirme)</span>
             </div>
           </div>
 
-          <h2 class="text-2xl lg:text-3xl font-bold text-white leading-tight font-display">
+          <h2 class="text-2xl font-extrabold text-zinc-950 leading-tight font-display">
             ${product.name}
           </h2>
 
-          <div class="mt-4 flex items-baseline gap-3">
-            <span class="text-3xl font-extrabold text-cyan-400">${formatCurrency(product.price)}</span>
+          <div class="mt-3 flex items-baseline gap-3">
+            <span class="text-2xl font-black text-zinc-950">${formatCurrency(product.price)}</span>
             ${product.oldPrice ? `
-              <span class="text-lg text-zinc-500 line-through">${formatCurrency(product.oldPrice)}</span>
-              <span class="px-2 py-0.5 bg-rose-500/20 text-rose-400 text-xs font-bold rounded-md">-%${discountPercent}</span>
+              <span class="text-base text-zinc-400 line-through">${formatCurrency(product.oldPrice)}</span>
+              <span class="px-2 py-0.5 bg-red-50 text-red-600 text-xs font-bold rounded-md">-%${discountPercent}</span>
             ` : ''}
           </div>
 
-          <p class="mt-4 text-sm text-zinc-300 leading-relaxed">
+          <!-- 3 Al 2 Öde Pill inside product -->
+          <div class="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold">
+            <span>🎁</span>
+            <span>Bu ürün <strong>3 Al 2 Öde Kampanyası</strong>na Dahildir!</span>
+          </div>
+
+          <p class="mt-4 text-xs text-zinc-600 leading-relaxed">
             ${product.description}
           </p>
 
           <!-- VARIATION SECTION (Criterion 3) -->
           ${product.hasVariants && product.variantOptions ? `
-            <div class="mt-6 p-4 rounded-xl bg-zinc-900/80 border border-white/10 space-y-4">
+            <div class="mt-5 p-4 rounded-xl bg-zinc-50 border border-zinc-200 space-y-4">
               <!-- Color Selector -->
               <div>
-                <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-                  Renk: <span id="selected-color-name" class="text-white font-bold">${state.selectedVariant.color.name}</span>
+                <label class="block text-xs font-bold text-zinc-700 mb-2">
+                  Renk: <span id="selected-color-name" class="text-zinc-950">${state.selectedVariant.color.name}</span>
                 </label>
-                <div class="flex gap-3">
+                <div class="flex gap-2.5">
                   ${product.variantOptions.colors.map(c => `
                     <button 
                       type="button"
                       onclick="selectVariantColor('${c.name}', '${c.hex}')"
-                      class="color-swatch w-9 h-9 rounded-full border-2 transition-all relative ${state.selectedVariant.color.name === c.name ? 'border-cyan-400 scale-110' : 'border-transparent'}"
+                      class="color-swatch w-8 h-8 rounded-full border-2 transition-all relative ${state.selectedVariant.color.name === c.name ? 'border-zinc-900 scale-110' : 'border-transparent'}"
                       style="background-color: ${c.hex};"
                       title="${c.name}"
                     >
-                      ${state.selectedVariant.color.name === c.name ? '<span class="absolute inset-0 flex items-center justify-center text-white text-xs">✓</span>' : ''}
+                      ${state.selectedVariant.color.name === c.name ? '<span class="absolute inset-0 flex items-center justify-center text-white text-[10px]">✓</span>' : ''}
                     </button>
                   `).join('')}
                 </div>
@@ -317,15 +319,15 @@ function renderProductModalContent() {
 
               <!-- Model Selector -->
               <div>
-                <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-                  Cihaz Modeli: <span id="selected-model-name" class="text-white font-bold">${state.selectedVariant.model}</span>
+                <label class="block text-xs font-bold text-zinc-700 mb-2">
+                  iPhone / Cihaz Modeli: <span id="selected-model-name" class="text-zinc-950">${state.selectedVariant.model}</span>
                 </label>
                 <div class="grid grid-cols-2 gap-2">
                   ${product.variantOptions.models.map(m => `
                     <button 
                       type="button"
                       onclick="selectVariantModel('${m}')"
-                      class="py-2 px-3 text-xs font-semibold rounded-lg border text-left transition-all ${state.selectedVariant.model === m ? 'border-cyan-400 bg-cyan-500/10 text-cyan-300 font-bold' : 'border-white/10 bg-zinc-800/50 text-zinc-300 hover:border-white/30'}"
+                      class="py-2 px-3 text-xs font-semibold rounded-lg border text-left transition-all ${state.selectedVariant.model === m ? 'border-zinc-900 bg-zinc-900 text-white' : 'border-zinc-200 bg-white text-zinc-700 hover:border-zinc-400'}"
                     >
                       ${m}
                     </button>
@@ -336,46 +338,52 @@ function renderProductModalContent() {
           ` : ''}
 
           <!-- Live Stock Indicator -->
-          <div class="mt-5 flex items-center gap-2 text-xs">
-            <span class="w-2 h-2 rounded-full ${product.stock > 0 ? 'bg-emerald-400 animate-pulse' : 'bg-red-500'}"></span>
-            <span class="text-zinc-300">
+          <div class="mt-4 flex items-center gap-2 text-xs">
+            <span class="w-2 h-2 rounded-full ${product.stock > 0 ? 'bg-emerald-500 animate-pulse' : 'bg-red-500'}"></span>
+            <span class="text-zinc-600 font-medium">
               ${product.stock > 0 ? `Canlı Stok: <strong>${product.stock} adet</strong> hazırda var.` : 'Stok tükendi.'}
             </span>
           </div>
 
-          <!-- Specs List -->
+          <!-- Progressive Disclosure: Features Click to expand -->
           ${product.specs ? `
-            <div class="mt-6 pt-6 border-t border-white/10">
-              <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-3">Öne Çıkan Özellikler</h4>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                ${product.specs.map(s => `
-                  <div class="p-2.5 rounded-lg bg-white/5 border border-white/5">
-                    <span class="text-zinc-400 block">${s.label}</span>
-                    <span class="text-white font-medium mt-0.5 block">${s.value}</span>
-                  </div>
-                `).join('')}
-              </div>
+            <div class="mt-4 pt-3 border-t border-zinc-100">
+              <details class="cursor-pointer text-xs group">
+                <summary class="font-bold text-zinc-800 list-none flex items-center justify-between py-1 hover:text-zinc-600">
+                  <span>Teknik Özellikleri ve Detaylar</span>
+                  <span class="text-zinc-400 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2 pt-2">
+                  ${product.specs.map(s => `
+                    <div class="p-2 rounded-lg bg-zinc-50 border border-zinc-100">
+                      <span class="text-zinc-400 block text-[10px]">${s.label}</span>
+                      <span class="text-zinc-900 font-medium block mt-0.5">${s.value}</span>
+                    </div>
+                  `).join('')}
+                </div>
+              </details>
             </div>
           ` : ''}
         </div>
 
         <!-- Add to Cart Footer in Modal -->
-        <div class="mt-8 pt-6 border-t border-white/10 flex items-center gap-4">
+        <div class="mt-6 pt-5 border-t border-zinc-100 flex items-center gap-3">
           <!-- Quantity -->
-          <div class="flex items-center rounded-xl bg-zinc-900 border border-white/10 p-1">
-            <button onclick="changeModalQty(-1)" class="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-white text-base font-bold">-</button>
-            <span id="modal-qty-display" class="w-10 text-center font-bold text-white text-sm">1</span>
-            <button onclick="changeModalQty(1)" class="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-white text-base font-bold">+</button>
+          <div class="flex items-center rounded-xl bg-zinc-100 border border-zinc-200 p-1">
+            <button onclick="changeModalQty(-1)" class="w-8 h-8 rounded-lg hover:bg-white flex items-center justify-center text-zinc-800 text-sm font-bold">-</button>
+            <span id="modal-qty-display" class="w-8 text-center font-bold text-zinc-900 text-xs">1</span>
+            <button onclick="changeModalQty(1)" class="w-8 h-8 rounded-lg hover:bg-white flex items-center justify-center text-zinc-800 text-sm font-bold">+</button>
           </div>
 
           <!-- Add Button -->
           <button 
             onclick="addModalProductToCart()"
             ${product.stock <= 0 ? 'disabled' : ''}
-            class="flex-1 py-3 px-6 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-black font-extrabold text-sm transition-all transform active:scale-95 shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 disabled:opacity-40 disabled:pointer-events-none"
+            class="flex-1 py-3 px-6 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs transition-all transform active:scale-95 shadow-md flex items-center justify-center gap-2 disabled:opacity-40 disabled:pointer-events-none"
           >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
             <span>Sepete Ekle</span>
+            <span class="text-zinc-400">•</span>
+            <span>${formatCurrency(product.price)}</span>
           </button>
         </div>
       </div>
@@ -412,7 +420,7 @@ function addModalProductToCart() {
 
   addToCart(product, state.modalQuantity, variantName);
   closeProductModal();
-  openCartDrawer();
+  openUpsellModal(product); // Nudge: Sepete gitmek yerine daha çok ürün aldırma modalı!
 }
 
 function quickAddToCart(productId) {
@@ -423,6 +431,72 @@ function quickAddToCart(productId) {
     openProductModal(productId);
   } else {
     addToCart(product, 1, 'Standart');
+    openUpsellModal(product); // Nudge: Sepete gitmek yerine daha çok ürün aldırma modalı!
+  }
+}
+
+// ======================== UPSELL NUDGE MODAL (Sepete gidişi zorlaştır, ürün aldır!) ========================
+
+function openUpsellModal(lastAddedProduct) {
+  const modal = document.getElementById('upsell-modal');
+  if (!modal) return;
+
+  const totalCount = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+  const remainingFor3Al2 = Math.max(0, 3 - totalCount);
+
+  // Update progress
+  document.getElementById('upsell-added-item-name').innerText = lastAddedProduct.name;
+  
+  const alertBox = document.getElementById('upsell-campaign-alert');
+  if (totalCount >= 3) {
+    alertBox.innerHTML = `
+      <span class="text-emerald-700 font-bold">🎉 TEBRİKLER! Sepetinizde 3 ürün var; 3 Al 2 Öde fırsatı kazandınız!</span>
+    `;
+    alertBox.className = 'p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs mb-4 text-center';
+  } else {
+    alertBox.innerHTML = `
+      <span class="text-zinc-900 font-bold">🔥 3 AL 2 ÖDE FIRSATINA SON <span class="text-red-600 font-black">${remainingFor3Al2} ÜRÜN</span> KALDI!</span>
+      <p class="text-[11px] text-zinc-600 mt-0.5">Sepetinize ${remainingFor3Al2} aksesuar daha ekleyin, en ucuz ürün <strong>BEDAVA</strong> olsun!</p>
+    `;
+    alertBox.className = 'p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs mb-4 text-center';
+  }
+
+  // Suggest complementary items (e.g. Lens Protector id:11 or 1500D Carbon id:6)
+  const suggestionsContainer = document.getElementById('upsell-suggestions');
+  const suggestions = state.products.filter(p => p.id !== lastAddedProduct.id && (p.category === 'Ekran & Kamera' || p.category === 'Kılıf & Koruma')).slice(0, 2);
+
+  suggestionsContainer.innerHTML = suggestions.map(item => `
+    <div class="flex items-center justify-between p-3 rounded-xl bg-zinc-50 border border-zinc-200">
+      <div class="flex items-center gap-3">
+        <img src="${item.image}" class="w-12 h-12 rounded-lg object-cover bg-white" />
+        <div>
+          <h4 class="text-xs font-bold text-zinc-900">${item.name}</h4>
+          <span class="text-[11px] font-extrabold text-zinc-950">${formatCurrency(item.price)}</span>
+        </div>
+      </div>
+      <button 
+        onclick="addUpsellItemToCart(${item.id})"
+        class="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold transition-all"
+      >
+        + Ekle
+      </button>
+    </div>
+  `).join('');
+
+  modal.classList.remove('hidden');
+}
+
+function closeUpsellModal() {
+  const modal = document.getElementById('upsell-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function addUpsellItemToCart(productId) {
+  const product = state.products.find(p => p.id === productId);
+  if (product) {
+    addToCart(product, 1, 'Standart');
+    showToast(`${product.name} sepete eklendi!`, 'success');
+    closeUpsellModal();
     openCartDrawer();
   }
 }
@@ -447,9 +521,21 @@ function addToCart(product, quantity = 1, variantName = 'Standart') {
     });
   }
 
+  // If cart has >= 3 items and no coupon set, auto-recommend 3AL2ODE
+  const totalItemCount = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+  if (totalItemCount >= 3 && !state.appliedCoupon) {
+    state.appliedCoupon = {
+      code: '3AL2ODE',
+      type: 'percentage',
+      value: 33.33,
+      description: '3 Al 2 Öde Kampanyası'
+    };
+    localStorage.setItem('vitrin_coupon', JSON.stringify(state.appliedCoupon));
+  }
+
   saveCart();
   updateCartUI();
-  showToast(`${product.name} sepete eklendi!`, 'success');
+  showToast(`${product.name} eklendi!`, 'success');
 }
 
 function updateCartItemQty(index, delta) {
@@ -469,6 +555,14 @@ function removeCartItem(index) {
   if (state.cart[index]) {
     const name = state.cart[index].name;
     state.cart.splice(index, 1);
+    
+    // Check 3 al 2 ode condition
+    const totalItemCount = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+    if (totalItemCount < 3 && state.appliedCoupon?.code === '3AL2ODE') {
+      state.appliedCoupon = null;
+      localStorage.removeItem('vitrin_coupon');
+    }
+
     saveCart();
     updateCartUI();
     showToast(`${name} sepetten çıkarıldı.`, 'info');
@@ -491,7 +585,6 @@ function getCartCalculations() {
     }
   }
 
-  // Shipping rule: Free if >= 1000 TL, else 59.90 TL
   const isFreeShipping = subtotal >= state.shippingThreshold || subtotal === 0;
   const shippingFee = (subtotal === 0 || isFreeShipping) ? 0.00 : state.defaultShippingFee;
   const remainingForFreeShipping = Math.max(0, state.shippingThreshold - subtotal);
@@ -526,17 +619,17 @@ function updateCartUI() {
 
   const calcs = getCartCalculations();
 
-  // Free shipping progress bar update
+  // Free shipping progress bar
   const progressEl = document.getElementById('free-shipping-progress');
   const progressText = document.getElementById('free-shipping-text');
   if (progressEl && progressText) {
     progressEl.style.width = `${calcs.freeShippingProgress}%`;
     if (calcs.isFreeShipping && calcs.subtotal > 0) {
-      progressText.innerHTML = `🎉 <strong>Harika!</strong> Ücretsiz kargo hakkı kazandınız.`;
+      progressText.innerHTML = `🎉 <strong>Tebrikler!</strong> Ücretsiz kargo hakkı kazandınız.`;
     } else if (calcs.subtotal === 0) {
       progressText.innerText = `1.000 TL üzeri alışverişlerde KARGO ÜCRETSİZ!`;
     } else {
-      progressText.innerHTML = `Ücretsiz kargoya son <strong class="text-cyan-400 font-bold">${formatCurrency(calcs.remainingForFreeShipping)}</strong> kaldı!`;
+      progressText.innerHTML = `Ücretsiz kargoya son <strong class="text-zinc-950 font-bold">${formatCurrency(calcs.remainingForFreeShipping)}</strong> kaldı!`;
     }
   }
 
@@ -551,23 +644,23 @@ function updateCartUI() {
   footerContainer.classList.remove('hidden');
 
   itemsContainer.innerHTML = state.cart.map((item, index) => `
-    <div class="flex gap-4 p-3 rounded-xl bg-zinc-900/60 border border-white/5 items-center">
-      <img src="${item.image}" alt="${item.name}" class="w-16 h-16 rounded-lg object-cover bg-zinc-800 flex-shrink-0" />
+    <div class="flex gap-3 p-3 rounded-xl bg-zinc-50 border border-zinc-200 items-center">
+      <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-lg object-cover bg-white border border-zinc-100 flex-shrink-0" />
       <div class="flex-1 min-w-0">
-        <h4 class="text-sm font-bold text-white truncate">${item.name}</h4>
-        <p class="text-xs text-cyan-400 font-medium truncate mt-0.5">${item.selectedVariant}</p>
-        <span class="text-xs font-semibold text-zinc-300 mt-1 block">${formatCurrency(item.price)}</span>
+        <h4 class="text-xs font-bold text-zinc-900 truncate">${item.name}</h4>
+        <p class="text-[11px] text-zinc-500 font-medium truncate mt-0.5">${item.selectedVariant}</p>
+        <span class="text-xs font-extrabold text-zinc-950 mt-1 block">${formatCurrency(item.price)}</span>
       </div>
 
-      <div class="flex flex-col items-end gap-2">
-        <button onclick="removeCartItem(${index})" class="text-zinc-500 hover:text-red-400 transition-colors p-1" title="Kaldır">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+      <div class="flex flex-col items-end gap-1.5">
+        <button onclick="removeCartItem(${index})" class="text-zinc-400 hover:text-red-600 transition-colors p-1" title="Kaldır">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
         </button>
 
-        <div class="flex items-center rounded-lg bg-zinc-800 border border-white/10 px-1 py-0.5">
-          <button onclick="updateCartItemQty(${index}, -1)" class="w-5 h-5 flex items-center justify-center text-zinc-400 hover:text-white text-xs font-bold">-</button>
-          <span class="w-6 text-center text-xs font-bold text-white">${item.quantity}</span>
-          <button onclick="updateCartItemQty(${index}, 1)" class="w-5 h-5 flex items-center justify-center text-zinc-400 hover:text-white text-xs font-bold">+</button>
+        <div class="flex items-center rounded-lg bg-white border border-zinc-200 px-1 py-0.5">
+          <button onclick="updateCartItemQty(${index}, -1)" class="w-4 h-4 flex items-center justify-center text-zinc-500 hover:text-black text-xs font-bold">-</button>
+          <span class="w-5 text-center text-xs font-bold text-zinc-900">${item.quantity}</span>
+          <button onclick="updateCartItemQty(${index}, 1)" class="w-4 h-4 flex items-center justify-center text-zinc-500 hover:text-black text-xs font-bold">+</button>
         </div>
       </div>
     </div>
@@ -592,8 +685,8 @@ function updateCartUI() {
   if (state.appliedCoupon) {
     couponChip.classList.remove('hidden');
     couponChip.innerHTML = `
-      <span class="text-xs text-cyan-300 font-bold">Kupon: ${state.appliedCoupon.code} (-${formatCurrency(calcs.discount)})</span>
-      <button onclick="removeCoupon()" class="text-zinc-400 hover:text-red-400 text-xs font-bold ml-2">✕</button>
+      <span class="text-xs text-zinc-900 font-bold">${state.appliedCoupon.description || state.appliedCoupon.code} (-${formatCurrency(calcs.discount)})</span>
+      <button onclick="removeCoupon()" class="text-zinc-500 hover:text-red-600 text-xs font-bold ml-2">✕</button>
     `;
   } else {
     couponChip.classList.add('hidden');
@@ -640,6 +733,7 @@ function removeCoupon() {
 }
 
 function openCartDrawer() {
+  closeUpsellModal();
   const drawer = document.getElementById('cart-drawer');
   const panel = document.getElementById('cart-drawer-panel');
   drawer.classList.remove('hidden');
@@ -689,17 +783,16 @@ function closeCheckoutModal() {
 function selectPaymentMethod(method) {
   state.checkoutPaymentMethod = method;
 
-  // Toggle radio styles
   ['iyzico', 'havale', 'kapida'].forEach(m => {
     const card = document.getElementById(`payment-card-${m}`);
     const details = document.getElementById(`payment-details-${m}`);
     if (m === method) {
-      card?.classList.add('border-cyan-400', 'bg-cyan-500/10');
-      card?.classList.remove('border-white/10');
+      card?.classList.add('border-zinc-950', 'bg-zinc-50');
+      card?.classList.remove('border-zinc-200');
       details?.classList.remove('hidden');
     } else {
-      card?.classList.remove('border-cyan-400', 'bg-cyan-500/10');
-      card?.classList.add('border-white/10');
+      card?.classList.remove('border-zinc-950', 'bg-zinc-50');
+      card?.classList.add('border-zinc-200');
       details?.classList.add('hidden');
     }
   });
@@ -733,7 +826,6 @@ function fillIyzicoTestCard() {
   document.getElementById('cc-expiry').value = '12/28';
   document.getElementById('cc-cvv').value = '424';
 
-  // update preview card
   document.getElementById('card-preview-number').innerText = '4242 •••• •••• 4242';
   document.getElementById('card-preview-name').innerText = 'AHMET YILMAZ';
   document.getElementById('card-preview-expiry').innerText = '12/28';
@@ -741,7 +833,6 @@ function fillIyzicoTestCard() {
   showToast('iyzico test kart bilgileri dolduruldu!', 'success');
 }
 
-// Format credit card inputs
 function formatCardNumber(e) {
   let val = e.target.value.replace(/\D/g, '');
   val = val.substring(0, 16);
@@ -770,7 +861,7 @@ function formatCardExpiry(e) {
   }
 }
 
-// Submit Order Process
+// Submit Order
 async function processOrderSubmit(e) {
   e.preventDefault();
 
@@ -784,32 +875,29 @@ async function processOrderSubmit(e) {
   const agreement = document.getElementById('order-agreement').checked;
 
   if (!fullName || !email || !phone || !city || !district || !address) {
-    showToast('Lütfen teslimat bilgileri alanlarını eksiksiz doldurunuz.', 'error');
+    showToast('Lütfen teslimat bilgileri alanlarını doldurunuz.', 'error');
     return;
   }
 
   if (!agreement) {
-    showToast('Lütfen Mesafeli Satış Sözleşmesi ve KVKK onayını işaretleyiniz.', 'error');
+    showToast('Lütfen sözleşme ve KVKK onayını işaretleyiniz.', 'error');
     return;
   }
 
-  // If iyzico Credit Card is chosen, simulate 3D Secure Verification
   if (state.checkoutPaymentMethod === 'iyzico') {
     const ccNum = document.getElementById('cc-number').value.replace(/\s/g, '');
     const ccCvv = document.getElementById('cc-cvv').value.trim();
     if (ccNum.length < 16 || ccCvv.length < 3) {
-      showToast('Lütfen geçerli bir kart numarası ve güvenlik kodu girin.', 'error');
+      showToast('Lütfen geçerli bir kart numarası ve CVV giriniz.', 'error');
       return;
     }
     open3DSecureModal({ fullName, email, phone, city, district, address, note });
     return;
   }
 
-  // For Havale or Kapıda Ödeme, finalize immediately
   finalizeOrder({ fullName, email, phone, city, district, address, note });
 }
 
-// 3D Secure Simulation Modal
 let pendingOrderData = null;
 function open3DSecureModal(customerData) {
   pendingOrderData = customerData;
@@ -826,7 +914,7 @@ function verify3DSecure() {
   }
 
   document.getElementById('3d-secure-modal').classList.add('hidden');
-  showToast('3D Secure Doğrulaması Başarılı!', 'success');
+  showToast('3D Secure Doğrulandı!', 'success');
   finalizeOrder(pendingOrderData, {
     cardBrand: 'Mastercard / Visa',
     cardLast4: document.getElementById('cc-number').value.slice(-4),
@@ -880,7 +968,6 @@ async function finalizeOrder(customerData, paymentDetailsOverride = null) {
     const data = await res.json();
 
     if (data.success) {
-      // Clear Cart
       state.cart = [];
       state.appliedCoupon = null;
       saveCart();
@@ -889,7 +976,6 @@ async function finalizeOrder(customerData, paymentDetailsOverride = null) {
 
       closeCheckoutModal();
       openOrderSuccessModal(data.order);
-      // Reload products to reflect updated stocks
       loadProducts();
     } else {
       showToast(data.message || 'Sipariş oluşturulamadı.', 'error');
@@ -916,8 +1002,7 @@ function closeOrderSuccessModal() {
   document.body.style.overflow = '';
 }
 
-// ======================== NEWSLETTER & CONTACT ========================
-
+// Newsletter & Contact
 async function submitNewsletter(e) {
   e.preventDefault();
   const input = document.getElementById('newsletter-email');
@@ -964,8 +1049,7 @@ async function submitContactForm(e) {
   }
 }
 
-// ======================== LEGAL & STATIC MODALS (Criterion 7) ========================
-
+// Legal Modals (Criterion 7)
 function openLegalModal(type) {
   const titles = {
     kvkk: 'KVKK Aydınlatma Metni',
@@ -976,42 +1060,29 @@ function openLegalModal(type) {
 
   const texts = {
     kvkk: `
-      <h4 class="font-bold text-white mb-2">1. Veri Sorumlusu</h4>
-      <p class="mb-4">6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, VİTRİN E-Ticaret A.Ş. veri sorumlusu sıfatıyla kişisel verilerinizi işlemektedir.</p>
+      <h4 class="font-bold text-zinc-900 mb-1">1. Veri Sorumlusu</h4>
+      <p class="mb-3">6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, VİTRİN E-Ticaret A.Ş. veri sorumlusu sıfatıyla kişisel verilerinizi işlemektedir.</p>
       
-      <h4 class="font-bold text-white mb-2">2. Kişisel Verilerin İşlenme Amacı</h4>
-      <p class="mb-4">Ad, soyad, iletişim bilgileri, sipariş geçmişi ve adres verileriniz; siparişlerin teslimi, faturalandırma ve müşteri hizmetleri süreçlerinin yürütülmesi amacıyla işlenmektedir.</p>
+      <h4 class="font-bold text-zinc-900 mb-1">2. Verilerin İşlenme Amacı</h4>
+      <p class="mb-3">Ad, soyad, telefon ve adres verileriniz; siparişlerin teslimi, faturalandırma ve müşteri hizmetleri süreçlerinin yürütülmesi amacıyla işlenmektedir.</p>
 
-      <h4 class="font-bold text-white mb-2">3. Aktarılan Taraflar</h4>
-      <p class="mb-4">Kişisel verileriniz yalnızca siparişinizin fiziki teslimatını gerçekleştirmek üzere anlaşmalı kargo şirketleri (Yurtiçi Kargo, HepsiJet vb.) ve yasal zorunluluk halinde yetkili kamu kurumlarıyla paylaşılmaktadır.</p>
+      <h4 class="font-bold text-zinc-900 mb-1">3. Aktarılan Taraflar</h4>
+      <p class="mb-3">Kişisel verileriniz yalnızca siparişinizin fiziki teslimatını gerçekleştirmek üzere anlaşmalı kargo şirketleri (Yurtiçi Kargo, HepsiJet vb.) ile paylaşılmaktadır.</p>
     `,
     cerez: `
-      <h4 class="font-bold text-white mb-2">Çerezlerin Kullanım Amacı</h4>
-      <p class="mb-4">Sitemizde kullanıcı deneyimini iyileştirmek, sepet içeriğinizi hatırlamak ve güvenli oturum yönetimini sağlamak adına zorunlu ve işlevsel çerezler kullanılmaktadır.</p>
-      
-      <h4 class="font-bold text-white mb-2">Çerezleri Yönetme</h4>
-      <p class="mb-4">Tarayıcınızın ayarlarından dilediğiniz zaman çerez tercihlerini değiştirebilir veya kayıtlı çerezleri temizleyebilirsiniz.</p>
+      <h4 class="font-bold text-zinc-900 mb-1">Çerezlerin Kullanım Amacı</h4>
+      <p class="mb-3">Sitemizde kullanıcı deneyimini iyileştirmek, sepet içeriğinizi hatırlamak ve güvenli oturum yönetimini sağlamak adına zorunlu çerezler kullanılmaktadır.</p>
     `,
     mesafeli: `
-      <h4 class="font-bold text-white mb-2">Madde 1 - Taraflar</h4>
-      <p class="mb-4">İşbu sözleşme, VİTRİN Mağazası (Satıcı) ile siparişi veren Tüketici (Alıcı) arasında 6502 sayılı Tüketicinin Korunması Hakkında Kanun kapsamında akdedilmiştir.</p>
+      <h4 class="font-bold text-zinc-900 mb-1">Madde 1 - Taraflar</h4>
+      <p class="mb-3">İşbu sözleşme, VİTRİN Mağazası (Satıcı) ile siparişi veren Tüketici (Alıcı) arasında 6502 sayılı Tüketicinin Korunması Hakkında Kanun kapsamında akdedilmiştir.</p>
       
-      <h4 class="font-bold text-white mb-2">Madde 2 - Konu</h4>
-      <p class="mb-4">Alıcının satıcıya ait www.vitrin.com internet sitesinden elektronik ortamda siparişini yaptığı ürünün satışı ve teslimi ile ilgili hak ve yükümlülükleri düzenler.</p>
-
-      <h4 class="font-bold text-white mb-2">Madde 3 - Cayma Hakkı</h4>
-      <p class="mb-4">Alıcı, sözleşme konusu ürünün kendisine veya gösterdiği adresteki kişi/kuruluşa tesliminden itibaren 14 gün içinde hiçbir gerekçe göstermeksizin cayma hakkına sahiptir.</p>
+      <h4 class="font-bold text-zinc-900 mb-1">Madde 2 - Cayma Hakkı</h4>
+      <p class="mb-3">Alıcı, ürünün tesliminden itibaren 14 gün içinde hiçbir gerekçe göstermeksizin cayma hakkına sahiptir.</p>
     `,
     iade: `
-      <h4 class="font-bold text-white mb-2">14 Gün Koşulsuz Cayma Hakkı</h4>
-      <p class="mb-4">Satın aldığınız ürünleri, teslimat tarihinden itibaren 14 gün içerisinde orijinal kutusu ve faturasıyla birlikte ücretsiz olarak iade edebilirsiniz.</p>
-      
-      <h4 class="font-bold text-white mb-2">İade Adımları</h4>
-      <ol class="list-decimal pl-5 space-y-1 mb-4">
-        <li>Müşteri hizmetlerimizden veya 'Kargom Nerede' sayfasından iade talebi oluşturun.</li>
-        <li>Size verilen ücretsiz Yurtiçi Kargo iade kodunu kargo görevlisine iletin.</li>
-        <li>Ürün depomuza ulaştıktan sonra 2 iş günü içinde ödemeniz kesintisiz iade edilir.</li>
-      </ol>
+      <h4 class="font-bold text-zinc-900 mb-1">14 Gün Koşulsuz Cayma Hakkı</h4>
+      <p class="mb-3">Satın aldığınız ürünleri, teslimat tarihinden itibaren 14 gün içerisinde orijinal kutusuyla birlikte ücretsiz iade edebilirsiniz.</p>
     `
   };
 
@@ -1026,7 +1097,6 @@ function closeLegalModal() {
   document.body.style.overflow = '';
 }
 
-// Cookie Consent Banner
 function checkCookieConsent() {
   if (!localStorage.getItem('vitrin_cookie_accepted')) {
     const banner = document.getElementById('cookie-banner');
@@ -1041,14 +1111,6 @@ function acceptCookies() {
   showToast('Çerez tercihleriniz kaydedildi.', 'info');
 }
 
-// Copy to Clipboard Helper
-function copyText(text, label) {
-  navigator.clipboard.writeText(text).then(() => {
-    showToast(`${label} panoya kopyalandı!`, 'success');
-  });
-}
-
-// FAQ Accordion
 function toggleFaq(index) {
   const answer = document.getElementById(`faq-ans-${index}`);
   const icon = document.getElementById(`faq-icon-${index}`);
@@ -1061,19 +1123,19 @@ function toggleFaq(index) {
   }
 }
 
-// Toast Notifications
+// Toast
 function showToast(message, type = 'info') {
   const container = document.getElementById('toast-container');
   if (!container) return;
 
   const toast = document.createElement('div');
   const bgClasses = {
-    success: 'bg-emerald-500/90 text-white border-emerald-400',
-    error: 'bg-rose-600/90 text-white border-rose-500',
-    info: 'bg-zinc-800/95 text-white border-cyan-500/50'
+    success: 'bg-zinc-900 text-white border-zinc-700',
+    error: 'bg-red-600 text-white border-red-500',
+    info: 'bg-white text-zinc-900 border-zinc-200 shadow-xl'
   };
 
-  toast.className = `p-4 rounded-xl border backdrop-blur-md shadow-2xl flex items-center gap-3 animate-slide-up text-xs font-semibold ${bgClasses[type] || bgClasses.info}`;
+  toast.className = `p-3.5 rounded-xl border backdrop-blur-md shadow-lg flex items-center gap-2.5 animate-slide-up text-xs font-semibold ${bgClasses[type] || bgClasses.info}`;
   toast.innerHTML = `
     <span>${type === 'success' ? '✓' : type === 'error' ? '✕' : 'ℹ'}</span>
     <span class="flex-1">${message}</span>
@@ -1087,28 +1149,24 @@ function showToast(message, type = 'info') {
   }, 3500);
 }
 
-// Currency Formatter
 function formatCurrency(val) {
   return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(val);
 }
 
-// Event Listeners Setup
 function setupEventListeners() {
-  // Category pill buttons
   document.querySelectorAll('.cat-pill').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', () => {
       document.querySelectorAll('.cat-pill').forEach(b => {
-        b.classList.remove('bg-cyan-500', 'text-black', 'font-bold');
-        b.classList.add('bg-zinc-900', 'text-zinc-400');
+        b.classList.remove('bg-zinc-950', 'text-white', 'font-bold');
+        b.classList.add('bg-white', 'text-zinc-600', 'border-zinc-200');
       });
-      btn.classList.add('bg-cyan-500', 'text-black', 'font-bold');
-      btn.classList.remove('bg-zinc-900', 'text-zinc-400');
+      btn.classList.add('bg-zinc-950', 'text-white', 'font-bold');
+      btn.classList.remove('bg-white', 'text-zinc-600', 'border-zinc-200');
       state.activeCategory = btn.dataset.category;
       renderProducts();
     });
   });
 
-  // Search Input
   const searchInput = document.getElementById('search-input');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -1117,7 +1175,6 @@ function setupEventListeners() {
     });
   }
 
-  // Sort Select
   const sortSelect = document.getElementById('sort-select');
   if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
@@ -1126,7 +1183,6 @@ function setupEventListeners() {
     });
   }
 
-  // Live Card number format
   const ccNumberInput = document.getElementById('cc-number');
   if (ccNumberInput) ccNumberInput.addEventListener('input', formatCardNumber);
 
@@ -1141,7 +1197,6 @@ function setupEventListeners() {
   }
 }
 
-// URL Hash Routing Helper
 function handleUrlHash() {
   const hash = window.location.hash;
   if (hash.startsWith('#urun-')) {
