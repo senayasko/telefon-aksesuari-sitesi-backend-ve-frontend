@@ -1,17 +1,15 @@
-/* VİTRİN — Minimalist Light Mode & High-End D2C Phone Accessories Store */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap');
+/* VİTRİN — Cool Gray Industrial D2C Aesthetics & Compact Grid */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap');
 
 :root {
   --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
-  --bg-body: #fbfbfd;
+  --bg-body: #eef0f3; /* Cool Industrial Grayish */
   --bg-card: #ffffff;
-  --bg-card-hover: #ffffff;
-  --text-main: #09090b;
-  --text-muted: #71717a;
-  --border-light: #e4e4e7;
-  --border-hover: #18181b;
-  --accent: #09090b;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #cbd5e1;
+  --border-strong: #94a3b8;
   --accent-cyan: #0284c7;
 }
 
@@ -33,52 +31,69 @@ h1, h2, h3, .font-display {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f4f4f5;
+  background: #e2e8f0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4d4d8;
+  background: #94a3b8;
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #a1a1aa;
+
+/* Glass Header */
+.glass-nav-gray {
+  background: rgba(238, 240, 243, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid #cbd5e1;
 }
 
-/* Glass & Clean Nav */
-.glass-nav-light {
-  background: rgba(251, 251, 253, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-light);
-}
-
-/* Minimalist Card */
-.product-card {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+/* Compact Modern Product Card */
+.compact-card {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   background: #ffffff;
-  border: 1px solid var(--border-light);
+  border: 1px solid #d4d8de;
 }
 
-.product-card:hover {
-  transform: translateY(-4px);
-  border-color: #a1a1aa;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+.compact-card:hover {
+  transform: translateY(-3px);
+  border-color: #0f172a;
+  box-shadow: 0 12px 28px -8px rgba(15, 23, 42, 0.12);
+}
+
+/* Spin Wheel Styling */
+#wheel-canvas {
+  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.25));
+  transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 24px solid #ef4444;
+  z-index: 20;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
 /* Trust Badge Minimal Box */
 .trust-badge-minimal {
-  border: 1px solid var(--border-light);
+  border: 1px solid #cbd5e1;
   background: #ffffff;
   transition: all 0.2s ease;
 }
 .trust-badge-minimal:hover {
-  border-color: #18181b;
+  border-color: #0f172a;
 }
 
-/* Credit Card Preview Light/Dark Hybrid */
+/* Credit Card Preview */
 .credit-card-preview {
-  background: linear-gradient(135deg, #18181b 0%, #09090b 100%);
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
   position: relative;
   overflow: hidden;
 }
@@ -87,7 +102,6 @@ h1, h2, h3, .font-display {
 .drawer-backdrop {
   transition: opacity 0.3s ease;
 }
-
 .drawer-panel {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -103,30 +117,16 @@ h1, h2, h3, .font-display {
     opacity: 1;
   }
 }
-
 .animate-slide-up {
   animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Swatches */
-.color-swatch {
-  transition: all 0.2s ease;
+/* Floating Wheel Button Pulse */
+@keyframes wheelPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
 }
-.color-swatch.active {
-  ring-width: 2px;
-  transform: scale(1.15);
-}
-
-/* Spinner */
-.spinner {
-  border: 2px solid #e4e4e7;
-  border-left-color: #18181b;
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.animate-wheel-pulse {
+  animation: wheelPulse 2.5s infinite ease-in-out;
 }

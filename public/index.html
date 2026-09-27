@@ -4,82 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- SEO Meta Tags (Criterion 10 - Yoast & Rank Math Standartlarında) -->
+  <!-- SEO Meta Tags (Criterion 10) -->
   <title>vitrin. — iPhone Kılıfları & 3 Al 2 Öde Kampanyası</title>
-  <meta name="description" content="Gençlere özel puffer dokulu iPhone kılıfları, Y2K holografik dalgalı ayna kılıflar ve MagSafe aksesuarlar. 3 Al 2 Öde fırsatı ve 1.000 TL üzeri ücretsiz kargo vitrinde.">
-  <meta name="keywords" content="iphone kılıfı, puffer kılıf, ayna kılıf, y2k kılıf, magsafe kılıf, telefon aksesuarları, vitrin">
+  <meta name="description" content="Gençlere özel puffer kılıflar, Y2K dalgalı ayna kılıflar ve MagSafe aksesuarlar. 3 Al 2 Öde ve 1.000 TL üzeri ücretsiz kargo vitrinde.">
   <meta name="robots" content="index, follow">
   
-  <!-- OpenGraph -->
-  <meta property="og:title" content="vitrin. — iPhone Kılıfları & 3 Al 2 Öde Kampanyası">
-  <meta property="og:description" content="Seçili tüm iPhone kılıf ve aksesuarlarında 3 Al 2 Öde! En ucuz ürün hediye.">
-  <meta property="og:type" content="website">
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Custom CSS (Light Minimalist) -->
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body class="bg-[#fbfbfd] text-zinc-900 flex flex-col min-h-screen">
+<body class="bg-[#eef0f3] text-zinc-900 flex flex-col min-h-screen">
 
-  <!-- ======================== 1. TOP PROMO BAR (3 AL 2 ÖDE & KARGO) ======================== -->
-  <div class="bg-zinc-950 py-2.5 px-4 text-xs font-semibold text-center text-white flex items-center justify-center gap-2">
+  <!-- ======================== 1. TOP PROMO BAR ======================== -->
+  <div class="bg-zinc-950 py-2 px-4 text-xs font-semibold text-center text-white flex items-center justify-center gap-2">
     <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-    <span>🔥 <strong>BÜYÜK GENÇLİK FIRSATI:</strong> Tüm iPhone kılıflarında <strong>3 AL 2 ÖDE!</strong> | 1.000 TL üzeri Ücretsiz Kargo</span>
+    <span>🔥 <strong>GEN-Z BÜYÜK FIRSATI:</strong> Tüm iPhone kılıflarında <strong>3 AL 2 ÖDE!</strong> | 1.000 TL üzeri Kargo Bedava</span>
   </div>
 
   <!-- ======================== 2. HEADER & NAVIGATION ======================== -->
-  <header class="sticky top-0 z-40 glass-nav-light">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
+  <header class="sticky top-0 z-40 glass-nav-gray">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3.5 flex items-center justify-between gap-4">
       
-      <!-- Brand Logo (Sadece Sade Yazı - İkon Yok) -->
+      <!-- Brand Logo (Sadece Sade Yazı) -->
       <a href="/" class="flex items-center gap-1 group">
         <span class="text-3xl font-black tracking-tighter text-zinc-950 font-display">
           vitrin<span class="text-cyan-600">.</span>
         </span>
       </a>
 
-      <!-- Search Bar (GAN yazısı kaldırıldı) -->
+      <!-- Clean Search Bar -->
       <div class="hidden md:flex flex-1 max-w-md relative">
         <input 
           type="text" 
           id="search-input" 
           placeholder="iPhone kılıfı, ayna kılıf, lens koruyucu ara..." 
-          class="w-full py-2.5 pl-10 pr-4 rounded-full bg-zinc-100 border border-zinc-200 text-xs text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-900 focus:bg-white transition-all"
+          class="w-full py-2 pl-9 pr-4 rounded-full bg-white border border-[#cbd5e1] text-xs text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-950 shadow-sm transition-all"
         />
-        <svg class="w-4 h-4 text-zinc-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+        <svg class="w-4 h-4 text-zinc-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
       </div>
 
       <!-- Quick Actions -->
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Open Filter Drawer Button (Yan Menü Filtresi) -->
+        <button 
+          onclick="openFilterDrawer()" 
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-[#cbd5e1] hover:border-zinc-900 text-xs font-bold text-zinc-800 transition-all shadow-sm"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" /></svg>
+          <span class="hidden sm:inline">Kategoriler &</span> Filtre
+        </button>
+
         <!-- Live Cargo Tracking Shortcut -->
         <a 
           href="/takip" 
-          class="hidden sm:flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-zinc-200 hover:border-zinc-900 text-xs font-semibold text-zinc-700 hover:text-zinc-950 bg-white transition-all"
+          class="hidden sm:flex items-center px-3 py-1.5 rounded-full bg-white border border-[#cbd5e1] hover:border-zinc-900 text-xs font-semibold text-zinc-700 transition-all shadow-sm"
         >
-          <span>Kargom Nerede?</span>
+          Kargom Nerede?
         </a>
 
         <!-- Admin Entrance Shortcut -->
         <a 
           href="/admin" 
-          class="hidden lg:flex items-center gap-1 px-3.5 py-2 rounded-full border border-zinc-200 hover:border-zinc-900 text-xs font-semibold text-zinc-600 hover:text-zinc-950 bg-zinc-50 transition-all"
-          title="Yönetim Girişi"
+          class="hidden lg:flex items-center px-3 py-1.5 rounded-full bg-zinc-200/80 hover:bg-zinc-900 hover:text-white text-xs font-bold text-zinc-700 transition-all"
         >
-          <span>Giriş Yap / Admin</span>
+          Admin
         </a>
 
         <!-- Cart Button -->
         <button 
           onclick="openCartDrawer()" 
-          class="relative p-2.5 rounded-full bg-zinc-950 hover:bg-zinc-800 text-white transition-all flex items-center justify-center shadow-sm"
+          class="relative p-2.5 rounded-full bg-zinc-950 hover:bg-zinc-800 text-white transition-all flex items-center justify-center shadow-md"
           aria-label="Sepeti Aç"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
           <span 
             id="cart-badge-count" 
-            class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-cyan-600 text-white text-[10px] font-black flex items-center justify-center"
+            class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-cyan-600 text-white text-[9px] font-black flex items-center justify-center"
             style="display: none;"
           >
             0
@@ -89,56 +88,57 @@
     </div>
   </header>
 
-  <!-- ======================== 3. BIG "3 AL 2 ÖDE" HERO BANNER ======================== -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 w-full">
+  <!-- ======================== 3. HIGH IMPACT "3 AL 2 ÖDE" HERO BANNER (Gen-Z Vibe) ======================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 pb-8 w-full">
     <div class="relative rounded-3xl overflow-hidden bg-zinc-950 text-white shadow-xl border border-zinc-800">
       
-      <!-- Split Layout: Big Visual & Punchy Campaign -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
+      <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[380px]">
         
-        <!-- Left: Punchy Discount Text (5 Cols) -->
-        <div class="lg:col-span-6 p-8 sm:p-12 lg:p-16 flex flex-col justify-between z-10">
+        <!-- Left: Punchy Minimal Text (5 Cols) -->
+        <div class="lg:col-span-5 p-7 sm:p-10 flex flex-col justify-between z-10">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-600 text-white text-[11px] font-black uppercase tracking-wider mb-4">
-              <span>HEDİYE ÜRÜN</span>
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-600 text-white text-[10px] font-black tracking-wider uppercase mb-3">
+              <span>GENÇLİK KAMPANYASI</span>
             </div>
 
-            <h1 class="text-4xl sm:text-6xl font-black tracking-tight font-display leading-none text-white">
+            <h1 class="text-4xl sm:text-5xl font-black tracking-tight font-display leading-none text-white">
               3 AL <br>
               <span class="text-cyan-400">2 ÖDE.</span>
             </h1>
 
-            <p class="mt-4 text-sm text-zinc-300 font-medium max-w-sm leading-relaxed">
-              Sepetine ekleyeceğin her 3 iPhone kılıfı veya aksesuardan en ucuzu <strong>vitrin. tarafından hediye!</strong>
+            <p class="mt-3 text-xs sm:text-sm text-zinc-300 font-medium max-w-xs leading-relaxed">
+              3 iPhone kılıfı veya aksesuar seç, en ucuz olanı <strong>hediye gelsin!</strong>
             </p>
           </div>
 
-          <div class="mt-8 flex flex-wrap items-center gap-4">
+          <div class="mt-6 flex flex-wrap items-center gap-3">
             <a 
               href="#urunler" 
-              class="px-8 py-4 rounded-full bg-white hover:bg-zinc-100 text-zinc-950 font-black text-xs uppercase tracking-wider transition-all transform active:scale-95 shadow-lg"
+              class="px-6 py-3 rounded-full bg-white hover:bg-zinc-100 text-zinc-950 font-black text-xs uppercase tracking-wider transition-all transform active:scale-95 shadow-md"
             >
-              Kılıfları İncele
+              Kılıfları Keşfet
             </a>
-            <div class="px-4 py-3 rounded-full border border-zinc-700 bg-zinc-900/80 text-xs font-mono text-cyan-300">
-              Kupon Kodu: <strong>3AL2ODE</strong>
-            </div>
+            <button 
+              onclick="openWheelModal()" 
+              class="px-4 py-3 rounded-full bg-zinc-900 border border-zinc-700 hover:border-cyan-400 text-xs font-bold text-cyan-300 flex items-center gap-1.5 transition-all"
+            >
+              <span>🎡 Çarkı Çevir</span>
+            </button>
           </div>
         </div>
 
-        <!-- Right: Huge Visual Image (7 Cols) -->
-        <div class="lg:col-span-6 relative overflow-hidden bg-zinc-900 min-h-[300px] lg:min-h-full">
+        <!-- Right: Gen-Z Aesthetic Cases Visual (7 Cols) -->
+        <div class="lg:col-span-7 relative overflow-hidden bg-zinc-900 min-h-[240px] lg:min-h-full">
           <img 
             src="https://images.unsplash.com/photo-1584006682522-dc17d6c0d9ac?auto=format&fit=crop&w=1200&q=85" 
-            alt="iPhone Kılıfları 3 Al 2 Öde" 
-            class="w-full h-full object-cover object-center brightness-90 hover:scale-105 transition-transform duration-700"
+            alt="3 Al 2 Öde iPhone Kılıfları" 
+            class="w-full h-full object-cover object-center brightness-95 hover:scale-105 transition-transform duration-700"
           />
           <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-zinc-950 via-transparent to-transparent"></div>
           
-          <!-- Floating Discount Pill on Image -->
-          <div class="absolute bottom-6 right-6 p-4 rounded-2xl bg-black/80 backdrop-blur-md border border-white/20 text-right">
-            <span class="text-xs text-zinc-400 uppercase tracking-widest font-semibold block">Trend iPhone Serisi</span>
-            <span class="text-lg font-black text-white block mt-0.5">Puffer & Ayna Modeller</span>
+          <div class="absolute bottom-4 right-4 p-3 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-right">
+            <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider block">Otomatik İndirim</span>
+            <span class="text-xs font-extrabold text-white block">Kupon: 3AL2ODE</span>
           </div>
         </div>
 
@@ -146,62 +146,29 @@
     </div>
   </section>
 
-  <!-- ======================== 4. MINIMALIST TRUST BADGES ======================== -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-      
-      <div class="trust-badge-minimal p-4 rounded-2xl">
-        <span class="text-[10px] font-mono text-zinc-400 font-bold uppercase tracking-wider block">01 / Güvence</span>
-        <h4 class="text-xs font-bold text-zinc-900 mt-1">2 Yıl Garanti</h4>
-        <p class="text-[11px] text-zinc-500 mt-0.5">Birebir sıfır ürün değişimi</p>
-      </div>
-
-      <div class="trust-badge-minimal p-4 rounded-2xl">
-        <span class="text-[10px] font-mono text-zinc-400 font-bold uppercase tracking-wider block">02 / Lojistik</span>
-        <h4 class="text-xs font-bold text-zinc-900 mt-1">Aynı Gün Kargo</h4>
-        <p class="text-[11px] text-zinc-500 mt-0.5">16:00 öncesi aynı gün sevk</p>
-      </div>
-
-      <div class="trust-badge-minimal p-4 rounded-2xl">
-        <span class="text-[10px] font-mono text-zinc-400 font-bold uppercase tracking-wider block">03 / Ödeme</span>
-        <h4 class="text-xs font-bold text-zinc-900 mt-1">iyzico Güvencesi</h4>
-        <p class="text-[11px] text-zinc-500 mt-0.5">256-Bit SSL & 3D Secure</p>
-      </div>
-
-      <div class="trust-badge-minimal p-4 rounded-2xl">
-        <span class="text-[10px] font-mono text-zinc-400 font-bold uppercase tracking-wider block">04 / Haklarınız</span>
-        <h4 class="text-xs font-bold text-zinc-900 mt-1">14 Gün Kolay İade</h4>
-        <p class="text-[11px] text-zinc-500 mt-0.5">Koşulsuz ücretsiz iade hakkı</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ======================== 5. PRODUCTS SECTION (KILIFLAR FIRST!) ======================== -->
-  <main id="urunler" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
+  <!-- ======================== 4. COMPACT CATALOG HEADER (With Side Drawer Trigger) ======================== -->
+  <main id="urunler" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 w-full">
     
-    <!-- Filter Bar -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-200">
-      <!-- Categories Pills (Kılıf & Koruma default!) -->
-      <div class="flex flex-wrap items-center gap-1.5">
-        <button data-category="Kılıf & Koruma" class="cat-pill px-4 py-2 rounded-full text-xs font-bold bg-zinc-950 text-white transition-all shadow-sm">
-          iPhone Kılıfları
+    <!-- Filter Action Bar -->
+    <div class="flex items-center justify-between gap-4 pb-4 border-b border-[#cbd5e1]">
+      <div class="flex items-center gap-2">
+        <button 
+          onclick="openFilterDrawer()" 
+          class="px-3.5 py-1.5 rounded-full bg-white border border-[#cbd5e1] hover:border-zinc-950 text-xs font-bold text-zinc-900 transition-all flex items-center gap-1.5 shadow-sm"
+        >
+          <svg class="w-3.5 h-3.5 text-zinc-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" /></svg>
+          <span>Filtrele & Sırala</span>
         </button>
-        <button data-category="Şarj & Güç" class="cat-pill px-4 py-2 rounded-full text-xs font-semibold bg-white text-zinc-600 border border-zinc-200 hover:border-zinc-400 transition-all">
-          Şarj & Güç
-        </button>
-        <button data-category="Ekran & Kamera" class="cat-pill px-4 py-2 rounded-full text-xs font-semibold bg-white text-zinc-600 border border-zinc-200 hover:border-zinc-400 transition-all">
-          Ekran & Lens Camları
-        </button>
-        <button data-category="Tümü" class="cat-pill px-4 py-2 rounded-full text-xs font-semibold bg-white text-zinc-600 border border-zinc-200 hover:border-zinc-400 transition-all">
-          Tüm Ürünler
-        </button>
+
+        <!-- Active Category Tag -->
+        <span id="active-filter-indicator" class="text-xs font-bold text-zinc-700 bg-white/70 px-3 py-1 rounded-full border border-zinc-200">
+          Kılıf & Koruma (6 Ürün)
+        </span>
       </div>
 
-      <!-- Count & Sort -->
-      <div class="flex items-center gap-3 text-xs">
-        <span id="product-count" class="text-zinc-500 text-xs">Yükleniyor...</span>
-        <select id="sort-select" class="py-1.5 px-3 rounded-xl bg-white border border-zinc-200 text-xs text-zinc-800 focus:outline-none focus:border-zinc-900">
+      <div class="flex items-center gap-2">
+        <label for="sort-select" class="text-[11px] text-zinc-500 hidden sm:inline">Sıralama:</label>
+        <select id="sort-select" class="py-1 px-2.5 rounded-lg bg-white border border-[#cbd5e1] text-xs font-semibold text-zinc-800 focus:outline-none">
           <option value="featured">Öne Çıkanlar</option>
           <option value="price-asc">Fiyat (Artan)</option>
           <option value="price-desc">Fiyat (Azalan)</option>
@@ -210,149 +177,205 @@
       </div>
     </div>
 
-    <!-- Products Grid -->
-    <div id="products-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <!-- Dynamic Products -->
+    <!-- Compact High-Density Grid (4 to 6 columns) -->
+    <div id="products-grid" class="mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
+      <!-- Dynamic Compact Product Cards -->
     </div>
   </main>
 
-  <!-- ======================== 6. PROGRESSIVE DISCLOSURE CORPORATE INFO (Tıklanabilir) ======================== -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-zinc-200 w-full">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <!-- Hakkımızda (Accordion / Card) -->
-      <div class="p-6 rounded-2xl bg-white border border-zinc-200 shadow-sm flex flex-col justify-between">
-        <div>
-          <span class="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider block">Hikaye</span>
-          <h3 class="text-lg font-bold text-zinc-950 mt-1 font-display">Neden vitrin.?</h3>
-          <p class="text-xs text-zinc-600 mt-2 leading-relaxed">
-            Sararan ucuz silikonlara veda edin. Gençlerin tarzına hitap eden puffer dokular ve gerçek ayna yüzeyli telefon zırhlarını doğrudan kapınıza ulaştırıyoruz.
-          </p>
-        </div>
-        <button onclick="openLegalModal('kvkk')" class="mt-4 text-xs font-bold text-zinc-950 underline text-left">
-          Kalite Standartlarımız →
-        </button>
+  <!-- ======================== 5. MINIMAL TRUST BADGES ======================== -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 w-full">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+      <div class="trust-badge-minimal p-3.5 rounded-2xl">
+        <span class="text-[9px] font-mono text-zinc-400 font-bold uppercase tracking-wider block">01 / Garanti</span>
+        <h4 class="text-xs font-bold text-zinc-900 mt-0.5">2 Yıl Birebir Garanti</h4>
+        <p class="text-[10px] text-zinc-500">Sıfır ürün değişimi</p>
       </div>
 
-      <!-- SSS (FAQ Clickable) -->
-      <div class="p-6 rounded-2xl bg-white border border-zinc-200 shadow-sm">
-        <span class="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider block">Destek</span>
-        <h3 class="text-lg font-bold text-zinc-950 mt-1 font-display mb-3">Sıkça Sorulanlar</h3>
-        
-        <div class="space-y-2 text-xs">
-          <details class="cursor-pointer">
-            <summary class="font-bold text-zinc-800 list-none py-1 hover:text-zinc-500">3 Al 2 Öde nasıl uygulanır?</summary>
-            <p class="text-zinc-600 mt-1 text-[11px] leading-relaxed">Sepetinize 3 ürün eklediğinizde en ucuz ürünün bedeli kupon veya indirim olarak otomatik düşülür.</p>
-          </details>
-          <details class="cursor-pointer border-t border-zinc-100 pt-2">
-            <summary class="font-bold text-zinc-800 list-none py-1 hover:text-zinc-500">Kargo ne zaman ücretsiz?</summary>
-            <p class="text-zinc-600 mt-1 text-[11px] leading-relaxed">1.000 TL ve üzeri siparişlerde kargo tamamen ücretsizdir.</p>
-          </details>
-        </div>
+      <div class="trust-badge-minimal p-3.5 rounded-2xl">
+        <span class="text-[9px] font-mono text-zinc-400 font-bold uppercase tracking-wider block">02 / Hız</span>
+        <h4 class="text-xs font-bold text-zinc-900 mt-0.5">Aynı Gün Kargo</h4>
+        <p class="text-[10px] text-zinc-500">16:00 öncesi sevk</p>
       </div>
 
-      <!-- İletişim & Harita (Clickable) -->
-      <div class="p-6 rounded-2xl bg-white border border-zinc-200 shadow-sm flex flex-col justify-between">
-        <div>
-          <span class="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-wider block">Ofis & Depo</span>
-          <h3 class="text-lg font-bold text-zinc-950 mt-1 font-display">Bize Ulaşın</h3>
-          <p class="text-xs text-zinc-600 mt-2">
-            Büyükdere Cad. No:199, Şişli / İstanbul<br>
-            destek@vitrin.com • 0850 308 00 24
-          </p>
-        </div>
-        <div class="mt-4 flex gap-2">
-          <a href="https://wa.me/905321112233" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">
-            WhatsApp Hattı
-          </a>
-          <button onclick="document.getElementById('contact-drawer').classList.remove('hidden')" class="px-3 py-1.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-xs font-bold">
-            Mesaj Gönder
-          </button>
-        </div>
+      <div class="trust-badge-minimal p-3.5 rounded-2xl">
+        <span class="text-[9px] font-mono text-zinc-400 font-bold uppercase tracking-wider block">03 / Güven</span>
+        <h4 class="text-xs font-bold text-zinc-900 mt-0.5">iyzico 3D Secure</h4>
+        <p class="text-[10px] text-zinc-500">256-Bit SSL koruması</p>
       </div>
 
+      <div class="trust-badge-minimal p-3.5 rounded-2xl">
+        <span class="text-[9px] font-mono text-zinc-400 font-bold uppercase tracking-wider block">04 / İade</span>
+        <h4 class="text-xs font-bold text-zinc-900 mt-0.5">14 Gün Kolay İade</h4>
+        <p class="text-[10px] text-zinc-500">Ücretsiz kargo iadesi</p>
+      </div>
     </div>
   </section>
 
-  <!-- ======================== 7. E-BÜLTEN KUTUSU ======================== -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
-    <div class="rounded-2xl bg-zinc-100 border border-zinc-200 p-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div>
-        <h4 class="text-sm font-bold text-zinc-950 font-display">Yeni çıkan modellerden haberdar olun</h4>
-        <p class="text-xs text-zinc-500 mt-0.5">İlk siparişinize özel anında %10 kupon hediye.</p>
-      </div>
-      <form onsubmit="submitNewsletter(event)" class="flex w-full md:w-auto max-w-sm gap-2">
-        <input 
-          type="email" 
-          id="newsletter-email" 
-          required 
-          placeholder="E-posta adresiniz..." 
-          class="flex-1 py-2 px-3 rounded-xl bg-white border border-zinc-300 text-xs text-zinc-900 focus:outline-none focus:border-zinc-900"
-        />
-        <button type="submit" class="px-4 py-2 rounded-xl bg-zinc-950 text-white text-xs font-bold hover:bg-zinc-800">Kayıt Ol</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- ======================== 8. FOOTER ======================== -->
-  <footer class="bg-white border-t border-zinc-200 py-10 text-xs text-zinc-500">
+  <!-- ======================== 6. PROGRESSIVE DISCLOSURE FOOTER ======================== -->
+  <footer class="bg-white border-t border-[#cbd5e1] py-8 text-xs text-zinc-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center gap-4 pb-8 border-b border-zinc-100">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 pb-6 border-b border-zinc-100">
         <span class="text-2xl font-black text-zinc-950 font-display">vitrin<span class="text-cyan-600">.</span></span>
-        <div class="flex flex-wrap gap-4 text-xs">
-          <button onclick="openLegalModal('kvkk')" class="hover:text-zinc-950">KVKK Aydınlatma</button>
+        <div class="flex flex-wrap gap-4 text-xs font-medium">
+          <button onclick="openLegalModal('kvkk')" class="hover:text-zinc-950">KVKK</button>
           <button onclick="openLegalModal('cerez')" class="hover:text-zinc-950">Çerez Politikası</button>
           <button onclick="openLegalModal('mesafeli')" class="hover:text-zinc-950">Mesafeli Satış</button>
-          <button onclick="openLegalModal('iade')" class="hover:text-zinc-950">İade Koşulları</button>
-          <a href="/takip" class="hover:text-zinc-950">Kargo Takip</a>
+          <button onclick="openLegalModal('iade')" class="hover:text-zinc-950">İade Şartları</button>
+          <a href="/takip" class="hover:text-zinc-950">Kargom Nerede?</a>
           <a href="/admin" class="hover:text-purple-600 font-bold">Admin</a>
         </div>
       </div>
-      <div class="pt-6 flex justify-between items-center text-[11px] text-zinc-400">
+      <div class="pt-4 flex justify-between items-center text-[11px] text-zinc-400">
         <p>© 2026 vitrin. Tüm hakları saklıdır.</p>
-        <p>Minimal D2C Mimari</p>
+        <p>Gen-Z Minimalist D2C Mimari</p>
       </div>
     </div>
   </footer>
 
-  <!-- ======================== 9. UPSELL MODAL (SEPETE GİRİŞİ ZORLAŞTIRMA VE DAHA ÇOK ÜRÜN ALDIRMA) ======================== -->
+  <!-- ======================== 7. SIDE FILTER DRAWER (Yan Menü Filtresi) ======================== -->
+  <div id="filter-drawer" class="fixed inset-0 z-50 hidden">
+    <div onclick="closeFilterDrawer()" class="drawer-backdrop absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="fixed inset-y-0 left-0 max-w-full flex pr-10">
+      <div id="filter-drawer-panel" class="drawer-panel w-screen max-w-xs bg-white border-r border-[#cbd5e1] flex flex-col justify-between -translate-x-full shadow-2xl">
+        
+        <!-- Header -->
+        <div class="p-5 border-b border-zinc-100 flex items-center justify-between">
+          <span class="text-sm font-bold text-zinc-950 font-display">Filtreler & Kategoriler</span>
+          <button onclick="closeFilterDrawer()" class="p-1 rounded text-zinc-400 hover:text-black">✕</button>
+        </div>
+
+        <!-- Filter Options -->
+        <div class="flex-1 overflow-y-auto p-5 space-y-6 text-xs">
+          
+          <!-- Category Selector -->
+          <div>
+            <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block mb-2">Kategoriler</span>
+            <div class="space-y-1.5">
+              <button onclick="applyDrawerCategory('Kılıf & Koruma')" class="w-full text-left py-2 px-3 rounded-xl border hover:border-zinc-900 font-bold bg-zinc-50">📱 iPhone Kılıfları</button>
+              <button onclick="applyDrawerCategory('Şarj & Güç')" class="w-full text-left py-2 px-3 rounded-xl border hover:border-zinc-900 font-medium">⚡ Şarj & Güç İstasyonları</button>
+              <button onclick="applyDrawerCategory('Ekran & Kamera')" class="w-full text-left py-2 px-3 rounded-xl border hover:border-zinc-900 font-medium">🛡️ Ekran & Safir Lens Camı</button>
+              <button onclick="applyDrawerCategory('Tümü')" class="w-full text-left py-2 px-3 rounded-xl border hover:border-zinc-900 font-medium">✨ Tüm Ürünler</button>
+            </div>
+          </div>
+
+          <!-- Model Filter -->
+          <div>
+            <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block mb-2">Cihaz Modeli</span>
+            <div class="grid grid-cols-2 gap-1.5">
+              <button onclick="applyDrawerModel('iPhone 15 Pro Max')" class="py-1.5 px-2 rounded-lg border text-[11px] text-left hover:border-zinc-900 font-medium">iPhone 15 Pro Max</button>
+              <button onclick="applyDrawerModel('iPhone 15 Pro')" class="py-1.5 px-2 rounded-lg border text-[11px] text-left hover:border-zinc-900 font-medium">iPhone 15 Pro</button>
+              <button onclick="applyDrawerModel('iPhone 15')" class="py-1.5 px-2 rounded-lg border text-[11px] text-left hover:border-zinc-900 font-medium">iPhone 15</button>
+              <button onclick="applyDrawerModel('all')" class="py-1.5 px-2 rounded-lg border text-[11px] text-left hover:border-zinc-900 font-bold text-zinc-500">Tüm Modeller</button>
+            </div>
+          </div>
+
+          <!-- Campaign Checkbox -->
+          <div>
+            <label class="flex items-center gap-2 p-3 rounded-xl bg-red-50 border border-red-200 text-red-900 cursor-pointer">
+              <input type="checkbox" onchange="toggleCampaignFilter(this.checked)" class="rounded text-red-600">
+              <span class="font-bold">Sadece 3 Al 2 Öde Ürünleri</span>
+            </label>
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="p-4 border-t border-zinc-100 flex gap-2">
+          <button onclick="resetFilters()" class="flex-1 py-2.5 rounded-xl border border-zinc-200 text-xs font-bold text-zinc-600">Sıfırla</button>
+          <button onclick="closeFilterDrawer()" class="flex-1 py-2.5 rounded-xl bg-zinc-950 text-white text-xs font-bold">Uygula</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================== 8. SPIN THE WHEEL MODAL (ÇARKIFELEK) ======================== -->
+  <div id="wheel-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="closeWheelModal()" class="absolute inset-0 bg-black/75 backdrop-blur-md"></div>
+    
+    <div class="relative w-full max-w-sm rounded-3xl bg-white border border-[#cbd5e1] p-6 z-10 shadow-2xl text-center">
+      
+      <!-- Close button -->
+      <button onclick="closeWheelModal()" class="absolute top-4 right-4 text-zinc-400 hover:text-black">✕</button>
+
+      <!-- View 1: Play View -->
+      <div id="wheel-play-view">
+        <span class="px-2.5 py-0.5 rounded-full bg-red-600 text-white text-[10px] font-black uppercase tracking-wider inline-block mb-1">
+          ŞANSINI DENE
+        </span>
+        <h3 class="text-xl font-black text-zinc-950 font-display">Çarkı Çevir, İndirimi Kap!</h3>
+        <p class="text-xs text-zinc-500 mt-1 mb-4">Her katılımcıya özel garanti indirim kuponu!</p>
+
+        <!-- Canvas Wheel with Pointer -->
+        <div class="relative w-64 h-64 mx-auto my-2">
+          <div class="wheel-pointer"></div>
+          <canvas id="wheel-canvas" width="256" height="256" class="w-full h-full"></canvas>
+        </div>
+
+        <button 
+          id="spin-btn"
+          onclick="spinWheel()" 
+          class="mt-4 w-full py-3.5 rounded-2xl bg-zinc-950 hover:bg-zinc-800 text-white font-black text-xs uppercase tracking-wider shadow-lg transition-all transform active:scale-95"
+        >
+          🎲 ÇARKl ÇEVİR!
+        </button>
+      </div>
+
+      <!-- View 2: Win Result View -->
+      <div id="wheel-win-view" class="hidden py-4">
+        <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-2xl mx-auto mb-3 font-bold">🎁</div>
+        <h3 id="wheel-result-title" class="text-lg font-black text-zinc-950 font-display"></h3>
+        <p class="text-xs text-zinc-500 mt-1 mb-4">Kupon kodunuz sepetinize otomatik uygulandı!</p>
+
+        <div class="p-3 bg-zinc-100 rounded-xl border font-mono font-black text-base text-zinc-900 tracking-wider mb-4">
+          <span id="wheel-coupon-code">3AL2ODE</span>
+        </div>
+
+        <button 
+          onclick="applyWheelCouponAndClose()" 
+          class="w-full py-3 rounded-xl bg-zinc-950 text-white font-bold text-xs uppercase"
+        >
+          Kuponu Kullan & Alışverişe Başla
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating Spin Wheel Trigger Button -->
+  <button 
+    onclick="openWheelModal()" 
+    class="fixed bottom-5 left-5 z-30 px-3.5 py-2.5 rounded-full bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-bold shadow-2xl flex items-center gap-2 border border-zinc-700 animate-wheel-pulse"
+    title="Çarkı Çevir İndirim Kazan"
+  >
+    <span class="text-base">🎡</span>
+    <span class="hidden sm:inline">Şans Çarkı</span>
+  </button>
+
+  <!-- ======================== 9. UPSELL MODAL ======================== -->
   <div id="upsell-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
     <div onclick="closeUpsellModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative w-full max-w-md rounded-3xl bg-white border border-zinc-200 p-6 z-10 shadow-2xl">
-      <div class="flex items-center justify-between pb-3 border-b border-zinc-100 mb-4">
-        <div class="flex items-center gap-2">
-          <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">✓</span>
-          <span class="text-xs font-bold text-zinc-900">Ürün Sepete Eklendi!</span>
+    <div class="relative w-full max-w-sm rounded-3xl bg-white border border-[#cbd5e1] p-5 z-10 shadow-2xl">
+      <div class="flex items-center justify-between pb-2.5 border-b border-zinc-100 mb-3">
+        <div class="flex items-center gap-1.5">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">✓</span>
+          <span class="text-xs font-bold text-zinc-900">Sepete Eklendi!</span>
         </div>
         <button onclick="closeUpsellModal()" class="text-zinc-400 hover:text-black">✕</button>
       </div>
 
-      <p id="upsell-added-item-name" class="font-bold text-sm text-zinc-950 mb-3 truncate"></p>
+      <p id="upsell-added-item-name" class="font-bold text-xs text-zinc-950 mb-2.5 truncate"></p>
+      <div id="upsell-campaign-alert" class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs mb-3 text-center"></div>
 
-      <!-- 3 Al 2 Öde Progress Indicator -->
-      <div id="upsell-campaign-alert" class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs mb-4 text-center">
-        <!-- Injected via JS -->
+      <div class="mb-3">
+        <span class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider block mb-1.5">Yanına Ekle (3 Al 2 Öde'yi Yakala):</span>
+        <div id="upsell-suggestions" class="space-y-1.5"></div>
       </div>
 
-      <div class="mb-4">
-        <span class="text-[11px] font-bold text-zinc-400 uppercase tracking-wider block mb-2">Bu Kılıfın Yanına Çok Yakışır:</span>
-        <div id="upsell-suggestions" class="space-y-2"></div>
-      </div>
-
-      <!-- Actions -->
-      <div class="space-y-2 pt-2 border-t border-zinc-100">
-        <button 
-          onclick="closeUpsellModal()"
-          class="w-full py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs transition-all shadow-md"
-        >
-          Alışverişe Devam Et (3 Al 2 Öde'yi Tamamla)
-        </button>
-        <button 
-          onclick="closeUpsellModal(); openCartDrawer();"
-          class="w-full py-2.5 rounded-xl border border-zinc-200 hover:border-zinc-400 text-zinc-600 hover:text-zinc-950 text-xs font-semibold"
-        >
-          Sepeti Görüntüle →
-        </button>
+      <div class="space-y-1.5 pt-2 border-t border-zinc-100">
+        <button onclick="closeUpsellModal()" class="w-full py-2.5 rounded-xl bg-zinc-950 text-white font-bold text-xs">Alışverişe Devam Et</button>
+        <button onclick="closeUpsellModal(); openCartDrawer();" class="w-full py-2 rounded-xl border border-zinc-200 text-zinc-600 text-xs font-semibold">Sepeti Görüntüle →</button>
       </div>
     </div>
   </div>
@@ -361,79 +384,44 @@
   <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
     <div onclick="closeCartDrawer()" class="drawer-backdrop absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
     <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
-      <div id="cart-drawer-panel" class="drawer-panel w-screen max-w-md bg-white border-l border-zinc-200 flex flex-col justify-between translate-x-full">
-        
-        <!-- Header -->
+      <div id="cart-drawer-panel" class="drawer-panel w-screen max-w-md bg-white border-l border-[#cbd5e1] flex flex-col justify-between translate-x-full">
         <div class="p-5 border-b border-zinc-100 flex items-center justify-between">
-          <span class="text-base font-bold text-zinc-950 font-display">Sepetiniz</span>
-          <button onclick="closeCartDrawer()" class="p-1 rounded-lg text-zinc-400 hover:text-black">✕</button>
+          <span class="text-sm font-bold text-zinc-950 font-display">Alışveriş Sepetiniz</span>
+          <button onclick="closeCartDrawer()" class="p-1 rounded text-zinc-400 hover:text-black">✕</button>
         </div>
 
-        <!-- Free shipping bar -->
-        <div class="px-5 py-3 bg-zinc-50 border-b border-zinc-100 text-xs">
-          <div id="free-shipping-text" class="text-zinc-700 font-medium mb-1.5">
-            1.000 TL üzeri alışverişlerde KARGO ÜCRETSİZ!
-          </div>
+        <div class="px-5 py-2.5 bg-zinc-50 border-b border-zinc-100 text-xs">
+          <div id="free-shipping-text" class="text-zinc-700 font-medium mb-1">1.000 TL üzeri KARGO ÜCRETSİZ!</div>
           <div class="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
             <div id="free-shipping-progress" class="h-full bg-zinc-950 transition-all duration-500" style="width: 0%;"></div>
           </div>
         </div>
 
-        <!-- Items Container -->
-        <div class="flex-1 overflow-y-auto p-5 space-y-3">
+        <div class="flex-1 overflow-y-auto p-4 space-y-2.5">
           <div id="cart-empty-message" class="text-center py-16 text-zinc-400 hidden">
-            <p class="text-sm font-semibold text-zinc-700">Sepetiniz boş.</p>
-            <p class="text-xs mt-1">iPhone kılıflarına göz atıp sepete ekleyin.</p>
+            <p class="text-xs font-semibold text-zinc-700">Sepetiniz boş.</p>
           </div>
-          <div id="cart-items-container" class="space-y-3"></div>
+          <div id="cart-items-container" class="space-y-2"></div>
         </div>
 
-        <!-- Footer -->
-        <div id="cart-footer" class="p-5 border-t border-zinc-200 bg-white space-y-3">
-          <!-- Coupon Input -->
-          <div>
-            <div class="flex gap-2">
-              <input 
-                type="text" 
-                id="coupon-input" 
-                placeholder="Kupon (Örn: 3AL2ODE)" 
-                class="flex-1 py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-900 uppercase focus:outline-none focus:border-zinc-900"
-              />
-              <button onclick="applyCoupon()" class="px-3 py-2 rounded-xl bg-zinc-900 text-white text-xs font-bold">Uygula</button>
-            </div>
-            <div id="applied-coupon-chip" class="mt-2 hidden flex items-center justify-between p-2 rounded-lg bg-zinc-100 border border-zinc-200"></div>
+        <div id="cart-footer" class="p-4 border-t border-[#cbd5e1] bg-white space-y-2.5">
+          <div class="flex gap-2">
+            <input type="text" id="coupon-input" placeholder="Kupon (Örn: 3AL2ODE)" class="flex-1 py-1.5 px-3 rounded-xl bg-zinc-50 border border-zinc-200 text-xs uppercase focus:outline-none focus:border-zinc-900" />
+            <button onclick="applyCoupon()" class="px-3 py-1.5 rounded-xl bg-zinc-900 text-white text-xs font-bold">Uygula</button>
           </div>
+          <div id="applied-coupon-chip" class="hidden flex items-center justify-between p-2 rounded-lg bg-zinc-100 border border-zinc-200"></div>
 
-          <!-- Totals -->
           <div class="space-y-1 text-xs text-zinc-500 pt-2 border-t border-zinc-100">
-            <div class="flex justify-between">
-              <span>Ara Toplam:</span>
-              <span id="cart-subtotal" class="text-zinc-950 font-semibold">0.00 TL</span>
-            </div>
-            <div id="cart-discount-row" class="flex justify-between text-red-600 hidden">
-              <span>İndirim:</span>
-              <span id="cart-discount">0.00 TL</span>
-            </div>
-            <div class="flex justify-between">
-              <span>Kargo:</span>
-              <span id="cart-shipping" class="text-zinc-950 font-semibold">59.90 TL</span>
-            </div>
-            <div class="flex justify-between text-sm font-black text-zinc-950 pt-2 border-t border-zinc-200">
-              <span>Ödenecek Tutar:</span>
-              <span id="cart-total" class="text-zinc-950">0.00 TL</span>
-            </div>
+            <div class="flex justify-between"><span>Ara Toplam:</span><span id="cart-subtotal" class="text-zinc-950 font-semibold">0.00 TL</span></div>
+            <div id="cart-discount-row" class="flex justify-between text-red-600 hidden"><span>İndirim:</span><span id="cart-discount">0.00 TL</span></div>
+            <div class="flex justify-between"><span>Kargo:</span><span id="cart-shipping" class="text-zinc-950 font-semibold">59.90 TL</span></div>
+            <div class="flex justify-between text-sm font-black text-zinc-950 pt-1.5 border-t border-zinc-200"><span>Toplam:</span><span id="cart-total">0.00 TL</span></div>
           </div>
 
-          <!-- Checkout Button -->
-          <button 
-            onclick="openCheckoutModal()" 
-            class="w-full py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-black text-xs uppercase tracking-wider transition-all shadow-md flex items-center justify-center gap-2"
-          >
-            <span>Ödemeye Geç</span>
-            <span>→</span>
+          <button onclick="openCheckoutModal()" class="w-full py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-black text-xs uppercase tracking-wider shadow-md">
+            Ödemeye Geç →
           </button>
         </div>
-
       </div>
     </div>
   </div>
@@ -441,8 +429,8 @@
   <!-- ======================== 11. PRODUCT DETAIL MODAL ======================== -->
   <div id="product-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
     <div onclick="closeProductModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-zinc-200 p-6 sm:p-8 z-10 shadow-2xl">
-      <button onclick="closeProductModal()" class="absolute top-5 right-5 p-2 rounded-full hover:bg-zinc-100 text-zinc-400 hover:text-black">✕</button>
+    <div class="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-[#cbd5e1] p-5 sm:p-7 z-10 shadow-2xl">
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 p-1 rounded hover:bg-zinc-100 text-zinc-400">✕</button>
       <div id="product-modal-content"></div>
     </div>
   </div>
@@ -450,334 +438,142 @@
   <!-- ======================== 12. CHECKOUT MODAL ======================== -->
   <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
     <div onclick="closeCheckoutModal()" class="fixed inset-0 bg-black/70 backdrop-blur-sm"></div>
-    <div class="relative w-full max-w-4xl max-h-[95vh] overflow-y-auto rounded-3xl bg-white border border-zinc-200 p-6 sm:p-8 z-10 shadow-2xl my-auto">
-      <div class="flex items-center justify-between pb-4 border-b border-zinc-100 mb-6">
-        <div>
-          <h2 class="text-xl font-bold text-zinc-950 font-display">Güvenli Ödeme & Sipariş</h2>
-          <p class="text-xs text-zinc-500 mt-0.5">256-Bit SSL Şifreleme ve iyzico Korumalı Ödeme Altyapısı</p>
-        </div>
-        <button onclick="closeCheckoutModal()" class="p-2 rounded-full hover:bg-zinc-100 text-zinc-400">✕</button>
+    <div class="relative w-full max-w-3xl max-h-[95vh] overflow-y-auto rounded-3xl bg-white border border-[#cbd5e1] p-6 z-10 shadow-2xl my-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-zinc-100 mb-4">
+        <h2 class="text-lg font-bold text-zinc-950 font-display">Güvenli Ödeme & Sipariş</h2>
+        <button onclick="closeCheckoutModal()" class="text-zinc-400">✕</button>
       </div>
 
-      <form onsubmit="processOrderSubmit(event)" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <!-- Left: Delivery -->
-        <div class="lg:col-span-7 space-y-3">
-          <h3 class="text-xs font-bold text-zinc-400 uppercase tracking-wider">1. Teslimat Adresi</h3>
-
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block text-[11px] font-semibold text-zinc-600 mb-1">Adınız Soyadınız *</label>
-              <input type="text" id="order-name" required placeholder="Ahmet Yılmaz" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-900 focus:outline-none focus:border-zinc-900" />
-            </div>
-            <div>
-              <label class="block text-[11px] font-semibold text-zinc-600 mb-1">Telefon *</label>
-              <input type="tel" id="order-phone" required placeholder="0532 111 22 33" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-900 focus:outline-none focus:border-zinc-900" />
-            </div>
+      <form onsubmit="processOrderSubmit(event)" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+        <div class="space-y-2.5">
+          <h3 class="font-bold text-zinc-400 uppercase tracking-wider text-[10px]">1. Teslimat Adresi</h3>
+          <input type="text" id="order-name" required placeholder="Ad Soyad *" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200" />
+          <div class="grid grid-cols-2 gap-2">
+            <input type="tel" id="order-phone" required placeholder="Telefon *" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200" />
+            <input type="email" id="order-email" required placeholder="E-Posta *" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200" />
           </div>
-
-          <div>
-            <label class="block text-[11px] font-semibold text-zinc-600 mb-1">E-Posta *</label>
-            <input type="email" id="order-email" required placeholder="ahmet@example.com" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-900 focus:outline-none focus:border-zinc-900" />
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" id="order-city" required placeholder="İl *" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200" />
+            <input type="text" id="order-district" required placeholder="İlçe *" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200" />
           </div>
-
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="block text-[11px] font-semibold text-zinc-600 mb-1">İl *</label>
-              <input type="text" id="order-city" required placeholder="İstanbul" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-900 focus:outline-none focus:border-zinc-900" />
-            </div>
-            <div>
-              <label class="block text-[11px] font-semibold text-zinc-600 mb-1">İlçe *</label>
-              <input type="text" id="order-district" required placeholder="Kadıköy" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-900 focus:outline-none focus:border-zinc-900" />
-            </div>
-          </div>
-
-          <div>
-            <label class="block text-[11px] font-semibold text-zinc-600 mb-1">Açık Adres *</label>
-            <textarea id="order-address" rows="2" required placeholder="Mahalle, Cadde, No..." class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-900 focus:outline-none focus:border-zinc-900"></textarea>
-          </div>
-
-          <div>
-            <label class="block text-[11px] font-semibold text-zinc-600 mb-1">Sipariş Notu</label>
-            <input type="text" id="order-note" placeholder="Kuryeye notunuz..." class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-900 focus:outline-none focus:border-zinc-900" />
-          </div>
-
-          <div class="pt-2">
-            <label class="flex items-start gap-2 text-xs text-zinc-500 cursor-pointer">
-              <input type="checkbox" id="order-agreement" required class="mt-0.5 rounded text-zinc-900" />
-              <span>
-                <button type="button" onclick="openLegalModal('mesafeli')" class="text-zinc-950 font-bold underline">Mesafeli Satış Sözleşmesi</button>'ni ve 
-                <button type="button" onclick="openLegalModal('kvkk')" class="text-zinc-950 font-bold underline">KVKK Metni</button>'ni onaylıyorum.
-              </span>
-            </label>
-          </div>
+          <textarea id="order-address" rows="2" required placeholder="Açık Adres *" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200"></textarea>
+          <input type="text" id="order-note" placeholder="Sipariş Notu (Opsiyonel)" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200" />
+          <label class="flex items-start gap-1.5 text-zinc-500 pt-1 cursor-pointer">
+            <input type="checkbox" id="order-agreement" required class="mt-0.5">
+            <span>Mesafeli Satış ve KVKK onaylıyorum.</span>
+          </label>
         </div>
 
-        <!-- Right: Payment -->
-        <div class="lg:col-span-5 space-y-3">
-          <h3 class="text-xs font-bold text-zinc-400 uppercase tracking-wider">2. Ödeme Yöntemi</h3>
-
-          <div class="space-y-2">
-            <!-- iyzico -->
-            <div 
-              id="payment-card-iyzico" 
-              onclick="selectPaymentMethod('iyzico')" 
-              class="p-3 rounded-xl border border-zinc-950 bg-zinc-50 cursor-pointer transition-all flex items-center justify-between"
-            >
-              <div class="flex items-center gap-2.5">
-                <span class="text-base">💳</span>
-                <div>
-                  <h4 class="text-xs font-bold text-zinc-900">iyzico Kredi Kartı</h4>
-                  <p class="text-[10px] text-zinc-500">3D Secure Test Modu</p>
-                </div>
-              </div>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-zinc-200 text-zinc-800">Önerilen</span>
-            </div>
-
-            <!-- Havale -->
-            <div 
-              id="payment-card-havale" 
-              onclick="selectPaymentMethod('havale')" 
-              class="p-3 rounded-xl border border-zinc-200 bg-white hover:border-zinc-400 cursor-pointer transition-all flex items-center justify-between"
-            >
-              <div class="flex items-center gap-2.5">
-                <span class="text-base">🏦</span>
-                <div>
-                  <h4 class="text-xs font-bold text-zinc-900">Havale / EFT</h4>
-                  <p class="text-[10px] text-zinc-500">Garanti, Ziraat, Enpara</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Kapıda -->
-            <div 
-              id="payment-card-kapida" 
-              onclick="selectPaymentMethod('kapida')" 
-              class="p-3 rounded-xl border border-zinc-200 bg-white hover:border-zinc-400 cursor-pointer transition-all flex items-center justify-between"
-            >
-              <div class="flex items-center gap-2.5">
-                <span class="text-base">📦</span>
-                <div>
-                  <h4 class="text-xs font-bold text-zinc-900">Kapıda Ödeme</h4>
-                  <p class="text-[10px] text-zinc-500">Nakit / Kredi Kartı (+29.90 TL)</p>
-                </div>
-              </div>
-            </div>
+        <div class="space-y-2.5">
+          <h3 class="font-bold text-zinc-400 uppercase tracking-wider text-[10px]">2. Ödeme Yöntemi</h3>
+          <div class="grid grid-cols-3 gap-1.5">
+            <button type="button" onclick="selectPaymentMethod('iyzico')" id="payment-card-iyzico" class="p-2 rounded-xl border border-zinc-950 bg-zinc-50 font-bold text-center">iyzico Kart</button>
+            <button type="button" onclick="selectPaymentMethod('havale')" id="payment-card-havale" class="p-2 rounded-xl border border-zinc-200 font-medium text-center">Havale</button>
+            <button type="button" onclick="selectPaymentMethod('kapida')" id="payment-card-kapida" class="p-2 rounded-xl border border-zinc-200 font-medium text-center">Kapıda</button>
           </div>
 
-          <!-- iyzico Details -->
-          <div id="payment-details-iyzico" class="space-y-2 pt-2">
-            <button 
-              type="button" 
-              onclick="fillIyzicoTestCard()" 
-              class="w-full py-1.5 px-3 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-[11px] font-bold flex items-center justify-center gap-1.5 transition-all"
-            >
-              ⚡ iyzico Başarılı Test Kartını Doldur
-            </button>
-
-            <!-- Card Preview -->
-            <div class="credit-card-preview p-4 rounded-xl text-white space-y-2 font-mono text-xs">
-              <div class="flex justify-between items-center text-[10px] opacity-75">
-                <span>VİTRİN PAY</span>
-                <span class="font-bold">iyzico TEST</span>
-              </div>
-              <div id="card-preview-number" class="text-sm tracking-wider font-bold">•••• •••• •••• ••••</div>
-              <div class="flex justify-between items-end text-[10px]">
-                <span id="card-preview-name" class="font-bold uppercase">AD SOYAD</span>
-                <span id="card-preview-expiry" class="font-bold">AA/YY</span>
+          <div id="payment-details-iyzico" class="space-y-2 pt-1">
+            <button type="button" onclick="fillIyzicoTestCard()" class="w-full py-1 rounded bg-zinc-100 text-zinc-800 text-[10px] font-bold">⚡ Test Kartı Doldur</button>
+            <div class="credit-card-preview p-3 rounded-xl text-white font-mono text-[10px]">
+              <div id="card-preview-number" class="tracking-widest font-bold">•••• •••• •••• ••••</div>
+              <div class="flex justify-between mt-2">
+                <span id="card-preview-name">AD SOYAD</span>
+                <span id="card-preview-expiry">AA/YY</span>
               </div>
             </div>
-
-            <div>
-              <label class="block text-[10px] font-semibold text-zinc-600 mb-0.5">Kart Numarası</label>
-              <input type="text" id="cc-number" maxlength="19" placeholder="4242 4242 4242 4242" class="w-full py-1.5 px-3 rounded-lg bg-zinc-50 border border-zinc-200 text-xs font-mono" />
-            </div>
-
-            <div>
-              <label class="block text-[10px] font-semibold text-zinc-600 mb-0.5">Kart Sahibi</label>
-              <input type="text" id="cc-name" placeholder="Ahmet Yılmaz" class="w-full py-1.5 px-3 rounded-lg bg-zinc-50 border border-zinc-200 text-xs" />
-            </div>
-
+            <input type="text" id="cc-number" maxlength="19" placeholder="Kart Numarası" class="w-full py-1.5 px-2.5 rounded-lg bg-zinc-50 border border-zinc-200 font-mono text-xs" />
+            <input type="text" id="cc-name" placeholder="Kart Sahibi" class="w-full py-1.5 px-2.5 rounded-lg bg-zinc-50 border border-zinc-200 text-xs" />
             <div class="grid grid-cols-2 gap-2">
-              <div>
-                <label class="block text-[10px] font-semibold text-zinc-600 mb-0.5">SKT (AA/YY)</label>
-                <input type="text" id="cc-expiry" maxlength="5" placeholder="12/28" class="w-full py-1.5 px-3 rounded-lg bg-zinc-50 border border-zinc-200 text-xs font-mono" />
-              </div>
-              <div>
-                <label class="block text-[10px] font-semibold text-zinc-600 mb-0.5">CVV</label>
-                <input type="text" id="cc-cvv" maxlength="3" placeholder="424" class="w-full py-1.5 px-3 rounded-lg bg-zinc-50 border border-zinc-200 text-xs font-mono" />
-              </div>
+              <input type="text" id="cc-expiry" maxlength="5" placeholder="AA/YY" class="w-full py-1.5 px-2.5 rounded-lg bg-zinc-50 border border-zinc-200 font-mono text-xs" />
+              <input type="text" id="cc-cvv" maxlength="3" placeholder="CVV" class="w-full py-1.5 px-2.5 rounded-lg bg-zinc-50 border border-zinc-200 font-mono text-xs" />
             </div>
           </div>
 
-          <!-- Havale Details -->
-          <div id="payment-details-havale" class="space-y-2 pt-2 hidden text-xs">
-            <select id="bank-select" class="w-full py-2 px-3 rounded-lg bg-zinc-50 border border-zinc-200 text-xs">
+          <div id="payment-details-havale" class="hidden text-xs p-2 bg-zinc-50 rounded border">
+            <select id="bank-select" class="w-full py-1 px-2 rounded border bg-white text-xs">
               <option value="Garanti BBVA">Garanti BBVA - TR12 0006 2000 0001 2345 6789 01</option>
               <option value="Ziraat Bankası">Ziraat Bankası - TR45 0001 0000 0009 8765 4321 02</option>
-              <option value="Enpara">Enpara - TR89 0011 1000 0003 4567 8901 03</option>
             </select>
           </div>
 
-          <!-- Kapıda Details -->
-          <div id="payment-details-kapida" class="space-y-2 pt-2 hidden text-xs">
-            <div class="flex gap-4">
-              <label class="flex items-center gap-1.5">
-                <input type="radio" name="kapida-type" value="Nakit" checked>
-                <span>Kapıda Nakit</span>
-              </label>
-              <label class="flex items-center gap-1.5">
-                <input type="radio" name="kapida-type" value="Kredi Kartı">
-                <span>Kapıda Kredi Kartı</span>
-              </label>
-            </div>
-            <p class="text-[11px] text-zinc-500">+29.90 TL tahsilat hizmet bedeli uygulanır.</p>
-          </div>
-
-          <!-- Summary Breakdown -->
-          <div class="p-3.5 rounded-xl bg-zinc-50 border border-zinc-200 text-xs space-y-1">
-            <div class="flex justify-between text-zinc-500">
-              <span>Ara Toplam:</span>
-              <span id="checkout-subtotal" class="font-semibold text-zinc-900">0.00 TL</span>
-            </div>
-            <div class="flex justify-between text-zinc-500">
-              <span>İndirim:</span>
-              <span id="checkout-discount" class="font-semibold text-red-600">0.00 TL</span>
-            </div>
-            <div class="flex justify-between text-zinc-500">
-              <span>Kargo:</span>
-              <span id="checkout-shipping" class="font-semibold text-zinc-900">0.00 TL</span>
-            </div>
-            <div id="checkout-door-fee-row" class="flex justify-between text-zinc-500 hidden">
-              <span>Kapıda Hizmet:</span>
-              <span id="checkout-door-fee" class="font-semibold text-zinc-900">29.90 TL</span>
-            </div>
-            <div class="flex justify-between text-sm font-black text-zinc-950 pt-2 border-t border-zinc-200">
-              <span>Toplam:</span>
-              <span id="checkout-total">0.00 TL</span>
+          <div id="payment-details-kapida" class="hidden text-xs p-2 bg-zinc-50 rounded border">
+            <div class="flex gap-3">
+              <label><input type="radio" name="kapida-type" value="Nakit" checked> Nakit</label>
+              <label><input type="radio" name="kapida-type" value="Kredi Kartı"> Kredi Kartı</label>
             </div>
           </div>
 
-          <button 
-            type="submit" 
-            class="w-full py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-black text-xs uppercase tracking-wider transition-all shadow-md"
-          >
+          <div class="p-2.5 rounded-xl bg-zinc-50 border text-xs space-y-1">
+            <div class="flex justify-between"><span>Ara Toplam:</span><span id="checkout-subtotal"></span></div>
+            <div class="flex justify-between text-red-600"><span>İndirim:</span><span id="checkout-discount"></span></div>
+            <div class="flex justify-between"><span>Kargo:</span><span id="checkout-shipping"></span></div>
+            <div id="checkout-door-fee-row" class="flex justify-between hidden"><span>Kapıda Hizmet:</span><span id="checkout-door-fee"></span></div>
+            <div class="flex justify-between font-black text-sm pt-1 border-t"><span>Toplam:</span><span id="checkout-total"></span></div>
+          </div>
+
+          <button type="submit" class="w-full py-3 rounded-xl bg-zinc-950 text-white font-bold text-xs uppercase tracking-wider shadow-md">
             Siparişi Onayla
           </button>
         </div>
-
       </form>
     </div>
   </div>
 
-  <!-- ======================== 13. iyzico 3D SECURE OTP MODAL ======================== -->
+  <!-- 3D Secure Modal -->
   <div id="3d-secure-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-    <div class="relative w-full max-w-sm rounded-2xl bg-white text-zinc-900 p-6 z-10 shadow-2xl">
-      <div class="flex items-center justify-between border-b pb-2 mb-3">
-        <span class="font-extrabold text-blue-900 text-sm">iyzico 3D Secure</span>
-        <span class="text-[10px] bg-blue-50 text-blue-700 px-2 py-0.5 rounded font-bold">Test</span>
-      </div>
-      <p class="text-xs text-zinc-600 mb-3">SMS ile gönderilen 6 haneli doğrulama kodunu giriniz:</p>
-      <div class="p-2 bg-zinc-50 border rounded-lg text-xs font-mono text-zinc-700 mb-3 text-center">
-        Test Kodu: <strong class="text-blue-600">123456</strong>
-      </div>
-      <input type="text" id="otp-code" maxlength="6" placeholder="123456" class="w-full text-center tracking-widest text-lg font-bold py-2 border rounded-lg mb-3" />
+    <div class="relative w-full max-w-xs rounded-2xl bg-white p-5 z-10 shadow-2xl text-center">
+      <h3 class="font-extrabold text-blue-900 text-sm mb-2">iyzico 3D Secure Doğrulama</h3>
+      <p class="text-xs text-zinc-600 mb-3">SMS Şifreniz: <strong class="text-blue-600">123456</strong></p>
+      <input type="text" id="otp-code" maxlength="6" placeholder="123456" class="w-full text-center tracking-widest text-lg font-bold py-1.5 border rounded-lg mb-3" />
       <div class="flex gap-2">
-        <button onclick="document.getElementById('3d-secure-modal').classList.add('hidden')" class="flex-1 py-2 rounded-lg bg-zinc-100 text-xs font-bold">İptal</button>
-        <button onclick="verify3DSecure()" class="flex-1 py-2 rounded-lg bg-blue-600 text-white text-xs font-bold">Onayla</button>
+        <button onclick="document.getElementById('3d-secure-modal').classList.add('hidden')" class="flex-1 py-1.5 rounded-lg bg-zinc-100 text-xs font-bold">İptal</button>
+        <button onclick="verify3DSecure()" class="flex-1 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-bold">Onayla</button>
       </div>
     </div>
   </div>
 
-  <!-- ======================== 14. ORDER SUCCESS MODAL ======================== -->
+  <!-- Order Success Modal -->
   <div id="order-success-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
     <div onclick="closeOrderSuccessModal()" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
-    <div class="relative w-full max-w-md rounded-3xl bg-white border border-zinc-200 p-8 z-10 shadow-2xl text-center">
-      <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl mx-auto mb-3 font-bold">✓</div>
-      <h2 class="text-xl font-bold text-zinc-950 font-display">Siparişiniz Alındı!</h2>
-      <p class="text-xs text-zinc-500 mt-1">Siparişiniz paketlenmek üzere sıraya alındı.</p>
-
-      <div class="my-5 p-4 rounded-2xl bg-zinc-50 border border-zinc-200 text-xs text-left space-y-1.5">
-        <div class="flex justify-between">
-          <span class="text-zinc-500">Sipariş No:</span>
-          <span id="success-order-id" class="font-mono font-bold text-zinc-950"></span>
-        </div>
-        <div class="flex justify-between">
-          <span class="text-zinc-500">Kargo Takip No:</span>
-          <span id="success-tracking-code" class="font-mono font-bold text-zinc-950"></span>
-        </div>
-        <div class="flex justify-between">
-          <span class="text-zinc-500">Ödeme:</span>
-          <span id="success-payment-method" class="text-zinc-800"></span>
-        </div>
-        <div class="flex justify-between border-t border-zinc-200 pt-2 font-bold">
-          <span class="text-zinc-700">Tutar:</span>
-          <span id="success-order-total" class="text-zinc-950"></span>
-        </div>
+    <div class="relative w-full max-w-sm rounded-3xl bg-white border border-[#cbd5e1] p-6 z-10 shadow-2xl text-center">
+      <div class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl mx-auto mb-2 font-bold">✓</div>
+      <h2 class="text-lg font-bold text-zinc-950 font-display">Sipariş Alındı!</h2>
+      <div class="my-4 p-3 rounded-xl bg-zinc-50 border text-xs text-left space-y-1">
+        <div class="flex justify-between"><span class="text-zinc-500">Sipariş No:</span><span id="success-order-id" class="font-bold"></span></div>
+        <div class="flex justify-between"><span class="text-zinc-500">Kargo Takip:</span><span id="success-tracking-code" class="font-bold font-mono"></span></div>
+        <div class="flex justify-between"><span class="text-zinc-500">Ödeme:</span><span id="success-payment-method"></span></div>
+        <div class="flex justify-between font-bold pt-1 border-t"><span>Tutar:</span><span id="success-order-total"></span></div>
       </div>
-
       <div class="flex gap-2">
-        <a id="success-tracking-link" href="/takip" class="flex-1 py-3 rounded-xl bg-zinc-950 text-white text-xs font-bold text-center">Kargomu Takip Et</a>
-        <button onclick="closeOrderSuccessModal()" class="flex-1 py-3 rounded-xl border border-zinc-200 text-xs font-bold">Kapat</button>
+        <a id="success-tracking-link" href="/takip" class="flex-1 py-2.5 rounded-xl bg-zinc-950 text-white text-xs font-bold text-center">Kargom Nerede</a>
+        <button onclick="closeOrderSuccessModal()" class="flex-1 py-2.5 rounded-xl border text-xs font-bold">Kapat</button>
       </div>
     </div>
   </div>
 
-  <!-- ======================== 15. LEGAL MODAL (Criterion 7) ======================== -->
+  <!-- Legal Modal -->
   <div id="legal-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
     <div onclick="closeLegalModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative w-full max-w-xl max-h-[85vh] overflow-y-auto rounded-3xl bg-white border border-zinc-200 p-6 sm:p-8 z-10 shadow-2xl">
-      <div class="flex items-center justify-between pb-3 border-b border-zinc-100 mb-4">
-        <h3 id="legal-modal-title" class="text-base font-bold text-zinc-950 font-display">Yasal Metin</h3>
-        <button onclick="closeLegalModal()" class="text-zinc-400 hover:text-black">✕</button>
+    <div class="relative w-full max-w-md rounded-3xl bg-white border p-6 z-10 shadow-2xl">
+      <div class="flex justify-between items-center pb-2 border-b mb-3">
+        <h3 id="legal-modal-title" class="font-bold text-zinc-950"></h3>
+        <button onclick="closeLegalModal()" class="text-zinc-400">✕</button>
       </div>
-      <div id="legal-modal-body" class="text-xs text-zinc-600 leading-relaxed space-y-3"></div>
-      <div class="mt-6 pt-3 border-t border-zinc-100 text-right">
-        <button onclick="closeLegalModal()" class="px-5 py-2 rounded-xl bg-zinc-950 text-white text-xs font-bold">Kapat</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======================== 16. CONTACT DRAWER (Mesaj Gönder) ======================== -->
-  <div id="contact-drawer" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <div onclick="document.getElementById('contact-drawer').classList.add('hidden')" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-    <div class="relative w-full max-w-md rounded-3xl bg-white border border-zinc-200 p-6 z-10 shadow-2xl">
-      <div class="flex items-center justify-between pb-3 border-b border-zinc-100 mb-4">
-        <h3 class="text-sm font-bold text-zinc-950">Müşteri Hizmetlerine Yazın</h3>
-        <button onclick="document.getElementById('contact-drawer').classList.add('hidden')" class="text-zinc-400">✕</button>
-      </div>
-      <form onsubmit="submitContactForm(event); document.getElementById('contact-drawer').classList.add('hidden');" class="space-y-3 text-xs">
-        <div>
-          <label class="block text-zinc-600 font-semibold mb-1">Ad Soyad</label>
-          <input type="text" id="contact-name" required placeholder="Adınız" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200" />
-        </div>
-        <div>
-          <label class="block text-zinc-600 font-semibold mb-1">E-Posta</label>
-          <input type="email" id="contact-email" required placeholder="E-posta" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200" />
-        </div>
-        <div>
-          <label class="block text-zinc-600 font-semibold mb-1">Mesajınız</label>
-          <textarea id="contact-message" rows="3" required placeholder="Nasıl yardımcı olabiliriz?" class="w-full py-2 px-3 rounded-xl bg-zinc-50 border border-zinc-200"></textarea>
-        </div>
-        <button type="submit" class="w-full py-2.5 rounded-xl bg-zinc-950 text-white font-bold">İlet</button>
-      </form>
+      <div id="legal-modal-body"></div>
+      <button onclick="closeLegalModal()" class="mt-4 w-full py-2 bg-zinc-950 text-white text-xs font-bold rounded-xl">Kapat</button>
     </div>
   </div>
 
   <!-- Cookie Banner -->
-  <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-sm z-40 p-4 rounded-2xl bg-white border border-zinc-200 shadow-xl hidden text-xs">
-    <p class="text-zinc-600">Daha iyi bir alışveriş deneyimi için çerezleri kullanıyoruz.</p>
-    <div class="mt-2.5 flex gap-2">
-      <button onclick="acceptCookies()" class="px-3.5 py-1.5 rounded-lg bg-zinc-950 text-white font-bold text-[11px]">Kabul Et</button>
-      <button onclick="acceptCookies()" class="px-3 py-1.5 rounded-lg border border-zinc-200 text-zinc-600 text-[11px]">Kapat</button>
-    </div>
+  <div id="cookie-banner" class="fixed bottom-4 right-4 max-w-xs z-40 p-3.5 rounded-2xl bg-white border border-[#cbd5e1] shadow-xl hidden text-xs">
+    <p class="text-zinc-600">Alışveriş deneyimini geliştirmek için çerezler kullanıyoruz.</p>
+    <button onclick="acceptCookies()" class="mt-2 w-full py-1.5 rounded-lg bg-zinc-950 text-white text-xs font-bold">Kabul Et</button>
   </div>
 
-  <!-- Toast Container -->
+  <!-- Toast -->
   <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
 
-  <!-- Scripts -->
   <script src="/js/app.js"></script>
 </body>
 </html>
