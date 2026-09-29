@@ -1,22 +1,19 @@
 [
   {
     "id": 1,
-    "slug": "vitrin-puffer-ceket-dokulu-magsafe-kilif",
-    "name": "Vitrin Puffer Ceket Dokulu MagSafe Kılıf",
+    "slug": "puffer-magsafe-kilif",
+    "name": "The North Face Dağ Printli Kılıf",
     "category": "Kılıf & Koruma",
     "price": 389,
     "oldPrice": 549,
     "rating": 4.9,
     "reviewCount": 340,
-    "stock": 63,
+    "stock": 58,
     "featured": true,
-    "hasVariants": true,
+    "hasVariants": false,
     "badge": "TIKTOK TRENDİ",
-    "image": "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=800&q=80",
-    "gallery": [
-      "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?auto=format&fit=crop&w=800&q=80"
-    ],
+    "image": "/assets/images/urunler/populer/north-face-dag-printli-siyah-kilif.webp",
+    "gallery": [],
     "shortDescription": "Yumuşacık puffer ceket dokusu, dahili N52 MagSafe mıknatısı ve darbe emici hava kanalları.",
     "description": "Gençlerin ve influencer'ların favorisi! İkonik mont ceketlerden esinlenilen yumuşak dolgulu puffer gövdesiyle telefon tutuşunu maksimum konfora taşır. Gizli N52 güçlü MagSafe halkasıyla tüm manyetik şarj ve aksesuarlara tam uyumludur. Düşmelerde hava yastığı görevi görerek cihazınızı korur.",
     "specs": [
@@ -37,84 +34,134 @@
         "value": "1.5 mm yükseltilmiş kenar koruması"
       }
     ],
-    "variantOptions": {
-      "colors": [
-        {
-          "name": "Metalik Gümüş",
-          "hex": "#e2e8f0",
-          "code": "silver"
-        },
-        {
-          "name": "Mat Gece Siyahı",
-          "hex": "#18181b",
-          "code": "black"
-        },
-        {
-          "name": "Krem Latte",
-          "hex": "#fef3c7",
-          "code": "cream"
-        },
-        {
-          "name": "Sakura Pembesi",
-          "hex": "#fbcfe8",
-          "code": "pink"
-        }
-      ],
-      "models": [
-        "iPhone 15 Pro Max",
-        "iPhone 15 Pro",
-        "iPhone 15",
-        "iPhone 14 Pro"
-      ]
-    }
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "collection": "populer"
   },
   {
     "id": 2,
-    "slug": "vitrin-y2k-holografik-dalgali-ayna-kilif",
-    "name": "Vitrin Y2K Holografik Dalgalı Ayna Kılıf",
+    "slug": "retro-pixel-ayna-kilif",
+    "name": "Retro Pixel Ayna Kılıf",
     "category": "Kılıf & Koruma",
     "price": 329,
     "oldPrice": 479,
     "rating": 4.9,
     "reviewCount": 278,
-    "stock": 48,
+    "stock": 43,
     "featured": true,
-    "hasVariants": false,
-    "badge": "GEN-Z FAVORİSİ",
-    "image": "https://images.unsplash.com/photo-1606220838315-056192d5e927?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Arka paneli gerçek ayna efektli, dalgalı ergonomik kenarlıklar ve kırılmaz akrilik panel.",
-    "description": "Ayna selfie'leri ve günlük makyaj tazelemeleri için vazgeçilmez! Y2K estetiğini modern telefon korumasıyla harmanlayan bu kılıf, dalgalı kenar yapısıyla elde kaymayı tamamen önler. Darbelere dayanıklı polimer çerçeveye sahiptir.",
+    "hasVariants": true,
+    "badge": "PİKSEL AYNASIZ",
+    "image": "/assets/images/urunler/kilif-koruma/2-retro-pixel-ayna-kilif/pembe-pixel/kılıf2renk1.jpg",
+    "shortDescription": "Hologram ayna yüzey üzerine 8-bit piksel desen, taşınabilir püskül askısı.",
+    "description": "90’lar piksel oyun estetiğini hologram ayna yüzeyle birleştirir. Arka planda alev ve pixel uzaylı mektupları, yanında taşınabilir püskül askısı ve yansıtıcı kaplama ile ışıkta renk değiştirir.",
     "specs": [
       {
-        "label": "Ayna Yüzey",
-        "value": "Çizilmeye Dayanıklı Elektrostatik Akrilik Ayna"
+        "label": "Gövde",
+        "value": "Şeffaf TPU"
       },
       {
-        "label": "Kenar Yapısı",
-        "value": "Ergonomik Dalgalı Kaymaz Silikon"
+        "label": "Desen",
+        "value": "Pembe & Beyaz Yıldız Print"
       },
       {
-        "label": "Düşme Koruması",
-        "value": "2.5 Metre Köşe Koruma Yastığı"
+        "label": "Şeffaflık",
+        "value": "%92 Saydam"
       }
-    ]
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "collection": "y2k",
+    "gallery": [],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Pembe",
+          "hex": "#f9a8d4",
+          "image": "/assets/images/urunler/kilif-koruma/2-retro-pixel-ayna-kilif/pembe-pixel/kılıf2renk1.jpg"
+        },
+        {
+          "name": "Mavi",
+          "hex": "#93c5fd",
+          "image": "/assets/images/urunler/kilif-koruma/2-retro-pixel-ayna-kilif/mavi-pixel/kılıf2renk2.jpg"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
   },
   {
     "id": 3,
-    "slug": "vitrin-armor-magsafe-titanyum-kilif",
-    "name": "Vitrin Armor MagSafe Titanyum Kılıf",
+    "slug": "barok-gravur-ayna-kilif",
+    "name": "Barok Gravür Ayna Kılıf",
     "category": "Kılıf & Koruma",
     "price": 599,
     "oldPrice": 849,
     "rating": 5,
     "reviewCount": 184,
-    "stock": 85,
+    "stock": 84,
     "featured": true,
-    "hasVariants": false,
-    "badge": "%29 İNDİRİM",
-    "image": "https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Havacılık sınıfı titanyum çerçeve, N52 neodimyum MagSafe ve 3.5 metre askeri düşme sertifikası.",
-    "description": "Minimalist ve endüstriyel çizgileri sevenler için tasarlandı. Parmak izi tutmayan nano-mat arka paneli ve CNC ile işlenmiş titanyum kenarlıklarıyla cihazınıza tam uyum sağlar.",
+    "hasVariants": true,
+    "badge": "GRAVÜR AYNA",
+    "image": "/assets/images/urunler/kilif-koruma/3-barok-gravur-ayna-kilif/gumus-gravur/kılıf3renk1.jpg",
+    "shortDescription": "Ayna gövde üzerine barok ve devre gravürleri, saat ve kristal püsküller.",
+    "description": "Gümüş veya altın gravürlü ayna gövde, kenar boyunca devre ve barok desenlerle süslenir. Deri askısında saat, gövdede kurt başı ve kristal süsleme detayları bulunur.",
     "specs": [
       {
         "label": "Malzeme",
@@ -128,12 +175,70 @@
         "label": "Sertifika",
         "value": "MIL-STD-810G Askeri Düşme Testi"
       }
-    ]
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "collection": "y2k",
+    "gallery": [],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Gümüş",
+          "hex": "#cbd5e1",
+          "image": "/assets/images/urunler/kilif-koruma/3-barok-gravur-ayna-kilif/gumus-gravur/kılıf3renk1.jpg"
+        },
+        {
+          "name": "Altın",
+          "hex": "#fcd34d",
+          "image": "/assets/images/urunler/kilif-koruma/3-barok-gravur-ayna-kilif/altin-gravur/kılıf3renk2.jpg"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
   },
   {
     "id": 4,
-    "slug": "vitrin-retro-polaroid-sticker-seffaf-kilif",
-    "name": "Vitrin Retro Polaroid Çıkartmalı Şeffaf Kılıf",
+    "slug": "retro-cikartmali-kilif",
+    "name": "LV Üniversite Baskılı Kılıf",
     "category": "Kılıf & Koruma",
     "price": 279,
     "oldPrice": 399,
@@ -143,7 +248,7 @@
     "featured": true,
     "hasVariants": false,
     "badge": "POPÜLER",
-    "image": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=800&q=80",
+    "image": "/assets/images/urunler/populer/lv-universite-baskili-siyah-kilif.webp",
     "shortDescription": "Sararmaz optik arka yüzey, retro fotoğraf ve çıkartma yerleştirme haznesi.",
     "description": "Kendi tarzınızı yansıtın! Sevdiğiniz polaroid fotoğrafları, konser biletlerini veya çıkartmaları arkasına yerleştirebileceğiniz kristal şeffaflığında UV korumalı tasarım.",
     "specs": [
@@ -155,49 +260,45 @@
         "label": "Köşe Koruması",
         "value": "Hava Kanallı Darbe Emici"
       }
-    ]
-  },
-  {
-    "id": 5,
-    "slug": "vitrin-pastel-mat-silikon-kadife-kilif",
-    "name": "Vitrin Pastel Mat Soft Touch Silikon Kılıf",
-    "category": "Kılıf & Koruma",
-    "price": 249,
-    "oldPrice": 349,
-    "rating": 4.9,
-    "reviewCount": 312,
-    "stock": 90,
-    "featured": false,
-    "hasVariants": false,
-    "badge": "SOFT TOUCH",
-    "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?auto=format&fit=crop&w=800&q=80",
-    "shortDescription": "Bebek teni yumuşaklığında sıvı silikon dış yüzey ve cihazı çizmeyen mikrofiber kadife iç astar.",
-    "description": "Elinizde tuttuğunuz anda hissettiğiniz ipeksi dokunuş. Toz ve leke tutmayan sıvı silikon yüzeyi ıslak mendille silinerek anında ilk günkü temizliğine döner.",
-    "specs": [
-      {
-        "label": "İç Kaplama",
-        "value": "%100 Mikrofiber Yumuşak Kadife"
-      },
-      {
-        "label": "Dış Kaplama",
-        "value": "Medikal Sınıf Sıvı Silikon"
-      }
-    ]
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "collection": "populer",
+    "gallery": []
   },
   {
     "id": 6,
-    "slug": "vitrin-karbon-fiber-ultra-slim-kilif",
-    "name": "Vitrin 1500D Karbon Fiber Ultra Slim Kılıf",
+    "slug": "karbon-fiber-kilif",
+    "name": "Kurt Pençe Desenli Kılıf",
     "category": "Kılıf & Koruma",
     "price": 449,
     "oldPrice": 599,
     "rating": 4.8,
     "reviewCount": 92,
-    "stock": 42,
+    "stock": 40,
     "featured": false,
     "hasVariants": false,
     "badge": "0.6MM İNCE",
-    "image": "https://images.unsplash.com/photo-1530319067432-f2a729c03db5?auto=format&fit=crop&w=800&q=80",
+    "image": "/assets/images/urunler/populer/kurt-pence-desenli-siyah-kilif.webp",
     "shortDescription": "1500D havacılık sınıfı aramid karbon lifi, tüy kadar hafif 14 gram gövde.",
     "description": "Telefonuna kılıf takmayı sevmeyen ama çizilmesini de istemeyenler için 0.65mm inceliğinde zırh.",
     "specs": [
@@ -209,12 +310,35 @@
         "label": "Kalınlık",
         "value": "0.65 mm"
       }
-    ]
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "collection": "populer",
+    "gallery": []
   },
   {
     "id": 7,
-    "slug": "vitrin-65w-gan-iii-hizli-sarj-adaptoru",
-    "name": "Vitrin 65W GaN III Dual-Port Hızlı Şarj Cihazı",
+    "slug": "65w-gan-sarj-cihazi",
+    "name": "65W GaN Şarj Cihazı",
     "category": "Şarj & Güç",
     "price": 799,
     "oldPrice": 999,
@@ -224,7 +348,7 @@
     "featured": true,
     "hasVariants": false,
     "badge": "%20 İNDİRİM",
-    "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=800&q=80",
+    "image": "/assets/images/urunler/sarj-ve-guc/7-65w-gan-sarj-cihazi/apple-adaptor.jpg",
     "shortDescription": "Yeni nesil GaN yarı iletkeni ile laptop, tablet ve telefonu aynı anda tam hızda şarj edin.",
     "description": "Geleneksel şarj aletlerinden %45 daha küçük boyutta 65W güç üretir. Akıllı ısı dengeleme çipi sayesinde ısınmaz.",
     "specs": [
@@ -236,12 +360,35 @@
         "label": "Çıkışlar",
         "value": "2x Type-C + 1x USB-A"
       }
+    ],
+    "collection": "diger",
+    "gallery": [],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
     ]
   },
   {
     "id": 8,
-    "slug": "vitrin-magstation-3u-1-arada-sarj-standi",
-    "name": "Vitrin MagStation 3'ü 1 Arada Alüminyum Şarj Standı",
+    "slug": "magsafe-sarj-standi",
+    "name": "MagSafe Şarj Standı",
     "category": "Şarj & Güç",
     "price": 1299,
     "oldPrice": 1699,
@@ -251,7 +398,7 @@
     "featured": false,
     "hasVariants": false,
     "badge": "ALÜMİNYUM",
-    "image": "https://images.unsplash.com/photo-1610792516307-ea5acd9c3b00?auto=format&fit=crop&w=800&q=80",
+    "image": "/assets/images/urunler/sarj-ve-guc/8-magsafe-sarj-standi/magsafe-sarj.jpg",
     "shortDescription": "iPhone, Apple Watch ve AirPods'u aynı anda 15W kablosuz şarj eden seyahat tipi katlanır stant.",
     "description": "Masanızdaki kablo dağınıklığına son veren, CNC ile işlenmiş şık anodize alüminyum gövde.",
     "specs": [
@@ -263,12 +410,35 @@
         "label": "Çıkış",
         "value": "15W Telefon + 5W Saat + 5W Kulaklık"
       }
+    ],
+    "collection": "diger",
+    "gallery": [],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
     ]
   },
   {
     "id": 9,
-    "slug": "vitrin-magsnap-10000mah-manyetik-powerbank",
-    "name": "Vitrin MagSnap 10.000 mAh Manyetik Powerbank",
+    "slug": "10-000-mah-powerbank",
+    "name": "10.000 mAh Powerbank",
     "category": "Şarj & Güç",
     "price": 899,
     "oldPrice": null,
@@ -278,7 +448,7 @@
     "featured": false,
     "hasVariants": false,
     "badge": "15W MAGSAFE",
-    "image": "https://images.unsplash.com/photo-1609592807664-8469d4d5ca9b?auto=format&fit=crop&w=800&q=80",
+    "image": "/assets/images/urunler/sarj-ve-guc/9-10000-mah-powerbank/powerbank.jpg",
     "shortDescription": "Telefonun arkasına güçlü mıknatısla yapışan ince gövde ve dijital LED pil göstergesi.",
     "description": "Kablo derdi olmadan gün boyu kesintisiz enerji. 10.000 mAh pil kapasitesiyle telefonunuzu 2 kereden fazla tam şarj eder.",
     "specs": [
@@ -290,12 +460,35 @@
         "label": "Çıkış",
         "value": "20W Type-C + 15W Kablosuz"
       }
+    ],
+    "collection": "diger",
+    "gallery": [],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
     ]
   },
   {
     "id": 10,
-    "slug": "vitrin-apex-pro-100w-orgulu-type-c-kablo",
-    "name": "Vitrin Apex Pro 100W Balistik Naylon Type-C Kablo",
+    "slug": "100w-type-c-kablo",
+    "name": "100W Type-C Kablo",
     "category": "Şarj & Güç",
     "price": 249,
     "oldPrice": null,
@@ -305,7 +498,7 @@
     "featured": false,
     "hasVariants": false,
     "badge": "KOPMAZ",
-    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=800&q=80",
+    "image": "/assets/images/urunler/sarj-ve-guc/10-100w-type-c-kablo/type-c-kablo.jpg",
     "shortDescription": "25.000 bükülme garantili balistik naylon örgü, E-Marker çip ve 100W 5A süper hızlı şarj.",
     "description": "Kırılan ve soyulan kabloları unutun. Altın kaplama soketleri ve çelik takviyeli bükülme noktalarıyla ömürlük kablo.",
     "specs": [
@@ -317,12 +510,35 @@
         "label": "Güç",
         "value": "100W (20V/5A)"
       }
+    ],
+    "collection": "diger",
+    "gallery": [],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
     ]
   },
   {
     "id": 11,
-    "slug": "vitrin-safir-titanyum-kamera-lens-koruyucu",
-    "name": "Vitrin Safir Titanyum Kamera Lens Koruyucu (Tam Set)",
+    "slug": "safir-kamera-koruyucu",
+    "name": "Safir Kamera Koruyucu",
     "category": "Ekran & Kamera",
     "price": 299,
     "oldPrice": 399,
@@ -332,7 +548,7 @@
     "featured": true,
     "hasVariants": false,
     "badge": "SAFİR CAM",
-    "image": "https://images.unsplash.com/photo-1512054502232-10a0a035d672?auto=format&fit=crop&w=800&q=80",
+    "image": "/assets/images/urunler/ekran-ve-kamera/11-safir-kamera-koruyucu/safir-kamera-lensi.jpg",
     "shortDescription": "Mohs 9M safir cam sertliği, parlamayı önleyen siyah optik halka ve kolay montaj tepsisi.",
     "description": "Fotoğraf kalitesinden sıfır ödün! Telefonunuzun kameralarını çizilmelere karşı elmas sertliğinde safir camla koruyun.",
     "specs": [
@@ -344,12 +560,35 @@
         "label": "Netlik",
         "value": "%99.8 Ultra HD Işık Geçirgenliği"
       }
-    ]
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "collection": "diger",
+    "gallery": []
   },
   {
     "id": 12,
-    "slug": "vitrin-9h-mat-hayalet-gizlilik-ekran-koruyucu",
-    "name": "Vitrin 9H Mat Hayalet (Gizlilik) Ekran Koruyucu",
+    "slug": "gizlilik-ekran-koruyucu",
+    "name": "Gizlilik Ekran Koruyucu",
     "category": "Ekran & Kamera",
     "price": 279,
     "oldPrice": null,
@@ -359,7 +598,7 @@
     "featured": false,
     "hasVariants": false,
     "badge": "GİZLİLİK",
-    "image": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+    "image": "/assets/images/urunler/ekran-ve-kamera/12-gizlilik-ekran-koruyucu/hayalet-ekran-koruyucu.jpg",
     "shortDescription": "28° mikro panjur teknolojisi ile ekrana yandan bakanlar sadece siyah bir ekran görür.",
     "description": "Toplu taşımada, okulda ve kafelerde mesajlarınızı ve şifrelerinizi meraklı gözlerden koruyun.",
     "specs": [
@@ -371,12 +610,35 @@
         "label": "Yüzey",
         "value": "Parmak İzi Tutmayan İpeksi Mat"
       }
-    ]
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "collection": "diger",
+    "gallery": []
   },
   {
     "id": 13,
-    "slug": "vitrin-armorshield-9h-kolay-kurulum-cam",
-    "name": "Vitrin ArmorShield 9H Kolay Kurulumlu Temperli Cam",
+    "slug": "temperli-cam-ekran-koruyucu",
+    "name": "Temperli Cam Ekran Koruyucu",
     "category": "Ekran & Kamera",
     "price": 229,
     "oldPrice": 319,
@@ -386,7 +648,7 @@
     "featured": false,
     "hasVariants": false,
     "badge": "0 BALONCUK",
-    "image": "https://images.unsplash.com/photo-1565849904461-04a58ad377e0?auto=format&fit=crop&w=800&q=80",
+    "image": "/assets/images/urunler/ekran-ve-kamera/13-temperli-cam-ekran-koruyucu/temperli-cam-ekran-koruyucu.jpg",
     "shortDescription": "Otomatik toz temizleyici montaj kutusu ile 5 saniyede sıfır hatasız profesyonel montaj.",
     "description": "Kutuyu telefonun üzerine koyup şeridi çekin, tozsuz ve milimetrik olarak kendisi yapışsın.",
     "specs": [
@@ -398,6 +660,873 @@
         "label": "Dayanıklılık",
         "value": "60 Kg Basınç Direnci"
       }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "collection": "diger",
+    "gallery": []
+  },
+  {
+    "id": 101,
+    "slug": "sen-ben-cift-kilif-beyaz",
+    "name": "Sen & Ben Çift Kılıf — Beyaz",
+    "category": "Kılıf & Koruma",
+    "price": 289,
+    "oldPrice": 389,
+    "rating": 4.8,
+    "reviewCount": 142,
+    "stock": 62,
+    "featured": true,
+    "hasVariants": true,
+    "badge": "ÇİFT SET",
+    "collection": "couple",
+    "image": "/assets/images/urunler/kilif-koruma/101-sen-ben-cift-kilif-beyaz/beyaz/beyaz-me.webp",
+    "gallery": [
+      "/assets/images/urunler/kilif-koruma/101-sen-ben-cift-kilif-beyaz/beyaz/beyaz-me.webp",
+      "/assets/images/urunler/kilif-koruma/101-sen-ben-cift-kilif-beyaz/beyaz/beyaz-you.webp"
+    ],
+    "shortDescription": "Beyaz zemin üzerine \"you belong with me\" ve \"i belong with you\" yazılı eşleşen iki kılıf.",
+    "description": "Biri diğerine ait. Beyaz gövde üzerine siyah serif ve el yazısı tipografiyle \"you belong with me / i belong with you\" yazılı eşleşen çift kılıf. Kalp ve tatlı ifadeleriyle mesajı iki parçaya bölüyor; ikisini birlikte taşıyınca anlam bütünlüğü tamamlanıyor. Yumuşak TPU kenar, darbe sönümleyen köşeler ve yükseltilmiş kamera halkası.",
+    "specs": [
+      {
+        "label": "Gövde",
+        "value": "Mat Beyaz TPU"
+      },
+      {
+        "label": "Yazı",
+        "value": "\"You Belong With Me\" / \"I Belong With You\""
+      },
+      {
+        "label": "Kutu İçeriği",
+        "value": "2 Adet Eşleşen Kılıf"
+      },
+      {
+        "label": "Şarj",
+        "value": "Kablosuz Şarja Uyumlu"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Beyaz",
+          "hex": "#ffffff",
+          "image": "/assets/images/urunler/kilif-koruma/101-sen-ben-cift-kilif-beyaz/beyaz/beyaz-me.webp"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
+  },
+  {
+    "id": 102,
+    "slug": "sen-ben-cift-kilif-antrasit",
+    "name": "Sen & Ben Çift Kılıf — Antrasit",
+    "category": "Kılıf & Koruma",
+    "price": 289,
+    "oldPrice": 389,
+    "rating": 4.7,
+    "reviewCount": 128,
+    "stock": 58,
+    "featured": true,
+    "hasVariants": true,
+    "badge": "ÇİFT SET",
+    "collection": "couple",
+    "image": "/assets/images/urunler/kilif-koruma/102-sen-ben-cift-kilif-antrasit/antrasit/antrasit-me.webp",
+    "gallery": [
+      "/assets/images/urunler/kilif-koruma/102-sen-ben-cift-kilif-antrasit/antrasit/antrasit-me.webp",
+      "/assets/images/urunler/kilif-koruma/102-sen-ben-cift-kilif-antrasit/antrasit/antrasit-you.webp"
+    ],
+    "shortDescription": "Antrasit zemin üzerine beyaz \"you belong with me\" ve \"i belong with you\" yazılı eşleşen iki kılıf.",
+    "description": "Aynı mesaj, bu kez karanlık bir zeminde. Antrasit gövde üzerine beyaz serif ve el yazısı tipografiyle \"you belong with me / i belong with you\" yazılı eşleşen çift kılıf. Gece moduna uygun, parmak izi bırakmayan mat yüzey. Yumuşak TPU kenar, yükseltilmiş kamera halkası ve darbe sönümleyen köşeler.",
+    "specs": [
+      {
+        "label": "Gövde",
+        "value": "Mat Antrasit TPU"
+      },
+      {
+        "label": "Yazı",
+        "value": "\"You Belong With Me\" / \"I Belong With You\""
+      },
+      {
+        "label": "Kutu İçeriği",
+        "value": "2 Adet Eşleşen Kılıf"
+      },
+      {
+        "label": "Şarj",
+        "value": "Kablosuz Şarja Uyumlu"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Antrasit",
+          "hex": "#52525b",
+          "image": "/assets/images/urunler/kilif-koruma/102-sen-ben-cift-kilif-antrasit/antrasit/antrasit-me.webp"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
+  },
+  {
+    "id": 103,
+    "slug": "spongebob-patrick-cift-kilif",
+    "name": "SpongeBob & Patrick Çift Kılıf",
+    "category": "Kılıf & Koruma",
+    "price": 329,
+    "oldPrice": 429,
+    "rating": 4.9,
+    "reviewCount": 176,
+    "stock": 44,
+    "featured": true,
+    "hasVariants": true,
+    "badge": "ÇİFT SET",
+    "collection": "couple",
+    "image": "/assets/images/urunler/kilif-koruma/103-spongebob-patrick-cift-kilif/bej/spongebob.webp",
+    "gallery": [
+      "/assets/images/urunler/kilif-koruma/103-spongebob-patrick-cift-kilif/bej/spongebob.webp",
+      "/assets/images/urunler/kilif-koruma/103-spongebob-patrick-cift-kilif/bej/patrick.webp"
+    ],
+    "shortDescription": "Bej gövde üzerine SpongeBob ve Patrick karakterleri; biri deniz altı, biri mercan kayalığı.",
+    "description": "Denizin dibinde de mutluluk var. Bej gövde üzerine el çizimi SpongeBob ve Patrick karakterleri, gökkuşağı, salyangoz ve dinozor desenleriyle. İki farklı karakter kılıf bir set olarak gelir; ikisini de telefonunuza en uygun modele göre seçebilirsiniz. Mat TPU yüzey, yükseltilmiş kamera halkası, darbe sönümleyen köşeler.",
+    "specs": [
+      {
+        "label": "Gövde",
+        "value": "Mat Bej TPU"
+      },
+      {
+        "label": "Tasarım",
+        "value": "El Çizimi SpongeBob & Patrick"
+      },
+      {
+        "label": "Detay",
+        "value": "Gökkuşağı, Salyangoz, Dinozor"
+      },
+      {
+        "label": "Kutu İçeriği",
+        "value": "2 Adet Karakter Kılıfı"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Bej",
+          "hex": "#f5f5dc",
+          "image": "/assets/images/urunler/kilif-koruma/103-spongebob-patrick-cift-kilif/bej/spongebob.webp"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
+  },
+  {
+    "id": 104,
+    "slug": "simpsons-lisa-bart-cift-kilif",
+    "name": "Simpsons Lisa & Bart Çift Kılıf",
+    "category": "Kılıf & Koruma",
+    "price": 319,
+    "oldPrice": 419,
+    "rating": 4.8,
+    "reviewCount": 154,
+    "stock": 51,
+    "featured": true,
+    "hasVariants": true,
+    "badge": "ÇİFT SET",
+    "collection": "couple",
+    "image": "/assets/images/urunler/kilif-koruma/104-simpsons-lisa-bart-cift-kilif/pembe/lisa.webp",
+    "gallery": [
+      "/assets/images/urunler/kilif-koruma/104-simpsons-lisa-bart-cift-kilif/pembe/lisa.webp",
+      "/assets/images/urunler/kilif-koruma/104-simpsons-lisa-bart-cift-kilif/pembe/bart.webp"
+    ],
+    "shortDescription": "Toz pembe gövde ve çim zemin üzerine Springfield çocukları: Lisa ve Bart.",
+    "description": "Springfield'ın en enerjik iki çocuğu. Toz pembe gövde ve el çizimi çim zemin üzerine Lisa ve Bart karakterleri, apartman duvarı detaylarıyla. İki farklı karakter kılıf set olarak gelir. Mat TPU yüzey, kamera halkası yükseltilmiş, köşeler darbe sönümleyen yapıda.",
+    "specs": [
+      {
+        "label": "Gövde",
+        "value": "Mat Toz Pembe TPU"
+      },
+      {
+        "label": "Tasarım",
+        "value": "El Çizimi Lisa & Bart"
+      },
+      {
+        "label": "Zemin",
+        "value": "Springfield Çim Sahnesi"
+      },
+      {
+        "label": "Kutu İçeriği",
+        "value": "2 Adet Karakter Kılıfı"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Pembe",
+          "hex": "#f9a8d4",
+          "image": "/assets/images/urunler/kilif-koruma/104-simpsons-lisa-bart-cift-kilif/pembe/lisa.webp"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
+  },
+  {
+    "id": 105,
+    "slug": "mcqueen-sally-cift-kilif",
+    "name": "McQueen & Sally Çift Kılıf",
+    "category": "Kılıf & Koruma",
+    "price": 339,
+    "oldPrice": 449,
+    "rating": 4.7,
+    "reviewCount": 131,
+    "stock": 37,
+    "featured": true,
+    "hasVariants": true,
+    "badge": "ÇİFT SET",
+    "collection": "couple",
+    "image": "/assets/images/urunler/kilif-koruma/105-mcqueen-sally-cift-kilif/beyaz-mcqueen.webp",
+    "gallery": [
+      "/assets/images/urunler/kilif-koruma/105-mcqueen-sally-cift-kilif/beyaz-mcqueen.webp",
+      "/assets/images/urunler/kilif-koruma/105-mcqueen-sally-cift-kilif/siyah-mcqueen.webp",
+      "/assets/images/urunler/kilif-koruma/105-mcqueen-sally-cift-kilif/siyah-sally.webp"
+    ],
+    "shortDescription": "I'M LIGHTNING yazılı McQueen ve Sally karakter kılıfları; beyaz ve siyah gövde seçenekleri.",
+    "description": "Pist sahasının iki yıldızı. \"I'M LIGHTNING\" başlığı, karakter teknik çizimleri ve kısa tanıtım metinleriyle McQueen ve Sally kılıfları. Dört varyant: beyaz ve siyah gövde, her biri için McQueen ve Sally karakteri. Mat TPU yüzey, yükseltilmiş kamera halkası, parmak izi tutmayan kaplama.",
+    "specs": [
+      {
+        "label": "Gövde",
+        "value": "Mat Beyaz / Mat Siyah TPU"
+      },
+      {
+        "label": "Tasarım",
+        "value": "I'M LIGHTNING Karakter Baskısı"
+      },
+      {
+        "label": "Karakterler",
+        "value": "McQueen (Kırmızı) & Sally (Mavi)"
+      },
+      {
+        "label": "Kutu İçeriği",
+        "value": "Tek Adet Kılıf"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Beyaz",
+          "hex": "#ffffff",
+          "image": "/assets/images/urunler/kilif-koruma/105-mcqueen-sally-cift-kilif/beyaz-mcqueen.webp"
+        },
+        {
+          "name": "Siyah",
+          "hex": "#18181b",
+          "image": "/assets/images/urunler/kilif-koruma/105-mcqueen-sally-cift-kilif/siyah-mcqueen.webp"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
+  },
+  {
+    "id": 201,
+    "slug": "holografik-yildiz-kilif",
+    "name": "LV Monogram Kılıf",
+    "category": "Kılıf & Koruma",
+    "price": 329,
+    "oldPrice": 449,
+    "rating": 4.8,
+    "reviewCount": 276,
+    "stock": 66,
+    "featured": false,
+    "hasVariants": false,
+    "badge": "Y2K TREND",
+    "collection": "populer",
+    "image": "/assets/images/urunler/populer/lv-monogram-siyah-kilif.webp",
+    "gallery": [],
+    "shortDescription": "Işığa göre renk değiştiren şeffaf yüzeyde yıldız printleri.",
+    "description": "Işığa göre renk değiştiren şeffaf yüzeyde yıldız printleri. Görselde görüldüğü gibi şeffaf gövde üzerine yıldız printleri, manyetik halka ve darbe emici kenar içerir.",
+    "specs": [
+      {
+        "label": "Yüzey",
+        "value": "Holografik Şeffaf Kaplama"
+      },
+      {
+        "label": "Desen",
+        "value": "Yıldız Print"
+      },
+      {
+        "label": "Kalınlık",
+        "value": "1.2 mm"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
     ]
+  },
+  {
+    "id": 202,
+    "slug": "baskili-seffaf-yildiz-kilif",
+    "name": "Kodak 400 Film Baskılı Kılıf",
+    "category": "Kılıf & Koruma",
+    "price": 289,
+    "oldPrice": 389,
+    "rating": 4.6,
+    "reviewCount": 132,
+    "stock": 39,
+    "featured": false,
+    "hasVariants": false,
+    "badge": "90S NOSTALJİ",
+    "collection": "populer",
+    "image": "/assets/images/urunler/populer/kodak-400-film-baskili-beyaz-kilif.webp",
+    "gallery": [],
+    "shortDescription": "Kabartma yıldız baskılı, kalın korumalı şeffaf kılıf.",
+    "description": "Kabartma yıldız baskılı, kalın korumalı şeffaf kılıf. Görselde görüldüğü gibi şeffaf gövde üzerine yıldız printleri, manyetik halka ve darbe emici kenar içerir.",
+    "specs": [
+      {
+        "label": "Doku",
+        "value": "Kabartma Yıldız Baskı"
+      },
+      {
+        "label": "Kenar",
+        "value": "2 mm Darbe Emici"
+      },
+      {
+        "label": "Ağırlık",
+        "value": "34 gram"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ]
+  },
+  {
+    "id": 204,
+    "slug": "y2k-yildiz-printli-seffaf-kilif",
+    "name": "Y2K Yıldız Printli Şeffaf Kılıf",
+    "category": "Kılıf & Koruma",
+    "collection": "y2k",
+    "price": 259,
+    "oldPrice": 339,
+    "rating": 4.5,
+    "reviewCount": 118,
+    "stock": 66,
+    "featured": true,
+    "hasVariants": true,
+    "badge": "Y2K TREND",
+    "image": "/assets/images/urunler/kilif-koruma/204-y2k-yildiz-printli-seffaf-kilif/pembe-yildiz/pembe-yildiz.jpg",
+    "gallery": [],
+    "shortDescription": "Şeffaf gövde üzerine pembe ve beyaz yıldız baskıları.",
+    "description": "90’lar estetiğinin geri dönüşü: şeffaf gövde üzerine pembe ve beyaz yıldız printleri, takılabilir yıldız püskülü ve dahili manyetik halkası ile şarj standıyla uyumlu.",
+    "specs": [
+      {
+        "label": "Gövde",
+        "value": "Şeffaf TPU"
+      },
+      {
+        "label": "Desen",
+        "value": "Pembe & Beyaz Yıldız Print"
+      },
+      {
+        "label": "Aksesuar",
+        "value": "Takılabilir Yıldız Püskül"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Pembe",
+          "hex": "#f9a8d4",
+          "image": "/assets/images/urunler/kilif-koruma/204-y2k-yildiz-printli-seffaf-kilif/pembe-yildiz/pembe-yildiz.jpg"
+        },
+        {
+          "name": "Siyah",
+          "hex": "#18181b",
+          "image": "/assets/images/urunler/kilif-koruma/204-y2k-yildiz-printli-seffaf-kilif/siyah-beyaz-yildiz/siyah-beyaz-yildiz.jpg"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
+  },
+  {
+    "id": 205,
+    "slug": "y2k-grl-balonlu-seffaf-kilif",
+    "name": "Y2K GRL Balonlu Şeffaf Kılıf",
+    "category": "Kılıf & Koruma",
+    "collection": "y2k",
+    "price": 279,
+    "oldPrice": 379,
+    "rating": 4.7,
+    "reviewCount": 96,
+    "stock": 54,
+    "featured": true,
+    "hasVariants": true,
+    "badge": "Y2K TREND",
+    "image": "/assets/images/urunler/kilif-koruma/205-y2k-grl-balonlu-seffaf-kilif/pembe-grl/kılıf4resim1.jpg",
+    "gallery": [],
+    "shortDescription": "Şeffaf gövdeye Y2K GRL balonlu baskı, zincir yıldız desenleri ve takılabilir ayıcı.",
+    "description": "2000’lerin en tiz çocukluk kodu, yeni nesil telefonda. Şeffaf TPU gövde üzerine kabarık \"Y2K GRL\" balon yazısı, pastel balon desenleri ve gümüş zincir yıldız detayları. Ürünle birlikte gelen takılabilir ayıcı seti; yıldız, kalp ve ponpon aksesuarlarla kılıfı tamamen kişiselleştirebilirsin. Kamera halkası yükseltilmiş, düşme ve darbe dayanıklı. Darj kabloluğunu kapatmayan kesintisiz Manyetik halka.",
+    "specs": [
+      {
+        "label": "Gövde",
+        "value": "Şeffaf TPU"
+      },
+      {
+        "label": "Desen",
+        "value": "Kabarık Y2K GRL Balon Print"
+      },
+      {
+        "label": "Aksesuar",
+        "value": "Takılabilir Ayıcı Seti"
+      },
+      {
+        "label": "Şarj",
+        "value": "Manyetik MagSafe Uyumlu"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Pembe",
+          "hex": "#f9a8d4",
+          "image": "/assets/images/urunler/kilif-koruma/205-y2k-grl-balonlu-seffaf-kilif/pembe-grl/kılıf4resim1.jpg"
+        },
+        {
+          "name": "Mavi",
+          "hex": "#93c5fd",
+          "image": "/assets/images/urunler/kilif-koruma/205-y2k-grl-balonlu-seffaf-kilif/mavi-grl/kılıf4resim2.jpg"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
+  },
+  {
+    "id": 206,
+    "slug": "y2k-grl-altin-devre-seffaf-kilif",
+    "name": "Y2K GRL Altın Devre Şeffaf Kılıf",
+    "category": "Kılıf & Koruma",
+    "collection": "y2k",
+    "price": 299,
+    "oldPrice": 399,
+    "rating": 4.8,
+    "reviewCount": 87,
+    "stock": 41,
+    "featured": true,
+    "hasVariants": true,
+    "badge": "AYI SETİ HEDİYELİ",
+    "image": "/assets/images/urunler/kilif-koruma/206-y2k-grl-altin-devre-seffaf-kilif/mor-altin/kılıf5resim1.jpg",
+    "gallery": [],
+    "shortDescription": "Altın varaklı devre desenli şeffaf kılıf, metalik robot figür ve ayıcı setiyle.",
+    "description": "Elektronik devre ve hologram kumaşın buluştuğu 90’lar estetiği. Şeffaf gövde üzerine altın varaklı geometrik devre desenleri, kabarık \"Y2K GRL\" yazısı ve metalik robot figür. Ürünle gelen metal ayıcı seti; kalp, yıldız ve hologram figürlerle kombine edilebilir. Darj portu kapağı yok, manyetik halka sayesinde MagSafe şarjda tam uyum. Darbe sönümleyen TPU kenar bantları.",
+    "specs": [
+      {
+        "label": "Gövde",
+        "value": "Şeffaf TPU + Altın Varak"
+      },
+      {
+        "label": "Desen",
+        "value": "Elektronik Devre Motifi"
+      },
+      {
+        "label": "Aksesuar",
+        "value": "Metalik Robot Figür & Ayıcı Seti"
+      },
+      {
+        "label": "Şarj",
+        "value": "Manyetik MagSafe Uyumlu"
+      }
+    ],
+    "models": [
+      "iPhone 16 Pro Max",
+      "iPhone 16 Pro",
+      "iPhone 16 Plus",
+      "iPhone 16",
+      "iPhone 15 Pro Max",
+      "iPhone 15 Pro",
+      "iPhone 15 Plus",
+      "iPhone 15",
+      "iPhone 14 Pro Max",
+      "iPhone 14 Pro",
+      "iPhone 14 Plus",
+      "iPhone 14",
+      "iPhone 13 Pro Max",
+      "iPhone 13 Pro",
+      "iPhone 13",
+      "iPhone 12 Pro Max",
+      "iPhone 12 Pro",
+      "iPhone 12",
+      "iPhone 11"
+    ],
+    "variantOptions": {
+      "colors": [
+        {
+          "name": "Mor",
+          "hex": "#c084fc",
+          "image": "/assets/images/urunler/kilif-koruma/206-y2k-grl-altin-devre-seffaf-kilif/mor-altin/kılıf5resim1.jpg"
+        },
+        {
+          "name": "Yeşil",
+          "hex": "#86efac",
+          "image": "/assets/images/urunler/kilif-koruma/206-y2k-grl-altin-devre-seffaf-kilif/yesil-altin/kılıf5resim2.jpg"
+        }
+      ],
+      "models": [
+        "iPhone 16 Pro Max",
+        "iPhone 16 Pro",
+        "iPhone 16 Plus",
+        "iPhone 16",
+        "iPhone 15 Pro Max",
+        "iPhone 15 Pro",
+        "iPhone 15 Plus",
+        "iPhone 15",
+        "iPhone 14 Pro Max",
+        "iPhone 14 Pro",
+        "iPhone 14 Plus",
+        "iPhone 14",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro",
+        "iPhone 13",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro",
+        "iPhone 12",
+        "iPhone 11"
+      ]
+    }
   }
 ]

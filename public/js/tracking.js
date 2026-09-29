@@ -1,114 +1,20 @@
-/**
- * VİTRİN — Canlı Kargo ve Sipariş Takip Mantığı (Kargom Nerede?)
- */
+/** * VİTRİN — Canlı Kargo ve Sipariş Takip Mantığı (Kargom Nerede?) */ document.addEventListener('DOMContentLoaded', () => { const urlParams = new URLSearchParams(window.location.search); const codeParam = urlParams.get('kod'); loadMyOrders(); if (codeParam) { document.getElementById('tracking-input').value = codeParam; trackOrder(codeParam); } const form = document.getElementById('tracking-form'); if (form) { form.addEventListener('submit', (e) => { e.preventDefault(); const code = document.getElementById('tracking-input').value.trim(); if (code) { trackOrder(code); } }); }
+}); 
 
-document.addEventListener('DOMContentLoaded', () => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const codeParam = urlParams.get('kod');
 
-  if (codeParam) {
-    document.getElementById('tracking-input').value = codeParam;
-    trackOrder(codeParam);
-  }
-
-  const form = document.getElementById('tracking-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const code = document.getElementById('tracking-input').value.trim();
-      if (code) {
-        trackOrder(code);
-      }
-    });
-  }
-});
-
-async function trackOrder(code) {
-  const resultCard = document.getElementById('tracking-result-card');
-  const emptyState = document.getElementById('tracking-empty-state');
-  const notFoundState = document.getElementById('tracking-not-found');
-  const loadingState = document.getElementById('tracking-loading');
-
-  emptyState?.classList.add('hidden');
-  notFoundState?.classList.add('hidden');
-  resultCard?.classList.add('hidden');
-  loadingState?.classList.remove('hidden');
-
-  try {
-    const res = await fetch(`/api/orders/${encodeURIComponent(code)}`);
-    const data = await res.json();
-
-    loadingState?.classList.add('hidden');
-
-    if (data.success && data.order) {
-      renderTrackingDetails(data.order);
-      resultCard?.classList.remove('hidden');
-    } else {
-      notFoundState?.classList.remove('hidden');
-    }
-  } catch (err) {
-    loadingState?.classList.add('hidden');
-    notFoundState?.classList.remove('hidden');
-  }
-}
-
-function renderTrackingDetails(order) {
-  document.getElementById('res-order-id').innerText = order.id;
-  document.getElementById('res-cargo-company').innerText = order.cargo.company;
-  document.getElementById('res-cargo-code').innerText = order.cargo.trackingNumber;
-  document.getElementById('res-est-delivery').innerText = order.cargo.estimatedDelivery || '2 Gün İçinde';
-  document.getElementById('res-recipient-name').innerText = order.customer.fullName;
-  document.getElementById('res-recipient-city').innerText = `${order.customer.city} / ${order.customer.district}`;
-  document.getElementById('res-recipient-address').innerText = order.customer.address;
-  document.getElementById('res-payment-method').innerText = order.paymentMethod;
-  document.getElementById('res-order-total').innerText = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(order.total);
-
-  // Status Badge
-  const statusBadge = document.getElementById('res-status-badge');
-  const statusColors = {
-    'Beklemede': 'bg-amber-500/20 text-amber-300 border-amber-500/40',
-    'Hazırlanıyor': 'bg-blue-500/20 text-blue-300 border-blue-500/40',
-    'Kargoya Verildi': 'bg-purple-500/20 text-purple-300 border-purple-500/40',
-    'Teslim Edildi': 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40',
-    'İptal Edildi': 'bg-rose-500/20 text-rose-300 border-rose-500/40'
-  };
-  statusBadge.className = `px-3 py-1 rounded-full text-xs font-bold border ${statusColors[order.status] || 'bg-zinc-800 text-zinc-300'}`;
-  statusBadge.innerText = order.status;
-
-  // Timeline
-  const timelineContainer = document.getElementById('res-timeline');
-  if (timelineContainer && order.cargo.history) {
-    timelineContainer.innerHTML = order.cargo.history.map((step, idx) => `
-      <div class="relative flex items-start gap-4 pb-6 last:pb-0">
-        ${idx !== order.cargo.history.length - 1 ? `
-          <div class="absolute left-3.5 top-7 bottom-0 w-0.5 ${step.completed ? 'bg-cyan-500' : 'bg-zinc-800'}"></div>
-        ` : ''}
-        <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 z-10 ${step.completed ? 'bg-cyan-500 text-black font-extrabold text-xs shadow-lg shadow-cyan-500/30' : 'bg-zinc-800 text-zinc-500 border border-white/10 text-xs'}">
-          ${step.completed ? '✓' : idx + 1}
-        </div>
-        <div class="flex-1">
-          <h4 class="text-sm font-bold ${step.completed ? 'text-white' : 'text-zinc-500'}">${step.title}</h4>
-          <span class="text-xs text-zinc-400 block mt-0.5">${step.date}</span>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // Items List
-  const itemsContainer = document.getElementById('res-items-list');
-  if (itemsContainer) {
-    itemsContainer.innerHTML = order.items.map(item => `
-      <div class="flex items-center gap-3 p-2.5 rounded-xl bg-zinc-900/60 border border-white/5">
-        <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-lg object-cover bg-zinc-800" />
-        <div class="flex-1 min-w-0">
-          <p class="text-xs font-bold text-white truncate">${item.name}</p>
-          <span class="text-[11px] text-cyan-400 block">${item.selectedVariant || 'Standart'}</span>
-        </div>
-        <div class="text-right">
-          <span class="text-xs font-bold text-white">${new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(item.price)}</span>
-          <span class="text-[10px] text-zinc-500 block">x${item.quantity} Adet</span>
-        </div>
-      </div>
-    `).join('');
-  }
+const getLoggedUser = () => { try { return JSON.parse(localStorage.getItem('vitrin_user') || 'null'); } catch (e) { return null; }
+}; const PAYMENT_TONES = { alindi: 'bg-emerald-50 border-emerald-200', bekliyor: 'bg-amber-50 border-amber-300', kapida: 'bg-sky-50 border-sky-200', iptal: 'bg-rose-50 border-rose-200'
+};
+const PAYMENT_TEXT = { alindi: 'text-emerald-700', bekliyor: 'text-amber-700', kapida: 'text-sky-700', iptal: 'text-rose-700'
+};
+const FULFILLMENT_TONES = { kargoda: 'bg-zinc-950 border-zinc-950', teslim: 'bg-emerald-50 border-emerald-200', hazirlaniyor: 'bg-violet-50 border-violet-200', 'odeme-bekliyor': 'bg-amber-50 border-amber-300', iptal: 'bg-rose-50 border-rose-200'
+};
+const FULFILLMENT_TEXT = { kargoda: 'text-white', teslim: 'text-emerald-700', hazirlaniyor: 'text-violet-700', 'odeme-bekliyor': 'text-amber-700', iptal: 'text-rose-700'
+}; const fulfillmentNote = (info) => { if (info.fulfillmentStatus === 'kargoda') return ' Kurye yolda, teslimat 1-2 gün'; if (info.fulfillmentStatus === 'teslim') return 'Teslim edildi, afiyet olsun'; if (info.fulfillmentStatus === 'hazirlaniyor') return 'Depoda hazırlanıyor'; if (info.fulfillmentStatus === 'odeme-bekliyor') return ' Ödemeniz gelince kargoya verilecek'; return '—';
+}; async function loadMyOrders() { const user = getLoggedUser(); const panel = document.getElementById('my-orders-panel'); if (!user || !user.email || !panel) return; try { const res = await fetch(`/api/orders/user/${encodeURIComponent(user.email)}`); const data = await res.json(); if (!data.success) return; document.getElementById('my-orders-avatar').textContent = user.name.charAt(0).toUpperCase(); document.getElementById('my-orders-email').textContent = user.email; panel.classList.remove('hidden'); const list = document.getElementById('my-orders-list'); if (data.orders.length === 0) { list.innerHTML = ` <div class="py-6 text-center"> <p class="text-base font-bold text-zinc-900">Henüz siparişiniz yok</p> <p class="text-sm text-zinc-500 mt-1.5">Sipariş verdiğinizde sipariş numaranız ve durumu burada görünecek.</p> <a href="/#urunler" class="inline-block mt-4 px-5 py-2.5 rounded-lg bg-zinc-950 text-white text-sm font-bold">Alışverişe Başla</a> </div> `; return; } list.innerHTML = data.orders.map(o => { const info = o.statusInfo; return ` <div class="p-4 rounded-lg border border-zinc-400 hover:border-zinc-900 transition-colors cursor-pointer" onclick="trackOrder('${o.id}')"> <div class="flex items-center justify-between gap-2"> <div class="flex items-center gap-2 min-w-0"> <span class="font-mono text-sm font-black text-zinc-950">${o.id}</span> <span class="text-xs text-zinc-400 truncate">${new Date(o.createdAt).toLocaleDateString('tr-TR')}</span> </div> <span class="shrink-0 text-sm font-black">${formatTRY(o.total)}</span> </div> <div class="mt-2 flex flex-wrap items-center gap-1.5"> <span class="px-2.5 py-1 rounded-lg border text-[11px] font-black ${PAYMENT_TONES[info.paymentStatus]} ${PAYMENT_TEXT[info.paymentStatus]}">${info.paymentLabel}</span> <span class="px-2.5 py-1 rounded-lg border text-[11px] font-black ${FULFILLMENT_TONES[info.fulfillmentStatus]} ${FULFILLMENT_TEXT[info.fulfillmentStatus]}">${info.fulfillmentLabel}</span> <span class="text-xs text-zinc-400 ml-auto">${o.items.length} ürün</span> </div> </div> `; }).join(''); } catch (err) { console.error('Siparişler yüklenirken hata:', err); }
+} function formatTRY(val) { return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY' }).format(val);
+} async function trackOrder(code) { const resultCard = document.getElementById('tracking-result-card'); const emptyState = document.getElementById('tracking-empty-state'); const notFoundState = document.getElementById('tracking-not-found'); const loadingState = document.getElementById('tracking-loading'); emptyState?.classList.add('hidden'); notFoundState?.classList.add('hidden'); resultCard?.classList.add('hidden'); loadingState?.classList.remove('hidden'); try { const res = await fetch(`/api/orders/${encodeURIComponent(code)}`); const data = await res.json(); loadingState?.classList.add('hidden'); if (data.success && data.order) { renderTrackingDetails(data.order); resultCard?.classList.remove('hidden'); } else { notFoundState?.classList.remove('hidden'); } } catch (err) { loadingState?.classList.add('hidden'); notFoundState?.classList.remove('hidden'); }
+} function renderTrackingDetails(order) { const info = order.statusInfo || {}; document.getElementById('res-order-id').innerText = order.id; document.getElementById('res-cargo-company').innerText = order.cargo.company; document.getElementById('res-cargo-code').innerText = order.cargo.trackingNumber; document.getElementById('res-est-delivery').innerText = order.cargo.estimatedDelivery || '2 Gün İçinde'; document.getElementById('res-recipient-name').innerText = order.customer.fullName; document.getElementById('res-recipient-city').innerText = `${order.customer.city} / ${order.customer.district}`; document.getElementById('res-recipient-address').innerText = order.customer.address; document.getElementById('res-payment-method').innerText = order.paymentMethod; document.getElementById('res-order-total').innerText = formatTRY(order.total); 
+  const payBox = document.getElementById('res-payment-status-box'); const payEl = document.getElementById('res-payment-status'); payBox.className = `p-3.5 rounded-lg border ${PAYMENT_TONES[info.paymentStatus] || 'bg-zinc-50 border-zinc-400'}`; payEl.className = `text-sm font-black block mt-1 ${PAYMENT_TEXT[info.paymentStatus] || 'text-zinc-800'}`; payEl.innerText = info.paymentLabel || order.status; const fulBox = document.getElementById('res-fulfillment-status-box'); const fulEl = document.getElementById('res-fulfillment-status'); fulBox.className = `p-3.5 rounded-lg border ${FULFILLMENT_TONES[info.fulfillmentStatus] || 'bg-zinc-50 border-zinc-400'}`; fulEl.className = `text-sm font-black block mt-1 ${FULFILLMENT_TEXT[info.fulfillmentStatus] || 'text-zinc-800'}`; fulEl.innerText = info.fulfillmentLabel || order.status; document.getElementById('res-fulfillment-note').innerText = fulfillmentNote(info); 
+  const itemsContainer = document.getElementById('res-items-list'); if (itemsContainer) { itemsContainer.innerHTML = order.items.map(item => ` <div class="flex items-center gap-3 p-2.5 rounded-xl bg-zinc-50 border border-zinc-300"> <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-lg object-cover bg-zinc-200" /> <div class="flex-1 min-w-0"> <p class="text-sm font-bold text-zinc-900 truncate">${item.name}</p> <span class="text-xs text-cyan-600 block">${item.selectedVariant || 'Standart'}</span> <span class="inline-block mt-1.5 px-2 py-1 rounded-lg border text-[11px] font-black ${FULFILLMENT_TONES[info.fulfillmentStatus] || ''} ${FULFILLMENT_TEXT[info.fulfillmentStatus] || 'text-zinc-600'}">${info.fulfillmentLabel || order.status}</span> </div> <div class="text-right"> <span class="text-sm font-bold text-zinc-900">${formatTRY(item.price)}</span> <span class="text-xs text-zinc-500 block">x${item.quantity} Adet</span> </div> </div> `).join(''); }
 }

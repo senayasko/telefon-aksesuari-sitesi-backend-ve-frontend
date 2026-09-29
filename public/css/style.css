@@ -1,132 +1,196 @@
 /* VİTRİN — Cool Gray Industrial D2C Aesthetics & Compact Grid */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap');
-
-:root {
-  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
-  --bg-body: #eef0f3; /* Cool Industrial Grayish */
-  --bg-card: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border-subtle: #cbd5e1;
-  --border-strong: #94a3b8;
-  --accent-cyan: #0284c7;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap'); :root { --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; --font-display: 'Space Grotesk', sans-serif; --bg-body: #e3d6fb; /* Y2K Light Purple (darker) */ --bg-card: #ffffff; --text-main: #0f172a; --text-muted: #64748b; --border-subtle: #cbd5e1; --border-strong: #94a3b8; --accent-cyan: #0284c7;
+} body { font-family: var(--font-main); color: var(--text-main); overflow-x: hidden; -webkit-font-smoothing: antialiased; background-color: var(--bg-body);
+} h1, h2, h3, .font-display { font-family: var(--font-display);
+} /* Clean UI font (Plus Jakarta Sans) — modal & UI başlıkları için */
+.font-ui { font-family: var(--font-main); letter-spacing: -0.025em;
+} /* Custom Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px;
 }
-
-body {
-  font-family: var(--font-main);
-  background-color: var(--bg-body);
-  color: var(--text-main);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+::-webkit-scrollbar-track { background: #e2e8f0;
 }
-
-h1, h2, h3, .font-display {
-  font-family: var(--font-display);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #e2e8f0;
-}
-::-webkit-scrollbar-thumb {
-  background: #94a3b8;
-  border-radius: 4px;
-}
-
-/* Glass Header */
-.glass-nav-gray {
-  background: rgba(238, 240, 243, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid #cbd5e1;
-}
-
-/* Compact Modern Product Card */
-.compact-card {
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  background: #ffffff;
-  border: 1px solid #d4d8de;
-}
-
-.compact-card:hover {
-  transform: translateY(-3px);
-  border-color: #0f172a;
-  box-shadow: 0 12px 28px -8px rgba(15, 23, 42, 0.12);
-}
-
-/* Spin Wheel Styling */
-#wheel-canvas {
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.25));
-  transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
-}
-
-.wheel-pointer {
+::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 4px;
+} /* ======================== PRODUCT PAGE ZOOM LENS (/urun/:id) ======================== */
+/* Kucuk kare buyutec: resmin uzerine gelince belirir, imlec gezdikce buyur. */
+.pp-zoom-lens {
   position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-top: 24px solid #ef4444;
-  z-index: 20;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-}
-
-/* Trust Badge Minimal Box */
-.trust-badge-minimal {
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
-  transition: all 0.2s ease;
-}
-.trust-badge-minimal:hover {
-  border-color: #0f172a;
-}
-
-/* Credit Card Preview */
-.credit-card-preview {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
-  position: relative;
+  display: none;
+  width: 120px;
+  height: 120px;
+  border: 2px solid #09090b;
+  border-radius: 6px;
   overflow: hidden;
+  pointer-events: none;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  z-index: 30;
+}
+.pp-zoom-lens > img {
+  position: absolute;
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.pp-zoom-crosshair,
+.pp-zoom-crosshair::after {
+  position: absolute;
+  background: rgba(9, 9, 11, 0.55);
+  pointer-events: none;
+}
+.pp-zoom-crosshair { left: 50%; top: 0; width: 1px; height: 100%; }
+.pp-zoom-crosshair::after { left: 0; top: 50%; width: 100%; height: 1px; }
+.pp-zoom-tag {
+  position: absolute;
+  z-index: 31;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+#pp-zoom-wrap:hover ~ .pp-zoom-tag,
+#pp-zoom-wrap.is-zooming ~ .pp-zoom-tag { opacity: 1; }
+#pp-zoom-wrap { transition: box-shadow 0.2s ease; }
+#pp-zoom-wrap:hover { box-shadow: inset 0 0 0 2px #09090b; }
+
+/* Dusuk cozunurluklu urunlerde gorseli kucultup netlestir */
+.pp-native-size { max-width: 100%; margin-inline: auto; height: auto; }
+
+/* Header (sert kenar, cam efekti yok) */
+.glass-nav-gray { background: #f0e9fd; border-bottom: 1px solid #c4b5fd;
+} /* Compact Product Card */
+.compact-card { transition: all 0.2s ease; background: #ffffff; border: 1px solid #d4d4d8;
+} .compact-card:hover { transform: translateY(-2px); border-color: #09090b;
+} /* ======================== FLOATING LABEL FORM FIELDS ======================== */
+/* Kullanım: <div class="float-field on-zinc"><input placeholder=" "><label>Etiket</label></div> */ .float-field { --ff-bg: #ffffff; --ff-border: #e4e4e7; --ff-focus: #09090b; position: relative; width: 100%;
+}
+/* Profil modalı — daha büyük ve okunur inputlar */
+#profile-modal .float-field > input { padding: 1.3rem 0.9rem 0.5rem; font-size: 0.9375rem; font-weight: 500;
+}
+#profile-modal .float-field > input + label { left: 0.9rem; top: 0.72rem; font-size: 0.9375rem;
+}
+#profile-modal .float-field > input:focus + label,
+#profile-modal .float-field > input:not(:placeholder-shown) + label { top: -0.5rem; font-size: 0.6875rem;
+}
+.float-field.on-zinc { --ff-bg: #fafafa; }
+/* Header arama kutusu — daha büyük ve okunur */
+.header-search > input { padding: 1.4rem 2.75rem 0.5rem 0.9rem; font-size: 0.9375rem; font-weight: 500;
+}
+.header-search > input + label { left: 0.9rem; top: 0.7rem; font-size: 0.9375rem;
+}
+.header-search > input:focus + label,
+.header-search > input:not(:placeholder-shown) + label { top: -0.5rem; font-size: 0.6875rem;
+}
+.float-field.on-light { --ff-bg: #f4f4f5; } /* Koyu zemin varyantı (bülten formu) */
+.float-field.float-field-dark { --ff-bg: #18181b; --ff-border: #3f3f46; --ff-focus: #22d3ee;
+}
+.float-field.float-field-dark > input { color: #ffffff;
+}
+.float-field.float-field-dark > input:focus { box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
+}
+.float-field.float-field-dark > input + label { color: #a1a1aa;
+}
+.float-field.float-field-dark > input:focus + label,
+.float-field.float-field-dark > input:not(:placeholder-shown) + label { color: #22d3ee;
+} .float-field > input,
+.float-field > textarea,
+.float-field > select { width: 100%; background-color: var(--ff-bg); border: 1px solid var(--ff-border); border-radius: 0.75rem; padding: 1.15rem 0.75rem 0.4rem; font-size: 0.8125rem; color: #0f172a; outline: none; transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.float-field > textarea { resize: vertical; line-height: 1.4;
+}
+.float-field > select { appearance: none; padding-right: 1.75rem; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.6rem center; background-size: 1rem;
+}
+.float-field > input:focus,
+.float-field > textarea:focus,
+.float-field > select:focus { border-color: var(--ff-focus); box-shadow: 0 0 0 3px rgba(9, 9, 11, 0.06);
+}
+.float-field > input::placeholder,
+.float-field > textarea::placeholder { color: transparent;
+} /* Yerleşik etiket (input/textarea/select hemen ardından gelmeli) */
+.float-field > input + label,
+.float-field > textarea + label,
+.float-field > select + label { position: absolute; left: 0.75rem; top: 0.6rem; font-size: 0.8125rem; line-height: 1; color: #71717a; pointer-events: none; transform-origin: left top; transition: top 0.16s ease, font-size 0.16s ease, color 0.16s ease, background-color 0.16s ease; background-color: var(--ff-bg); padding: 0 0.25rem; border-radius: 4px;
+} /* Odaklanınca veya dolu olduğunda yukarı kalkar */
+.float-field > input:focus + label,
+.float-field > textarea:focus + label,
+.float-field > select:focus + label,
+.float-field > input:not(:placeholder-shown) + label,
+.float-field > textarea:not(:placeholder-shown) + label,
+.float-field > select:valid + label { top: -0.45rem; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.02em; color: #09090b;
+} /* Hata durumu */
+.float-field.has-error > input,
+.float-field.has-error > textarea,
+.float-field.has-error > select { border-color: #f87171; background-color: #fef2f2;
+}
+.float-field.has-error > input + label,
+.float-field.has-error > textarea + label { color: #dc2626;
+} /* Banner Başlığı — düz, okunaklı tipografi (neon yok) */
+.banner-title { color: #ffffff; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.30);
+}
+.hero-shell:hover { box-shadow: 0 24px 60px -18px rgba(15, 23, 42, 0.45);
+} /* Neon "Vibe Check" Hero — matched to banner.png background (#0A0F1A) */
+.neon-hero { background: radial-gradient(55% 85% at 6% 22%, rgba(45, 212, 191, 0.10), transparent 60%), radial-gradient(60% 90% at 14% 88%, rgba(168, 85, 247, 0.16), transparent 62%), linear-gradient(135deg, #0a0f1a 0%, #0b1524 55%, #080b14 100%);
+}
+/* Banner Başlığı — düz, okunaklı tipografi (neon yok) */
+.banner-title { color: #ffffff; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.30);
+}
+.banner-title-accent { color: #c084fc; text-shadow: 0 2px 0 rgba(0, 0, 0, 0.30);
+} /* Spin Wheel Styling */
+#wheel-canvas { filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.25)); transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+} .wheel-pointer { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 11px solid transparent; border-right: 11px solid transparent; border-top: 19px solid #ef4444; z-index: 20; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+} .wheel-pointer { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 17px solid transparent; border-right: 17px solid transparent; border-top: 30px solid #09090b; z-index: 20; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+} /* Trust Badge Minimal Box */
+.trust-badge-minimal { border: 1px solid #d4d4d8; background: #ffffff; transition: all 0.2s ease;
+}
+.trust-badge-minimal:hover { border-color: #0f172a;
+} /* Credit Card Preview */
+.credit-card-preview { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18); position: relative; overflow: hidden;
+} /* Drawer Transitions */
+.drawer-backdrop { transition: opacity 0.3s ease;
+}
+.drawer-panel { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+} /* Animations */
+@keyframes slideInUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up { animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+} /* Floating Wheel Button Pulse */
+@keyframes wheelPulse { 0% { transform: scale(1); } 50% { transform: scale(1.06); } 100% { transform: scale(1); }
+}
+.animate-wheel-pulse { animation: wheelPulse 2.5s infinite ease-in-out;
 }
 
-/* Drawer Transitions */
-.drawer-backdrop {
-  transition: opacity 0.3s ease;
-}
-.drawer-panel {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Animations */
-@keyframes slideInUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-.animate-slide-up {
-  animation: slideInUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+/* ============================================================
+   BUTON SISTEMI — tek dil, ince net cizgi, sert kose
+   ============================================================ */
+button {
+  border-radius: 0.5rem !important;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease, transform .12s ease !important;
 }
 
-/* Floating Wheel Button Pulse */
-@keyframes wheelPulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.06); }
-  100% { transform: scale(1); }
+/* Kenarligi olan her buton: 1px, acik gri. Hover'da koyu siyah. */
+button[class*="border"] {
+  border-width: 1px !important;
+  border-color: #d4d4d8 !important;
 }
-.animate-wheel-pulse {
-  animation: wheelPulse 2.5s infinite ease-in-out;
-}
+button[class*="border"]:hover { border-color: #09090b !important; }
+
+/* Koyu dolgulu butonlar hafif bir ic cizgi alsin (kutu hissi) */
+button[class*="bg-zinc-9"]:not([class*="border"]) { box-shadow: inset 0 0 0 1px rgba(255,255,255,.10); }
+
+/* Etkilesim */
+button:focus-visible { outline: 2px solid #09090b; outline-offset: 2px; border-radius: 0.5rem; }
+button:active:not(:disabled) { transform: translateY(1px); }
+button:disabled, button[disabled] { opacity: .45; cursor: not-allowed; transform: none; }
+
+/* ============================================================
+   CIZGI DENSITESI — kalin ve koyu ayirici cizgileri incelt
+   ============================================================ */
+[class*="border-b-2"], [class*="border-t-2"] { border-width: 1px !important; border-color: #d4d4d8 !important; }
+
+/* ============================================================
+   URUN KARTI - daha buyuk, daha belirgin
+   ============================================================ */
+.compact-card { border-color: #d4d4d8; }
+.compact-card:hover { transform: translateY(-3px); border-color: #09090b; }
+.compact-card img { image-rendering: -webkit-optimize-contrast; }

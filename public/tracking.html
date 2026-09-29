@@ -1,156 +1,135 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kargom Nerede? — vitrin. Canlı Takip</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body class="bg-[#fbfbfd] text-zinc-900 min-h-screen flex flex-col font-sans">
-
-  <!-- Header -->
-  <header class="glass-nav-light sticky top-0 z-40 bg-white/90 border-b border-zinc-200">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-1 group">
-        <span class="text-3xl font-black tracking-tighter text-zinc-950 font-display">
-          vitrin<span class="text-cyan-600">.</span>
-        </span>
-      </a>
-
-      <div class="flex items-center gap-3 text-xs">
-        <a href="/" class="px-4 py-2 rounded-full border border-zinc-200 hover:border-zinc-900 text-zinc-700 hover:text-black font-semibold bg-white transition-all">
-          ← Mağazaya Dön
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kargom Nerede? — vitrin. Canlı Takip</title> <script src="https://cdn.tailwindcss.com"></script> <link rel="stylesheet" href="/css/style.css?v=1790627121352">
+    </head>
+    <body class="bg-[#fbfbfd] text-zinc-900 min-h-screen flex flex-col font-sans"> <!-- Header --> <header class="glass-nav-light sticky top-0 z-40 bg-white/90 border-b border-zinc-300">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 h-24 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-1 group">
+          <span class="text-3xl font-black tracking-tighter text-zinc-950 font-display"> vitrin<span class="text-cyan-600">.</span>
+          </span>
         </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Content -->
-  <main class="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-12 w-full">
-    
-    <!-- Title Area -->
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-extrabold text-zinc-950 font-display">Kargom Nerede?</h1>
-      <p class="text-xs text-zinc-500 mt-1 max-w-md mx-auto">
-        Sipariş numaranızı (örn: <code class="text-zinc-950 font-bold">VTR-1001</code>) veya kargo takip kodunuzu girerek canlı takip edin.
-      </p>
-    </div>
-
-    <!-- Search Box -->
-    <div class="p-4 sm:p-6 rounded-3xl bg-white border border-zinc-200 shadow-sm mb-8">
-      <form id="tracking-form" class="flex flex-col sm:flex-row gap-2.5">
-        <div class="relative flex-1">
-          <input 
-            type="text" 
-            id="tracking-input" 
-            placeholder="Sipariş No (VTR-XXXX) veya Kargo Kodu..." 
-            class="w-full py-3 pl-11 pr-4 rounded-xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-zinc-900 uppercase font-mono font-bold tracking-wider"
-            required
-          />
-          <svg class="w-4 h-4 text-zinc-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-        </div>
-        <button 
-          type="submit" 
-          class="py-3 px-6 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition-all"
-        >
-          Sorgula
-        </button>
-      </form>
-
-      <!-- Quick test links -->
-      <div class="mt-4 pt-3 border-t border-zinc-100 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
-        <span>Test Siparişleri:</span>
-        <button onclick="document.getElementById('tracking-input').value='VTR-1001'; trackOrder('VTR-1001');" class="px-2 py-0.5 rounded bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-mono text-[11px]">VTR-1001 (Havale)</button>
-        <button onclick="document.getElementById('tracking-input').value='VTR-1002'; trackOrder('VTR-1002');" class="px-2 py-0.5 rounded bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-mono text-[11px]">VTR-1002 (Kapıda)</button>
-        <button onclick="document.getElementById('tracking-input').value='VTR-1003'; trackOrder('VTR-1003');" class="px-2 py-0.5 rounded bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-mono text-[11px]">VTR-1003 (iyzico)</button>
-      </div>
-    </div>
-
-    <!-- Loading State -->
-    <div id="tracking-loading" class="hidden text-center py-12">
-      <div class="spinner mx-auto mb-2"></div>
-      <p class="text-xs text-zinc-400">Kargo durumu sorgulanıyor...</p>
-    </div>
-
-    <!-- Empty State -->
-    <div id="tracking-empty-state" class="text-center py-12 text-zinc-400">
-      <p class="text-xs">Yukarıdaki alana sipariş numaranızı giriniz.</p>
-    </div>
-
-    <!-- Not Found State -->
-    <div id="tracking-not-found" class="hidden text-center py-8 text-zinc-600 bg-red-50 border border-red-200 rounded-2xl p-6">
-      <h3 class="text-xs font-bold text-red-800">Sipariş Kaydı Bulunamadı</h3>
-      <p class="text-xs text-zinc-600 mt-1">Lütfen sipariş numaranızı kontrol edip tekrar deneyin.</p>
-    </div>
-
-    <!-- Result Card -->
-    <div id="tracking-result-card" class="hidden space-y-6">
-      <div class="p-6 rounded-3xl bg-white border border-zinc-200 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-100">
-          <div>
-            <span class="text-[10px] text-zinc-400 uppercase font-mono block">Sipariş No</span>
-            <div class="flex items-center gap-3 mt-1">
-              <span id="res-order-id" class="text-xl font-mono font-black text-zinc-950">VTR-XXXX</span>
-              <span id="res-status-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold border">Durum</span>
-            </div>
-          </div>
-          <div class="sm:text-right">
-            <span class="text-[10px] text-zinc-400 uppercase font-mono block">Tahmini Teslimat</span>
-            <span id="res-est-delivery" class="text-xs font-bold text-zinc-900 mt-1 block"></span>
+        <div class="flex items-center gap-3 text-sm">
+          <a href="/" class="px-5 py-3 rounded-lg border border-zinc-400 hover:border-zinc-900 text-zinc-700 hover:text-black font-semibold bg-white transition-all"> Mağazaya Dön </a>
           </div>
         </div>
+      </header> <!-- Main Content --> <main class="flex-1 max-w-4xl mx-auto px-4 sm:px-6 py-14 w-full"> <!-- Title Area --> <div class="text-center mb-8">
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-zinc-950 font-display">Kargom Nerede?</h1>
+        <p class="text-base text-zinc-500 mt-2.5 max-w-2xl mx-auto leading-relaxed"> Sipariş numaranızı (örn: <code class="text-zinc-950 font-bold">VTR-1001</code>) veya kargo takip kodunuzu girerek canlı takip edin. </p>
+        </div> <!-- ===================== MY ORDERS (Registered User) ===================== --> <div id="my-orders-panel" class="hidden mb-10">
+        <div class="p-4 sm:p-5 rounded-lg bg-white border border-zinc-400 ">
+          <div class="flex items-center justify-between gap-3 pb-3 border-b border-zinc-300">
+            <div class="flex items-center gap-2.5">
+              <span id="my-orders-avatar" class="w-10 h-10 rounded-lg bg-zinc-950 text-white text-sm font-black flex items-center justify-center">V</span>
+                <div>
+                  <h2 class="text-base font-black text-zinc-950">Siparişlerim</h2>
+                    <p id="my-orders-email" class="text-xs text-zinc-500">-</p>
+                    </div>
+                  </div>
+                  <a href="/#profile" class="px-4 py-2 rounded-lg border border-zinc-400 text-xs font-bold text-zinc-600 hover:bg-zinc-950 hover:text-white transition-all"> Hesabım </a>
+                  </div>
+                  <div id="my-orders-list" class="mt-3 space-y-2">
+                  </div>
+                </div>
+              </div> <!-- Search Box --> <div class="p-5 sm:p-8 rounded-lg bg-white border border-zinc-400 mb-10">
+              <form id="tracking-form" class="flex flex-col sm:flex-row gap-3 items-start">
+                <div class="float-field on-zinc flex-1">
+                  <input type="text" id="tracking-input" placeholder=" " class="uppercase font-mono font-bold tracking-wider" required />
+                  <label>Sipariş No (VTR-XXXX) veya Kargo Kodu</label>
+                  </div>
+                  <button type="submit" class="py-4 px-7 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-sm uppercase tracking-wider transition-all h-full" > Sorgula </button>
+                  </form> <!-- Quick test links --> <div class="mt-5 pt-4 border-t border-zinc-300 flex flex-wrap items-center gap-2 text-sm text-zinc-500">
+                  <span>Test Siparişleri:</span>
+                    <button onclick="document.getElementById('tracking-input').value='VTR-1001'; trackOrder('VTR-1001');" class="px-3 py-1.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-mono text-sm">VTR-1001 (Havale)</button>
+                      <button onclick="document.getElementById('tracking-input').value='VTR-1002'; trackOrder('VTR-1002');" class="px-3 py-1.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-mono text-sm">VTR-1002 (Kapıda)</button>
+                        <button onclick="document.getElementById('tracking-input').value='VTR-1003'; trackOrder('VTR-1003');" class="px-3 py-1.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-mono text-sm">VTR-1003 (iyzico)</button>
+                        </div>
+                      </div> <!-- Loading State --> <div id="tracking-loading" class="hidden text-center py-12">
+                      <div class="spinner mx-auto mb-2">
+                      </div>
+                      <p class="text-sm text-zinc-400">Kargo durumu sorgulanıyor...</p>
+                      </div> <!-- Empty State --> <div id="tracking-empty-state" class="text-center py-12 text-zinc-400">
+                      <p class="text-xs">Yukarıdaki alana sipariş numaranızı giriniz.</p>
+                      </div> <!-- Not Found State --> <div id="tracking-not-found" class="hidden text-center py-8 text-zinc-600 bg-red-50 border border-red-200 rounded-md p-6">
+                      <h3 class="text-xs font-bold text-red-800">Sipariş Kaydı Bulunamadı</h3>
+                        <p class="text-xs text-zinc-600 mt-1">Lütfen sipariş numaranızı kontrol edip tekrar deneyin.</p>
+                        </div> <!-- Result Card --> <div id="tracking-result-card" class="hidden space-y-6">
+                        <div class="p-6 rounded-lg bg-white border border-zinc-400 ">
+                          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-zinc-300">
+                            <div>
+                              <span class="text-[10px] text-zinc-400 uppercase font-mono block">Sipariş No</span>
+                                <div class="flex items-center gap-3 mt-1">
+                                  <span id="res-order-id" class="text-xl font-mono font-black text-zinc-950">VTR-XXXX</span>
+                                    <span id="res-status-badge" class="px-2.5 py-0.5 rounded-md text-xs font-bold border">Durum</span>
+                                    </div>
+                                  </div>
+                                  <div class="sm:text-right">
+                                    <span class="text-[10px] text-zinc-400 uppercase font-mono block">Tahmini Teslimat</span>
+                                      <span id="res-est-delivery" class="text-xs font-bold text-zinc-900 mt-1 block">
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="grid grid-cols-2 gap-4 py-4 border-b border-zinc-300 text-xs">
+                                    <div>
+                                      <span class="text-zinc-400 block text-[10px]">Kargo Firması</span>
+                                        <span id="res-cargo-company" class="font-bold text-zinc-900 block mt-0.5">
+                                        </span>
+                                      </div>
+                                      <div>
+                                        <span class="text-zinc-400 block text-[10px]">Kargo Takip No</span>
+                                          <span id="res-cargo-code" class="font-mono font-bold text-zinc-900 block mt-0.5">
+                                          </span>
+                                        </div>
+                                      </div> <!-- Product / Order Status (Ödeme mi, Kargoda mı?) --> <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 py-4 border-b border-zinc-300">
+                                      <div id="res-payment-status-box" class="p-3.5 rounded-lg border">
+                                        <span class="text-[10px] text-zinc-400 uppercase font-mono block">Ödeme Durumu</span>
+                                          <strong id="res-payment-status" class="text-sm font-black block mt-1">-</strong>
+                                            <span id="res-payment-method" class="text-[10px] text-zinc-500 block mt-0.5">-</span>
+                                            </div>
+                                            <div id="res-fulfillment-status-box" class="p-3.5 rounded-lg border">
+                                              <span class="text-[10px] text-zinc-400 uppercase font-mono block">Ürün Durumu</span>
+                                                <strong id="res-fulfillment-status" class="text-sm font-black block mt-1">-</strong>
+                                                  <span id="res-fulfillment-note" class="text-[10px] text-zinc-500 block mt-0.5">-</span>
+                                                  </div>
+                                                </div> <!-- Timeline --> <div class="pt-6">
+                                                <h3 class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-4">Kargo Durum Akışı</h3>
+                                                  <div id="res-timeline" class="space-y-1">
+                                                  </div>
+                                                </div>
+                                              </div> <!-- Recipient & Items --> <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                              <div class="p-5 rounded-lg bg-white border border-zinc-400 text-xs space-y-2">
+                                                <h4 class="font-bold text-zinc-950 border-b border-zinc-300 pb-2">Teslimat & Ödeme</h4>
+                                                  <div>
+                                                    <span class="text-zinc-400 block text-[10px]">Alıcı</span>
+                                                      <span id="res-recipient-name" class="font-semibold text-zinc-900">
+                                                      </span>
+                                                    </div>
+                                                    <div>
+                                                      <span class="text-zinc-400 block text-[10px]">Adres</span>
+                                                        <span id="res-recipient-city" class="text-zinc-700 block">
+                                                        </span>
+                                                        <span id="res-recipient-address" class="text-zinc-600 block">
+                                                        </span>
+                                                      </div>
+                                                      <div class="pt-2 border-t border-zinc-300 flex justify-between font-bold">
+                                                        <span class="text-zinc-500">Tutar:</span>
+                                                          <span id="res-order-total" class="text-zinc-950">
+                                                          </span>
+                                                        </div>
+                                                      </div>
+                                                      <div class="p-5 rounded-lg bg-white border border-zinc-400 text-xs space-y-2">
+                                                        <h4 class="font-bold text-zinc-950 border-b border-zinc-300 pb-2">Paket İçeriği</h4>
+                                                          <div id="res-items-list" class="space-y-2">
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </main>
+                                                  <footer class="border-t border-zinc-400 py-6 text-center text-xs text-zinc-400 bg-white">
+                                                    <p>© 2026 vitrin. Canlı Kargo Takip Sistemi.</p>
+                                                    </footer> <script src="/js/tracking.js?v=1790627121352"></script>
+                                                  </body>
+                                                </html>
 
-        <div class="grid grid-cols-2 gap-4 py-4 border-b border-zinc-100 text-xs">
-          <div>
-            <span class="text-zinc-400 block text-[10px]">Kargo Firması</span>
-            <span id="res-cargo-company" class="font-bold text-zinc-900 block mt-0.5"></span>
-          </div>
-          <div>
-            <span class="text-zinc-400 block text-[10px]">Kargo Takip No</span>
-            <span id="res-cargo-code" class="font-mono font-bold text-zinc-900 block mt-0.5"></span>
-          </div>
-        </div>
-
-        <!-- Timeline -->
-        <div class="pt-6">
-          <h3 class="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-4">Kargo Durum Akışı</h3>
-          <div id="res-timeline" class="space-y-1"></div>
-        </div>
-      </div>
-
-      <!-- Recipient & Items -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="p-5 rounded-2xl bg-white border border-zinc-200 text-xs space-y-2">
-          <h4 class="font-bold text-zinc-950 border-b border-zinc-100 pb-2">Teslimat & Ödeme</h4>
-          <div>
-            <span class="text-zinc-400 block text-[10px]">Alıcı</span>
-            <span id="res-recipient-name" class="font-semibold text-zinc-900"></span>
-          </div>
-          <div>
-            <span class="text-zinc-400 block text-[10px]">Adres</span>
-            <span id="res-recipient-city" class="text-zinc-700 block"></span>
-            <span id="res-recipient-address" class="text-zinc-600 block"></span>
-          </div>
-          <div class="pt-2 border-t border-zinc-100 flex justify-between font-bold">
-            <span class="text-zinc-500">Tutar:</span>
-            <span id="res-order-total" class="text-zinc-950"></span>
-          </div>
-        </div>
-
-        <div class="p-5 rounded-2xl bg-white border border-zinc-200 text-xs space-y-2">
-          <h4 class="font-bold text-zinc-950 border-b border-zinc-100 pb-2">Paket İçeriği</h4>
-          <div id="res-items-list" class="space-y-2"></div>
-        </div>
-      </div>
-    </div>
-
-  </main>
-
-  <footer class="border-t border-zinc-200 py-6 text-center text-xs text-zinc-400 bg-white">
-    <p>© 2026 vitrin. Canlı Kargo Takip Sistemi.</p>
-  </footer>
-
-  <script src="/js/tracking.js"></script>
-</body>
-</html>
