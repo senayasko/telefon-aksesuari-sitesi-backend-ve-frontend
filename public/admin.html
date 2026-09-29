@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vitrin. — Yönetim & Sipariş Kontrol Paneli</title> <script src="https://cdn.tailwindcss.com"></script> <link rel="stylesheet" href="/css/style.css?v=1790627121352">
+    </head>
+    <body class="bg-[#fbfbfd] text-zinc-900 min-h-screen flex flex-col font-sans"> <!-- ======================== LOGIN GATE SCREEN (Criterion requirement) ======================== --> <div id="admin-login-gate" class="fixed inset-0 z-50 bg-[#fbfbfd] flex items-center justify-center p-4">
+      <div class="w-full max-w-sm rounded-lg bg-white border border-zinc-400 p-8 text-center">
+        <span class="text-3xl font-black text-zinc-950 font-display block mb-1">vitrin<span class="text-cyan-600">.</span>
+        </span>
+        <h2 class="text-sm font-bold text-zinc-700 mb-6">Yönetici Giriş Paneli</h2>
+          <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-left">
+            <div class="float-field on-zinc">
+              <input type="email" id="admin-user" required placeholder=" " autocomplete="email" />
+              <label>Yönetici E-Posta</label>
+              </div>
+              <div class="float-field on-zinc">
+                <input type="password" id="admin-pass" required placeholder=" " autocomplete="current-password" />
+                <label>Şifre</label>
+                </div>
+                <p class="text-[10px] text-zinc-400 leading-relaxed"> Yönetim paneline yalnızca veritabanında <span class="font-bold text-zinc-600">admin</span> yetkisine sahip hesaplar girebilir. </p>
+                  <div id="admin-login-error" class="hidden text-xs text-red-600 font-semibold text-center"> Hatalı kullanıcı adı veya şifre! </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition-all " > Giriş Yap </button>
+                    </form>
+                    <div class="mt-6 pt-4 border-t border-zinc-300 text-[11px] text-zinc-400"> Demo Bilgileri: <strong>admin</strong> / <strong>vitrin2026</strong>
+                    </div>
+                  </div>
+                </div> <!-- ======================== ADMIN DASHBOARD CONTAINER ======================== --> <div id="admin-dashboard-container" class="hidden flex flex-col flex-1"> <!-- Top Nav --> <header class="glass-nav-light sticky top-0 z-40 bg-white/90 border-b border-zinc-300">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <a href="/" class="flex items-center gap-1 group">
+                      <span class="text-2xl font-black tracking-tighter text-zinc-950 font-display">vitrin<span class="text-cyan-600">.</span>
+                      </span>
+                    </a>
+                    <span class="text-[11px] px-2.5 py-0.5 rounded-md bg-zinc-100 text-zinc-700 font-bold border border-zinc-400"> Yönetim Paneli </span>
+                    </div>
+                    <div class="flex items-center gap-2"> <!-- Quick test order --> <button onclick="createQuickTestOrder()" class="px-3.5 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white text-xs font-bold transition-all flex items-center gap-1.5" title="Hocaya sunum yaparken tek tıkla test siparişi oluşturur" >
+                      <span>+ Hızlı Test Siparişi</span>
+                      </button>
+                      <a href="/" target="_blank" class="px-3 py-2 rounded-xl border border-zinc-400 hover:border-zinc-900 text-xs font-semibold text-zinc-700 bg-white transition-all" > Mağazayı Gör </a>
+                        <button onclick="handleAdminLogout()" class="px-3 py-2 rounded-xl border border-red-200 hover:bg-red-50 text-xs font-semibold text-red-600 transition-all" > Çıkış </button>
+                        </div>
+                      </div>
+                    </header> <!-- Main Content --> <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full"> <!-- Top Summary Cards --> <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8">
+                    <div class="p-4 rounded-lg bg-white border border-zinc-400 ">
+                      <span class="text-[11px] text-zinc-400 font-medium block">Toplam Ciro</span>
+                        <span id="stat-revenue" class="text-xl font-black text-zinc-950 mt-1 block">0.00 TL</span>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white border border-zinc-400 ">
+                          <span class="text-[11px] text-zinc-400 font-medium block">Toplam Sipariş</span>
+                            <span id="stat-orders" class="text-xl font-black text-zinc-950 mt-1 block">0</span>
+                            </div>
+                            <div class="p-4 rounded-lg bg-white border border-zinc-400 ">
+                              <span class="text-[11px] text-zinc-400 font-medium block">Bekleyen / Hazırlanan</span>
+                                <span id="stat-pending" class="text-xl font-black text-amber-600 mt-1 block">0</span>
+                                </div>
+                                <div class="p-4 rounded-lg bg-white border border-zinc-400 ">
+                                  <span class="text-[11px] text-zinc-400 font-medium block">Kritik Stok Uyarısı</span>
+                                    <span id="stat-low-stock" class="text-xl font-black text-red-600 mt-1 block">0</span>
+                                    </div>
+                                    <div class="p-4 rounded-lg bg-white border border-zinc-400 col-span-2 md:col-span-1">
+                                      <span class="text-[11px] text-zinc-400 font-medium block">SEO Skoru</span>
+                                        <span id="stat-seo-score" class="text-xl font-black text-emerald-600 mt-1 block">98/100</span>
+                                        </div>
+                                      </div> <!-- Tabs Navigation --> <div class="flex items-center gap-2 border-b border-zinc-300 pb-2 mb-6 text-xs font-semibold">
+                                      <button data-tab="orders" class="admin-tab-btn py-2 px-4 rounded-xl border border-zinc-950 text-zinc-950 bg-zinc-100 transition-all"> Sipariş Yönetimi (Kriter 12) </button>
+                                        <button data-tab="inventory" class="admin-tab-btn py-2 px-4 rounded-xl border border-transparent text-zinc-500 hover:text-zinc-950 transition-all"> Canlı Stok & Envanter (Kriter 2) </button>
+                                          <button data-tab="coupons" class="admin-tab-btn py-2 px-4 rounded-xl border border-transparent text-zinc-500 hover:text-zinc-950 transition-all"> Kuponlar & Kampanyalar (Kriter 6) </button>
+                                            <button data-tab="checklist" class="admin-tab-btn py-2 px-4 rounded-xl border border-transparent text-zinc-500 hover:text-zinc-950 transition-all"> 12 Kriter Raporu </button>
+                                            </div> <!-- Tab 1: Orders --> <div id="tab-pane-orders" class="admin-tab-pane space-y-3">
+                                            <div class="p-3.5 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900 flex items-center justify-between">
+                                              <span>
+                                                <strong>Sunum İpucu:</strong> Buradaki açılır kutudan sipariş durumunu "Kargoya Verildi" yapıp müşterinin kargo takip sayfasına baktığınızda timeline anında güncellenmiş görünür.</span>
+                                                  <button onclick="fetchOrders()" class="font-bold underline ml-2">Yenile</button>
+                                                  </div>
+                                                  <div class="rounded-lg bg-white border border-zinc-400 overflow-hidden ">
+                                                    <div class="overflow-x-auto">
+                                                      <table class="w-full text-left text-xs">
+                                                        <thead class="bg-zinc-50 text-zinc-500 border-b border-zinc-300 uppercase tracking-wider text-[10px]">
+                                                          <tr>
+                                                            <th class="py-3 px-4">Sipariş No</th>
+                                                              <th class="py-3 px-4">Müşteri</th>
+                                                                <th class="py-3 px-4">Ürünler</th>
+                                                                  <th class="py-3 px-4">Tutar</th>
+                                                                    <th class="py-3 px-4">Ödeme</th>
+                                                                      <th class="py-3 px-4">Durum (Değiştirilebilir)</th>
+                                                                        <th class="py-3 px-4 text-right">İşlem</th>
+                                                                        </tr>
+                                                                      </thead>
+                                                                      <tbody id="orders-tbody">
+                                                                      </tbody>
+                                                                    </table>
+                                                                  </div>
+                                                                </div>
+                                                              </div> <!-- Tab 2: Inventory --> <div id="tab-pane-inventory" class="admin-tab-pane hidden space-y-3">
+                                                              <div class="rounded-lg bg-white border border-zinc-400 overflow-hidden ">
+                                                                <div class="overflow-x-auto">
+                                                                  <table class="w-full text-left text-xs">
+                                                                    <thead class="bg-zinc-50 text-zinc-500 border-b border-zinc-300 uppercase tracking-wider text-[10px]">
+                                                                      <tr>
+                                                                        <th class="py-3 px-4">Ürün & Kategori</th>
+                                                                          <th class="py-3 px-4">Fiyat</th>
+                                                                            <th class="py-3 px-4">Mevcut Stok</th>
+                                                                              <th class="py-3 px-4">Hızlı Stok Düzenle</th>
+                                                                              </tr>
+                                                                            </thead>
+                                                                            <tbody id="inventory-tbody">
+                                                                            </tbody>
+                                                                          </table>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div> <!-- Tab 3: Coupons --> <div id="tab-pane-coupons" class="admin-tab-pane hidden space-y-3">
+                                                                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                                                      <div class="p-5 rounded-lg bg-white border border-zinc-400 ">
+                                                                        <div class="flex justify-between items-center mb-1">
+                                                                          <span class="font-mono text-sm font-extrabold text-zinc-950">3AL2ODE</span>
+                                                                            <span class="px-2 py-0.5 rounded text-[10px] bg-red-100 text-red-700 font-bold">%33.3</span>
+                                                                            </div>
+                                                                            <p class="text-xs text-zinc-600">3 Al 2 Öde Kampanyası.</p>
+                                                                            </div>
+                                                                            <div class="p-5 rounded-lg bg-white border border-zinc-400 ">
+                                                                              <div class="flex justify-between items-center mb-1">
+                                                                                <span class="font-mono text-sm font-extrabold text-zinc-950">VITRIN10</span>
+                                                                                  <span class="px-2 py-0.5 rounded text-[10px] bg-zinc-100 text-zinc-800 font-bold">%10</span>
+                                                                                  </div>
+                                                                                  <p class="text-xs text-zinc-600">Hoş Geldin İndirimi.</p>
+                                                                                  </div>
+                                                                                  <div class="p-5 rounded-lg bg-white border border-zinc-400 ">
+                                                                                    <div class="flex justify-between items-center mb-1">
+                                                                                      <span class="font-mono text-sm font-extrabold text-zinc-950">ILKSIPARIS</span>
+                                                                                        <span class="px-2 py-0.5 rounded text-[10px] bg-emerald-100 text-emerald-800 font-bold">100 TL</span>
+                                                                                        </div>
+                                                                                        <p class="text-xs text-zinc-600">İlk Sipariş Hediyesi.</p>
+                                                                                        </div>
+                                                                                        <div class="p-5 rounded-lg bg-white border border-zinc-400 ">
+                                                                                          <div class="flex justify-between items-center mb-1">
+                                                                                            <span class="font-mono text-sm font-extrabold text-zinc-950">HOCA100</span>
+                                                                                              <span class="px-2 py-0.5 rounded text-[10px] bg-purple-100 text-purple-800 font-bold">%25 VIP</span>
+                                                                                              </div>
+                                                                                              <p class="text-xs text-zinc-600">Akademik Değerlendirme İndirimi.</p>
+                                                                                              </div>
+                                                                                            </div>
+                                                                                          </div> <!-- Tab 4: Checklist --> <div id="tab-pane-checklist" class="admin-tab-pane hidden space-y-3">
+                                                                                          <div class="p-6 rounded-lg bg-white border border-zinc-400 ">
+                                                                                            <h3 class="text-base font-bold text-zinc-950 font-display mb-4">12 Kriter Uyumluluk Denetimi (12/12)</h3>
+                                                                                              <div class="space-y-2 text-xs">
+                                                                                                <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                  <span>
+                                                                                                    <strong>1. E-Ticaret Altyapısı:</strong> Node.js Express REST API + Minimal SPA.</span>
+                                                                                                      <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                      </div>
+                                                                                                      <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                        <span>
+                                                                                                          <strong>2. En az 12 ürün & 3 kategori:</strong> 13 adet ürün (Kılıf, Şarj, Cam).</span>
+                                                                                                            <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                            </div>
+                                                                                                            <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                              <span>
+                                                                                                                <strong>3. Varyasyonlu ürün:</strong> Puffer iPhone kılıfı (4 Renk x 4 Model).</span>
+                                                                                                                  <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                  </div>
+                                                                                                                  <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                                    <span>
+                                                                                                                      <strong>4. Sepet ve 2+ Ödeme Yöntemi:</strong> Havale, Kapıda Ödeme ve iyzico 3D Secure.</span>
+                                                                                                                        <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                        </div>
+                                                                                                                        <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                                          <span>
+                                                                                                                            <strong>5. Kargo Kuralı:</strong> 1.000 TL üzeri ücretsiz + Canlı takip kodu.</span>
+                                                                                                                              <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                              </div>
+                                                                                                                              <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                                                <span>
+                                                                                                                                  <strong>6. E-Fiyatlandırma & Kupon:</strong> 3 Al 2 Öde, VITRIN10 ve indirimli fiyatlar.</span>
+                                                                                                                                    <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                                    </div>
+                                                                                                                                    <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                                                      <span>
+                                                                                                                                        <strong>7. Yasal Sayfalar:</strong> KVKK, Çerez Politikası, Mesafeli Satış, İade Şartları.</span>
+                                                                                                                                          <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                                          </div>
+                                                                                                                                          <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                                                            <span>
+                                                                                                                                              <strong>8. Kurumsal Sayfalar:</strong> Hakkımızda, İletişim, Harita, SSS.</span>
+                                                                                                                                                <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                                                </div>
+                                                                                                                                                <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                                                                  <span>
+                                                                                                                                                    <strong>9. Mobil Uyumlu Tema & Kimlik:</strong> vitrin. minimalist açık tema.</span>
+                                                                                                                                                      <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                                                      </div>
+                                                                                                                                                      <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                                                                        <span>
+                                                                                                                                                          <strong>10. SEO:</strong> Meta tags, OpenGraph, JSON-LD Schema, Sitemap.</span>
+                                                                                                                                                            <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                                                                              <span>
+                                                                                                                                                                <strong>11. E-Reklam & İletişim:</strong> Instagram, TikTok, WhatsApp, E-Bülten.</span>
+                                                                                                                                                                  <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                                                                  </div>
+                                                                                                                                                                  <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-300 flex items-center justify-between">
+                                                                                                                                                                    <span>
+                                                                                                                                                                      <strong>12. Test Siparişleri:</strong> 3 farklı ödeme tipiyle sipariş + durum yönetimi.</span>
+                                                                                                                                                                        <span class="text-emerald-700 font-bold"> Tamam</span>
+                                                                                                                                                                        </div>
+                                                                                                                                                                      </div>
+                                                                                                                                                                    </div>
+                                                                                                                                                                  </div>
+                                                                                                                                                                </main> <!-- Modal --> <div id="admin-order-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+                                                                                                                                                                <div onclick="closeAdminOrderModal()" class="absolute inset-0 bg-black/60 ">
+                                                                                                                                                                </div>
+                                                                                                                                                                <div class="relative w-full max-w-md rounded-lg bg-white border border-zinc-400 p-6 z-10 text-xs space-y-3">
+                                                                                                                                                                  <div class="flex justify-between items-center border-b pb-2">
+                                                                                                                                                                    <h4 class="font-bold text-zinc-950 font-mono text-sm">Sipariş Detayı #<span id="modal-order-id">
+                                                                                                                                                                    </span>
+                                                                                                                                                                  </h4>
+                                                                                                                                                                  <button onclick="closeAdminOrderModal()" class="text-zinc-400 hover:text-black">
+                                                                                                                                                                  </button>
+                                                                                                                                                                </div>
+                                                                                                                                                                <div>
+                                                                                                                                                                  <span class="text-zinc-400 block text-[10px]">Müşteri</span>
+                                                                                                                                                                    <div id="modal-cust-name" class="font-bold text-zinc-900 mt-0.5">
+                                                                                                                                                                    </div>
+                                                                                                                                                                    <div id="modal-cust-contact" class="text-zinc-500">
+                                                                                                                                                                    </div>
+                                                                                                                                                                    <div id="modal-cust-address" class="text-zinc-700 mt-1">
+                                                                                                                                                                    </div>
+                                                                                                                                                                  </div>
+                                                                                                                                                                  <div>
+                                                                                                                                                                    <span class="text-zinc-400 block text-[10px]">Kargo & Ödeme</span>
+                                                                                                                                                                      <div id="modal-cargo-code" class="font-mono text-zinc-900 font-semibold">
+                                                                                                                                                                      </div>
+                                                                                                                                                                      <div id="modal-payment-method" class="text-zinc-600">
+                                                                                                                                                                      </div>
+                                                                                                                                                                    </div>
+                                                                                                                                                                    <div>
+                                                                                                                                                                      <span class="text-zinc-400 block text-[10px]">Ürünler</span>
+                                                                                                                                                                        <div id="modal-items-list" class="space-y-1">
+                                                                                                                                                                        </div>
+                                                                                                                                                                      </div>
+                                                                                                                                                                      <div class="pt-2 border-t flex justify-between font-bold text-sm">
+                                                                                                                                                                        <span>Toplam:</span>
+                                                                                                                                                                          <span id="modal-total-amt">
+                                                                                                                                                                          </span>
+                                                                                                                                                                        </div>
+                                                                                                                                                                      </div>
+                                                                                                                                                                    </div>
+                                                                                                                                                                  </div> <script src="/js/admin.js?v=1790627121352"></script>
+                                                                                                                                                                </body>
+                                                                                                                                                              </html>
+

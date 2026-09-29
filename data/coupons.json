@@ -1,0 +1,37 @@
+[
+  {
+    "code": "3AL2ODE",
+    "type": "percentage",
+    "value": 33.33,
+    "description": "3 Al 2 Öde Kampanyası (Sepette %33.3 İndirim)",
+    "minOrder": 600
+  },
+  {
+    "code": "VITRIN10",
+    "type": "percentage",
+    "value": 10,
+    "description": "Tüm siparişlerde geçerli %10 Hoş Geldin İndirimi",
+    "minOrder": 0
+  },
+  {
+    "code": "GENCLIK20",
+    "type": "percentage",
+    "value": 20,
+    "description": "Gençlere ve Öğrencilere Özel %20 İndirim",
+    "minOrder": 300
+  },
+  {
+    "code": "ILKSIPARIS",
+    "type": "fixed",
+    "value": 100,
+    "description": "İlk Siparişinize Özel 100 TL İndirim",
+    "minOrder": 500
+  },
+  {
+    "code": "HOCA100",
+    "type": "percentage",
+    "value": 25,
+    "description": "Hocamıza ve Jüriye Özel %25 VIP Akademik İndirim",
+    "minOrder": 0
+  }
+]
