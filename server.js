@@ -756,11 +756,8 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`====================================================`);
-  console.log(`🚀 VİTRİN E-Ticaret Platformu Başarıyla Başlatıldı!`);
-  console.log(`🛒 Mağaza Arayüzü : http://localhost:${PORT}`);
-  console.log(`📦 Kargo Takip    : http://localhost:${PORT}/takip`);
-  console.log(`⚡ Yönetim Paneli  : http://localhost:${PORT}/admin`);
-  console.log(`🔍 SEO Sitemap    : http://localhost:${PORT}/sitemap.xml`);
-  console.log(`====================================================`);
+  console.log(`Store: http://localhost:${PORT}`);
+  console.log(`Order tracking: http://localhost:${PORT}/takip`);
+  console.log(`Admin: http://localhost:${PORT}/admin`);
+  console.log(`Sitemap: http://localhost:${PORT}/sitemap.xml`);
 });

@@ -621,11 +621,11 @@ async function ppPaint() {
       <!-- KARGO / IADE -->
       <div class="mt-5 pt-5 border-t border-zinc-200 grid grid-cols-1 sm:grid-cols-2 gap-3">
         <div class="p-4 rounded-lg bg-white border border-zinc-200">
-          <p class="text-sm font-black text-zinc-950 mb-1">🚚 Kargo</p>
+          <p class="text-sm font-black text-zinc-950 mb-1">Kargo</p>
           <p class="text-[13px] text-zinc-600 leading-relaxed">16:00'a kadar verilen siparişler aynı gün kargoya verilir. 1.000 TL üzeri kargo bedava.</p>
         </div>
         <div class="p-4 rounded-lg bg-white border border-zinc-200">
-          <p class="text-sm font-black text-zinc-950 mb-1">↩️ İade</p>
+          <p class="text-sm font-black text-zinc-950 mb-1">İade</p>
           <p class="text-[13px] text-zinc-600 leading-relaxed">Teslimden itibaren 14 gün içinde koşulsuz iade. Kargo iadesi bize aittir.</p>
         </div>
       </div>
