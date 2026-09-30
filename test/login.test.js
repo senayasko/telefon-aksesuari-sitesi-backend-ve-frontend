@@ -37,9 +37,10 @@ test('server authorization protects private data and writes', async () => {
     assert.equal((await request('/api/products/1/stock', 'PUT', {}, cookie)).status, 403);
     assert.equal((await request('/api/orders/user/user@example.test', 'GET', undefined, cookie)).status, 200);
     const admin = await request('/api/users/admin-login', 'POST', { email: 'admin@example.test', password: 'test-admin-password' });
-    assert.equal(admin.status, 200);
-    assert.equal((await request('/api/orders', 'GET', undefined, admin.headers.get('set-cookie').split(';')[0])).status, 200);
-    assert.equal((await request('/api/users/admin-login', 'POST', { email: 'legacy@example.test', password: 'published' })).status, 401);
+    assert.equal(admin.status, 503);
+    assert.equal(admin.headers.get('set-cookie'), null);
+    assert.equal((await request('/api/users/login', 'POST', { email: 'admin@example.test', password: 'test-admin-password' })).status, 403);
+    assert.equal((await request('/api/users/admin-login', 'POST', { email: 'legacy@example.test', password: 'published' })).status, 503);
     assert.equal((await request('/api/users/logout', 'POST', {}, cookie)).status, 200);
     assert.equal((await request('/api/orders/user/user@example.test', 'GET', undefined, cookie)).status, 401);
   } finally {

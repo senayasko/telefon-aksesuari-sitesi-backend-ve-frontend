@@ -23,6 +23,12 @@
                   <div id="admin-login-error" class="hidden text-xs text-red-600 font-semibold text-center"> Hatalı kullanıcı adı veya şifre! </div>
                     <button type="submit" class="w-full py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition-all " > Giriş Yap </button>
                     </form>
+                    <form id="admin-code-form" class="hidden space-y-4 mt-4 text-left" onsubmit="handleAdminCode(event)">
+                      <label for="admin-code" class="block text-xs font-semibold">E-postaya gelen 6 haneli kod</label>
+                      <input id="admin-code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required class="w-full border rounded-lg p-3" />
+                      <button type="submit" class="w-full py-3 rounded-xl bg-zinc-950 text-white font-bold text-xs">Kodu doğrula ve giriş yap</button>
+                      <button type="button" onclick="resetAdminLogin()" class="text-xs underline">Yeniden giriş yap</button>
+                    </form>
                     <div class="mt-6 pt-4 border-t border-zinc-300 text-[11px] text-zinc-400"> Yönetici hesabınızla giriş yapın.
                     </div>
                   </div>
@@ -247,6 +253,6 @@
                                                                                                                                                                         </div>
                                                                                                                                                                       </div>
                                                                                                                                                                     </div>
-                                                                                                                                                                  </div> <script src="/js/admin.js?v=1790627121352"></script>
+                                                                                                                                                                  </div> <script src="/js/admin.js?v=admin-email-20260930"></script>
                                                                                                                                                                 </body>
                                                                                                                                                               </html>

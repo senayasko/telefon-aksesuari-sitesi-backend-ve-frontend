@@ -41,3 +41,9 @@ Set `DATABASE_URL` to use PostgreSQL (Neon on Vercel). The app creates its stora
 Without `DATABASE_URL` or `POSTGRES_URL`, local development uses JSON files. Keep database credentials in environment variables, outside Git. This is a coursework demo.
 
 Run the tests with `node --test test/*.test.js`.
+
+## Admin email verification
+
+Set `ADMIN_EMAIL`, `ADMIN_PASSWORD` and `GMAIL_APP_PASSWORD` in the server's private environment variables. The Gmail account must have two-step verification and a dedicated app password. Never commit these values or use the Gmail account password.
+
+Admin login requires a password followed by a six-digit email code. Codes expire after five minutes and can be used once. Password attempts, code attempts and email sends are limited. Admin access stays disabled when email configuration is missing or delivery fails. The database account is updated only after successful email verification.

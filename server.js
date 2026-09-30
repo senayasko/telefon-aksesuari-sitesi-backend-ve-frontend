@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const { createStorage, createDataRoutes } = require('./lib/storage');
 const { createAuth, hashPassword, verifyPassword } = require('./lib/auth');
+const { createAdminLogin } = require('./lib/admin-login');
 const path = require('path');
 
 const app = express();
@@ -67,6 +68,9 @@ dataRoutes.post('/api/users/register', (req, res) => {
   }
 
   const users = readData('users.json');
+  if (email === (process.env.ADMIN_EMAIL || '').toLowerCase()) {
+    return res.status(403).json({ success: false, message: 'Bu adres yönetici hesabına ayrılmıştır.' });
+  }
   if (users.some(u => u.email.toLowerCase() === email)) {
     return res.status(409).json({ success: false, message: 'Bu e-posta zaten kayıtlı. Giriş yapmayı deneyin.' });
   }
@@ -95,6 +99,7 @@ dataRoutes.post('/api/users/login', (req, res) => {
   const users = readData('users.json');
   const user = users.find(u => u.email.toLowerCase() === email);
 
+  if (user?.role === 'admin') return res.status(403).json({ success: false, message: 'Yönetici hesabı için admin panelindeki e-posta doğrulamasını kullanın.' });
   if (!user) {
     return res.status(404).json({
       success: false,
@@ -113,28 +118,9 @@ dataRoutes.post('/api/users/login', (req, res) => {
 });
 
 // 2.5 Yönetici Girişi — sadece yetkili yönetici hesabı
-dataRoutes.post('/api/users/admin-login', (req, res) => {
-  const email = (req.body.email || '').trim().toLowerCase();
-  const password = req.body.password || '';
-
-  const users = readData('users.json');
-  const user = users.find(u => u.email.toLowerCase() === email);
-
-  if (!user || (user.role || 'user') !== 'admin') {
-    return res.status(403).json({
-      success: false,
-      message: 'Bu hesap yönetici yetkisine sahip değil. Yönetim paneline erişilemez.'
-    });
-  }
-  if (!verifyPassword(user, password)) {
-    return res.status(401).json({ success: false, message: 'Yönetici şifresi hatalı.' });
-  }
-
-  recordLogin(user, users);
-
-  auth.issue(req, res, user);
-  res.json({ success: true, message: 'Yönetici girişi başarılı.', user: publicUser(user) });
-});
+const adminLogin = createAdminLogin(storage, auth);
+dataRoutes.post('/api/users/admin-login', adminLogin.login);
+dataRoutes.post('/api/users/admin-verify', adminLogin.verify);
 
 // 3. Kullanıcı profili + sipariş sayısı
 dataRoutes.get('/api/session', (req, res) => res.json({ success: true, user: publicUser(req.user) }));

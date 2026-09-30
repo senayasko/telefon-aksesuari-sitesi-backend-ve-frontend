@@ -8,3 +8,4 @@ data/users.json
 data/orders.json
 data/stock-notifications.json
 data/reviews.json
+data/auth.json
