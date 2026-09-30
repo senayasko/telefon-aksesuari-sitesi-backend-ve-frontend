@@ -30,6 +30,17 @@ const writeData = (fileName, data) => {
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
 };
 
+// Login must not depend on persisting optional activity metadata.
+const recordLogin = (user, users) => {
+  user.lastLoginAt = new Date().toISOString();
+  try {
+    writeData('users.json', users);
+  } catch (error) {
+    if (error.code !== 'EROFS' && error.code !== 'EACCES') throw error;
+    console.warn('Login timestamp was not saved: storage is read-only.');
+  }
+};
+
 // ======================== USER DATABASE (KULLANICI VERİTABANI) ========================
 
 const crypto = require('crypto');
@@ -110,8 +121,7 @@ app.post('/api/users/login', (req, res) => {
     return res.status(401).json({ success: false, registered: true, message: 'Şifre hatalı. Tekrar deneyin.' });
   }
 
-  user.lastLoginAt = new Date().toISOString();
-  writeData('users.json', users);
+  recordLogin(user, users);
 
   res.json({ success: true, message: `Hoş geldin, ${user.name.split(' ')[0]}!`, user: publicUser(user) });
 });
@@ -134,8 +144,7 @@ app.post('/api/users/admin-login', (req, res) => {
     return res.status(401).json({ success: false, message: 'Yönetici şifresi hatalı.' });
   }
 
-  user.lastLoginAt = new Date().toISOString();
-  writeData('users.json', users);
+  recordLogin(user, users);
 
   res.json({ success: true, message: 'Yönetici girişi başarılı.', user: publicUser(user) });
 });
@@ -755,7 +764,21 @@ app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
+app.use((error, req, res, next) => {
+  if (res.headersSent) return next(error);
+  const storageReadOnly = error.code === 'EROFS' || error.code === 'EACCES';
+  console.error(storageReadOnly ? 'Persistent storage is unavailable.' : 'Request failed.');
+  res.status(storageReadOnly ? 503 : 500).json({
+    success: false,
+    message: storageReadOnly
+      ? 'Kalıcı veri kaydı şu anda kullanılamıyor. İşlem kaydedilmedi.'
+      : 'Sunucuda bir hata oluştu. Lütfen tekrar deneyin.'
+  });
+});
+
+module.exports = app;
+
+if (require.main === module) app.listen(PORT, () => {
   console.log(`Store: http://localhost:${PORT}`);
   console.log(`Order tracking: http://localhost:${PORT}/takip`);
   console.log(`Admin: http://localhost:${PORT}/admin`);
