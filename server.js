@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-const fs = require('fs');
+require('dotenv').config();
+const { createStorage, createDataRoutes } = require('./lib/storage');
 const path = require('path');
 
 const app = express();
@@ -11,24 +12,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Helper to read and write JSON files
-const DATA_DIR = path.join(__dirname, 'data');
-const readData = (fileName) => {
-  const filePath = path.join(DATA_DIR, fileName);
-  if (!fs.existsSync(filePath)) return [];
-  const content = fs.readFileSync(filePath, 'utf-8');
-  try {
-    return JSON.parse(content);
-  } catch (e) {
-    console.error(`Error parsing ${fileName}:`, e);
-    return [];
-  }
-};
-
-const writeData = (fileName, data) => {
-  const filePath = path.join(DATA_DIR, fileName);
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
-};
+const storage = createStorage({
+  dataDir: path.join(__dirname, 'data'),
+  connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL
+});
+const readData = storage.read;
+const writeData = storage.write;
+const dataRoutes = createDataRoutes(app, storage);
 
 // Login must not depend on persisting optional activity metadata.
 const recordLogin = (user, users) => {
@@ -61,12 +51,12 @@ const publicUser = (user) => ({
 const isEmail = (value) => /^\S+@\S+\.\S+$/.test(value);
 
 // 0. Kullanıcı sayısı (admin istatistiği için)
-app.get('/api/users/count', (req, res) => {
+dataRoutes.get('/api/users/count', (req, res) => {
   res.json({ success: true, count: readData('users.json').length });
 });
 
 // 1. Kayıt Ol (Register) — yeni kullanıcı veritabanına yazılır
-app.post('/api/users/register', (req, res) => {
+dataRoutes.post('/api/users/register', (req, res) => {
   const name = (req.body.name || '').trim();
   const email = (req.body.email || '').trim().toLowerCase();
   const password = req.body.password || '';
@@ -103,7 +93,7 @@ app.post('/api/users/register', (req, res) => {
 });
 
 // 2. Giriş Yap (Login) — sadece kayıtlı kullanıcılar girebilir
-app.post('/api/users/login', (req, res) => {
+dataRoutes.post('/api/users/login', (req, res) => {
   const email = (req.body.email || '').trim().toLowerCase();
   const password = req.body.password || '';
 
@@ -127,7 +117,7 @@ app.post('/api/users/login', (req, res) => {
 });
 
 // 2.5 Yönetici Girişi — sadece yetkili yönetici hesabı
-app.post('/api/users/admin-login', (req, res) => {
+dataRoutes.post('/api/users/admin-login', (req, res) => {
   const email = (req.body.email || '').trim().toLowerCase();
   const password = req.body.password || '';
 
@@ -150,7 +140,7 @@ app.post('/api/users/admin-login', (req, res) => {
 });
 
 // 3. Kullanıcı profili + sipariş sayısı
-app.get('/api/users/:email', (req, res) => {
+dataRoutes.get('/api/users/:email', (req, res) => {
   const email = (req.params.email || '').trim().toLowerCase();
   const user = readData('users.json').find(u => u.email.toLowerCase() === email);
 
@@ -238,7 +228,7 @@ const withStatusInfo = (order) => ({ ...order, statusInfo: getOrderStatusInfo(or
 // ======================== API ROUTES ========================
 
 // 1. Get all products (with category, search and sort support)
-app.get('/api/products', (req, res) => {
+dataRoutes.get('/api/products', (req, res) => {
   const { category, search, sort } = req.query;
   let products = readData('products.json');
 
@@ -273,7 +263,7 @@ app.get('/api/products', (req, res) => {
 });
 
 // 2. Get single product by id or slug
-app.get('/api/products/:id', (req, res) => {
+dataRoutes.get('/api/products/:id', (req, res) => {
   const products = readData('products.json');
   const param = req.params.id;
   const product = products.find(p => p.id.toString() === param || p.slug === param);
@@ -288,7 +278,7 @@ app.get('/api/products/:id', (req, res) => {
 });
 
 // 3. Update product stock / price (Admin)
-app.put('/api/products/:id/stock', (req, res) => {
+dataRoutes.put('/api/products/:id/stock', (req, res) => {
   const { stock, price } = req.body;
   const products = readData('products.json');
   const index = products.findIndex(p => p.id.toString() === req.params.id);
@@ -336,7 +326,7 @@ const reviewsByProduct = () => {
 };
 
 // --- Yorumlari getir
-app.get('/api/products/:id/reviews', (req, res) => {
+dataRoutes.get('/api/products/:id/reviews', (req, res) => {
   const productId = parseInt(req.params.id, 10);
   const reviews = readData('reviews.json').filter(r => r.productId === productId);
   reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -356,7 +346,7 @@ app.get('/api/products/:id/reviews', (req, res) => {
 });
 
 // --- Yorum ekle
-app.post('/api/products/:id/reviews', (req, res) => {
+dataRoutes.post('/api/products/:id/reviews', (req, res) => {
   const productId = parseInt(req.params.id, 10);
   const products = readData('products.json');
   const product = products.find(p => p.id === productId);
@@ -414,7 +404,7 @@ app.post('/api/products/:id/reviews', (req, res) => {
 });
 
 // --- Stok bildirimi kaydi
-app.post('/api/stock-notify', (req, res) => {
+dataRoutes.post('/api/stock-notify', (req, res) => {
   const productId = parseInt(req.body.productId, 10);
   const email = (req.body.email || '').trim().toLowerCase();
 
@@ -449,7 +439,7 @@ app.post('/api/stock-notify', (req, res) => {
 });
 
 // --- Stok bildirimi kontrolu
-app.get('/api/stock-notify', (req, res) => {
+dataRoutes.get('/api/stock-notify', (req, res) => {
   const productId = parseInt(req.query.productId, 10);
   const email = (req.query.email || '').trim().toLowerCase();
   if (!productId || !isEmail(email)) {
@@ -461,14 +451,14 @@ app.get('/api/stock-notify', (req, res) => {
 });
 
 // --- Admin: stok bildirim listesi
-app.get('/api/stock-notifications', (req, res) => {
+dataRoutes.get('/api/stock-notifications', (req, res) => {
   const list = readData('stock-notifications.json');
   list.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   res.json({ success: true, count: list.length, notifications: list });
 });
 
 // 4. Validate coupon code
-app.post('/api/coupons/validate', (req, res) => {
+dataRoutes.post('/api/coupons/validate', (req, res) => {
   const { code, subtotal } = req.body;
   if (!code) {
     return res.status(400).json({ success: false, message: 'Lütfen bir kupon kodu girin.' });
@@ -510,13 +500,13 @@ app.post('/api/coupons/validate', (req, res) => {
 });
 
 // 5. Get all orders (with admin summary)
-app.get('/api/orders', (req, res) => {
+dataRoutes.get('/api/orders', (req, res) => {
   const orders = readData('orders.json');
   res.json({ success: true, count: orders.length, orders: orders.map(withStatusInfo) });
 });
 
 // 5.1 Get orders of a registered user (profile / tracking "Siparişlerim")
-app.get('/api/orders/user/:email', (req, res) => {
+dataRoutes.get('/api/orders/user/:email', (req, res) => {
   const email = (req.params.email || '').trim().toLowerCase();
   if (!email) {
     return res.status(400).json({ success: false, message: 'E-posta parametresi gerekli.' });
@@ -532,7 +522,7 @@ app.get('/api/orders/user/:email', (req, res) => {
 });
 
 // 6. Get single order (for Live Tracking / Kargom Nerede)
-app.get('/api/orders/:id', (req, res) => {
+dataRoutes.get('/api/orders/:id', (req, res) => {
   const orders = readData('orders.json');
   const query = req.params.id.trim().toUpperCase();
 
@@ -552,7 +542,7 @@ app.get('/api/orders/:id', (req, res) => {
 });
 
 // 7. Create new order (Storefront checkout)
-app.post('/api/orders', (req, res) => {
+dataRoutes.post('/api/orders', (req, res) => {
   const { customer, items, subtotal, discount, couponCode, shippingFee, doorServiceFee, total, paymentMethod, paymentDetails, userEmail } = req.body;
 
   if (!customer || !items || items.length === 0) {
@@ -621,7 +611,7 @@ app.post('/api/orders', (req, res) => {
 });
 
 // 8. Update order status (Admin)
-app.put('/api/orders/:id/status', (req, res) => {
+dataRoutes.put('/api/orders/:id/status', (req, res) => {
   const { status, note } = req.body;
   const validStatuses = ['Beklemede', 'Hazırlanıyor', 'Kargoya Verildi', 'Teslim Edildi', 'İptal Edildi'];
 
@@ -656,7 +646,7 @@ app.put('/api/orders/:id/status', (req, res) => {
 });
 
 // 9. Newsletter subscription
-app.post('/api/newsletter', (req, res) => {
+dataRoutes.post('/api/newsletter', (req, res) => {
   const { email } = req.body;
   if (!email || !email.includes('@')) {
     return res.status(400).json({ success: false, message: 'Geçerli bir e-posta adresi giriniz.' });
@@ -670,7 +660,7 @@ app.post('/api/newsletter', (req, res) => {
 });
 
 // 10. Contact form submission
-app.post('/api/contact', (req, res) => {
+dataRoutes.post('/api/contact', (req, res) => {
   const { name, email, subject, message } = req.body;
   if (!name || !email || !message) {
     return res.status(400).json({ success: false, message: 'Lütfen zorunlu alanları doldurunuz.' });
@@ -683,7 +673,7 @@ app.post('/api/contact', (req, res) => {
 });
 
 // 11. Admin dashboard statistics
-app.get('/api/stats', (req, res) => {
+dataRoutes.get('/api/stats', (req, res) => {
   const orders = readData('orders.json');
   const products = readData('products.json');
 
@@ -717,7 +707,7 @@ app.get('/api/stats', (req, res) => {
 // ======================== SEO & STATICS ========================
 
 // Dynamic XML Sitemap for Yoast/Rank Math SEO simulation
-app.get('/sitemap.xml', (req, res) => {
+dataRoutes.get('/sitemap.xml', (req, res) => {
   const products = readData('products.json');
   const baseUrl = `http://localhost:${PORT}`;
 

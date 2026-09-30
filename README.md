@@ -31,8 +31,13 @@ The storefront is in Turkish. Card payments are a demo; they do not process real
 
 ## Project layout
 
-- `server.js`: API, page routes and JSON storage
+- `server.js`: API and page routes
+- `lib/storage.js`: PostgreSQL transactions and local JSON storage
 - `public/`: pages, styles, scripts and images
 - `data/`: products, orders, users, reviews and coupons
 
-Data is stored in local JSON files. Hosted writes need a persistent database or storage service. This is a coursework demo.
+Set `DATABASE_URL` to use PostgreSQL (Neon on Vercel). The app creates its storage table and imports the files in `data/` once. Existing database records are preserved on later deployments. Related writes, such as an order and its stock changes, commit together.
+
+Without `DATABASE_URL` or `POSTGRES_URL`, local development uses JSON files. Keep database credentials in environment variables, outside Git. This is a coursework demo.
+
+Run the tests with `node --test test/*.test.js`.
