@@ -4,3 +4,7 @@ node_modules/
 .env
 .env.*
 !.env.example
+data/users.json
+data/orders.json
+data/stock-notifications.json
+data/reviews.json

@@ -1,24 +1,24 @@
 const express = require('express');
-const cors = require('cors');
 require('dotenv').config();
 const { createStorage, createDataRoutes } = require('./lib/storage');
+const { createAuth, hashPassword, verifyPassword } = require('./lib/auth');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const storage = createStorage({
-  dataDir: path.join(__dirname, 'data'),
+  dataDir: process.env.DATA_DIR || path.join(__dirname, 'data'),
   connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL
 });
 const readData = storage.read;
 const writeData = storage.write;
-const dataRoutes = createDataRoutes(app, storage);
+const auth = createAuth(storage);
+const dataRoutes = createDataRoutes(app, storage, auth.authorize);
 
 // Login must not depend on persisting optional activity metadata.
 const recordLogin = (user, users) => {
@@ -33,11 +33,6 @@ const recordLogin = (user, users) => {
 
 // ======================== USER DATABASE (KULLANICI VERİTABANI) ========================
 
-const crypto = require('crypto');
-const USER_SALT = 'vitrin2026';
-
-const hashPassword = (password, salt = USER_SALT) =>
-  crypto.createHash('sha256').update(`${salt}${password}`).digest('hex');
 
 const publicUser = (user) => ({
   id: user.id,
@@ -80,8 +75,7 @@ dataRoutes.post('/api/users/register', (req, res) => {
     id: users.length ? Math.max(...users.map(u => u.id)) + 1 : 1,
     name,
     email,
-    passwordHash: hashPassword(password),
-    salt: USER_SALT,
+    ...hashPassword(password),
     createdAt: new Date().toISOString(),
     lastLoginAt: new Date().toISOString()
   };
@@ -89,6 +83,7 @@ dataRoutes.post('/api/users/register', (req, res) => {
   users.push(newUser);
   writeData('users.json', users);
 
+  auth.issue(req, res, newUser);
   res.status(201).json({ success: true, message: 'Kaydınız oluşturuldu!', user: publicUser(newUser) });
 });
 
@@ -107,12 +102,13 @@ dataRoutes.post('/api/users/login', (req, res) => {
       message: 'Bu e-posta ile kayıt olunmamış. Lütfen önce "Kayıt Ol" sekmesini kullanın.'
     });
   }
-  if (user.passwordHash !== hashPassword(password, user.salt)) {
+  if (!verifyPassword(user, password)) {
     return res.status(401).json({ success: false, registered: true, message: 'Şifre hatalı. Tekrar deneyin.' });
   }
 
   recordLogin(user, users);
 
+  auth.issue(req, res, user);
   res.json({ success: true, message: `Hoş geldin, ${user.name.split(' ')[0]}!`, user: publicUser(user) });
 });
 
@@ -130,16 +126,24 @@ dataRoutes.post('/api/users/admin-login', (req, res) => {
       message: 'Bu hesap yönetici yetkisine sahip değil. Yönetim paneline erişilemez.'
     });
   }
-  if (user.passwordHash !== hashPassword(password, user.salt)) {
+  if (!verifyPassword(user, password)) {
     return res.status(401).json({ success: false, message: 'Yönetici şifresi hatalı.' });
   }
 
   recordLogin(user, users);
 
+  auth.issue(req, res, user);
   res.json({ success: true, message: 'Yönetici girişi başarılı.', user: publicUser(user) });
 });
 
 // 3. Kullanıcı profili + sipariş sayısı
+dataRoutes.post('/api/users/logout', (req, res) => {
+  req.user.sessions = [];
+  writeData('users.json', readData('users.json').map(u => u.id === req.user.id ? req.user : u));
+  res.header('Set-Cookie', 'vitrin_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0');
+  res.json({ success: true });
+});
+
 dataRoutes.get('/api/users/:email', (req, res) => {
   const email = (req.params.email || '').trim().toLowerCase();
   const user = readData('users.json').find(u => u.email.toLowerCase() === email);
@@ -538,6 +542,9 @@ dataRoutes.get('/api/orders/:id', (req, res) => {
     });
   }
 
+  if (req.user.role !== 'admin' && ((order.userEmail || order.customer?.email || '').toLowerCase() !== req.user.email.toLowerCase())) {
+    return res.status(403).json({ success: false, message: 'Bu siparişe erişim yetkiniz yok.' });
+  }
   res.json({ success: true, order: withStatusInfo(order) });
 });
 
@@ -549,8 +556,24 @@ dataRoutes.post('/api/orders', (req, res) => {
     return res.status(400).json({ success: false, message: 'Sipariş için müşteri ve ürün bilgileri zorunludur.' });
   }
 
+  if (req.user.role !== 'admin' && (customer.email || '').toLowerCase() !== req.user.email.toLowerCase()) {
+    return res.status(403).json({ success: false, message: 'Sipariş e-postası hesabınızla aynı olmalıdır.' });
+  }
+
   const orders = readData('orders.json');
   const products = readData('products.json');
+
+  const requested = new Map();
+  for (const item of items) {
+    if (!Number.isSafeInteger(item.quantity) || item.quantity < 1 || item.quantity > 100) {
+      return res.status(400).json({ success: false, message: 'Geçersiz ürün adedi.' });
+    }
+    requested.set(item.id, (requested.get(item.id) || 0) + item.quantity);
+  }
+  for (const [id, quantity] of requested) {
+    const product = products.find(p => p.id === id);
+    if (!product || product.stock < quantity) return res.status(400).json({ success: false, message: 'Ürün veya stok bilgisi geçersiz.' });
+  }
 
   // Generate unique order ID and cargo tracking code
   const randomNum = Math.floor(1000 + Math.random() * 9000);
@@ -576,7 +599,7 @@ dataRoutes.post('/api/orders', (req, res) => {
     id: newOrderId,
     createdAt: new Date().toISOString(),
     customer,
-    userEmail: (userEmail || (customer && customer.email) || '').trim().toLowerCase(),
+    userEmail: req.user.email.toLowerCase(),
     items,
     subtotal: parseFloat(subtotal) || 0,
     discount: parseFloat(discount) || 0,
