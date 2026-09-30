@@ -137,6 +137,7 @@ dataRoutes.post('/api/users/admin-login', (req, res) => {
 });
 
 // 3. Kullanıcı profili + sipariş sayısı
+dataRoutes.get('/api/session', (req, res) => res.json({ success: true, user: publicUser(req.user) }));
 dataRoutes.post('/api/users/logout', (req, res) => {
   req.user.sessions = [];
   writeData('users.json', readData('users.json').map(u => u.id === req.user.id ? req.user : u));
