@@ -44,6 +44,22 @@ test('expired codes and attempt limits never grant admin access', async () => {
   assert.equal(f.issued, 0);
 });
 
+test('issuing a newer code invalidates every older pending code', async () => {
+  const f = fixture();
+  const first = await f.start();
+  const firstCookie = first.headers['Set-Cookie'].split(';')[0];
+  const firstCode = f.code;
+
+  f.advance(60000);
+  const second = await f.start();
+  const secondCookie = second.headers['Set-Cookie'].split(';')[0];
+  const secondCode = f.code;
+
+  assert.equal(f.verify(firstCookie, firstCode).body.success, false);
+  assert.equal(f.verify(secondCookie, secondCode).body.success, true);
+  assert.equal(f.issued, 1);
+});
+
 test('mail failures, missing configuration and password guessing fail closed', async () => {
   const failed = fixture(true);
   assert.equal((await failed.start()).body.success, false);

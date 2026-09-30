@@ -23,7 +23,7 @@ test('server authorization protects private data and writes', async () => {
     ...(body ? { body: JSON.stringify(body) } : {})
   });
   try {
-    for (const route of ['/api/orders', '/api/orders/PRIVATE', '/api/orders/user/user@example.test', '/api/users/user@example.test', '/api/stats', '/api/users/count', '/api/stock-notify', '/api/stock-notifications']) assert.equal((await request(route)).status, 401, route);
+    for (const route of ['/api/orders', '/api/orders/PRIVATE', '/api/orders/user/user@example.test', '/api/users/user@example.test', '/api/stats', '/api/users/count', '/api/stock-notify', '/api/stock-notifications', '/api/admin/sessions/revoke']) assert.equal((await request(route, route === '/api/admin/sessions/revoke' ? 'POST' : 'GET')).status, 401, route);
     for (const route of ['/api/products/1/stock', '/api/orders/PRIVATE/status']) assert.equal((await request(route, 'PUT', {})).status, 401);
     assert.equal((await request('/api/orders', 'POST', {})).status, 401);
     assert.equal((await request('/api/products')).status, 200);

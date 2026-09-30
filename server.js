@@ -131,6 +131,17 @@ dataRoutes.post('/api/users/logout', (req, res) => {
   res.json({ success: true });
 });
 
+// Yönetici panelinde aynı anda yalnızca tek oturum kalması için acil çıkış.
+// İsteği yapan yönetici de dahil tüm yönetici tarayıcı oturumları geçersizleşir.
+dataRoutes.post('/api/admin/sessions/revoke', (req, res) => {
+  const users = readData('users.json').map(user =>
+    user.role === 'admin' ? { ...user, sessions: [] } : user
+  );
+  writeData('users.json', users);
+  res.header('Set-Cookie', 'vitrin_session=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0');
+  res.json({ success: true, message: 'Tüm yönetici oturumları kapatıldı.' });
+});
+
 dataRoutes.get('/api/users/:email', (req, res) => {
   const email = (req.params.email || '').trim().toLowerCase();
   const user = readData('users.json').find(u => u.email.toLowerCase() === email);
