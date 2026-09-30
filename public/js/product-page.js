@@ -7,6 +7,9 @@ const PP = {
   product: null,
   reviews: [],
   summary: { avg: 0, count: 0, distribution: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 } },
+  reviewPage: 1,
+  reviewPagination: { page: 1, pageSize: 5, totalPages: 1, totalItems: 0 },
+  reviewViewer: { loggedIn: false, canReview: false, hasPurchased: false, hasReviewed: false },
   image: null,
   qty: 1,
   color: null,
@@ -206,13 +209,16 @@ function ppInitZoom() {
 
 /* --------------------------------------------------------------- yorumlar */
 
-async function ppLoadReviews(productId) {
+async function ppLoadReviews(productId, page = 1) {
   try {
-    const res = await fetch(`/api/products/${productId}/reviews`);
+    const res = await fetch(`/api/products/${productId}/reviews?page=${page}`);
     const data = await res.json();
     if (data.success) {
       PP.reviews = data.reviews || [];
       PP.summary = data.summary || PP.summary;
+      PP.reviewPagination = data.pagination || PP.reviewPagination;
+      PP.reviewPage = PP.reviewPagination.page;
+      PP.reviewViewer = data.viewer || PP.reviewViewer;
     }
   } catch (err) {
     console.error('Yorumlar yüklenemedi:', err);
@@ -221,6 +227,7 @@ async function ppLoadReviews(productId) {
 
 function ppReviewsHtml() {
   const { avg, count, distribution } = PP.summary;
+  const viewer = PP.reviewViewer;
   const rows = [5, 4, 3, 2, 1].map((star) => {
     const n = distribution[star] || 0;
     const pct = count ? Math.round((n / count) * 100) : 0;
@@ -250,6 +257,48 @@ function ppReviewsHtml() {
       </article>`).join('')
     : `<p class="text-sm text-zinc-500 py-6 text-center">Henüz değerlendirme yok. İlk yorumu sen yaz!</p>`;
 
+  const reviewForm = !viewer.loggedIn
+    ? `<div class="p-5 rounded-xl border border-cyan-200 bg-cyan-50 mb-6">
+        <h3 class="font-display text-lg font-black text-zinc-950 mb-1">Değerlendirme Yaz</h3>
+        <p class="text-sm text-zinc-600 mb-3">Yorum yapmak için hesabına giriş yapmalısın.</p>
+        <button type="button" onclick="openProfileModal('login')" class="px-5 py-2.5 rounded-lg bg-zinc-950 text-white text-sm font-black">Giriş Yap</button>
+      </div>`
+    : !viewer.hasPurchased
+      ? `<div class="p-5 rounded-xl border border-amber-200 bg-amber-50 mb-6">
+          <h3 class="font-display text-lg font-black text-zinc-950 mb-1">Satın Alanlara Özel</h3>
+          <p class="text-sm text-amber-900">Bu ürünü satın aldıktan sonra doğrulanmış değerlendirmeni paylaşabilirsin.</p>
+        </div>`
+      : viewer.hasReviewed
+        ? `<div class="p-5 rounded-xl border border-emerald-200 bg-emerald-50 mb-6">
+            <h3 class="font-display text-lg font-black text-zinc-950 mb-1">Değerlendirmen Alındı</h3>
+            <p class="text-sm text-emerald-800">Bu ürün için daha önce değerlendirme yaptın.</p>
+          </div>`
+        : `<div class="p-5 rounded-xl border border-zinc-300 bg-white mb-6">
+            <h3 class="font-display text-lg font-black text-zinc-950 mb-1">Değerlendirme Yaz</h3>
+            <p class="text-sm text-zinc-500 mb-4">Satın aldığın ürünle ilgili deneyimini paylaş.</p>
+            <form id="review-form" class="space-y-3.5">
+              <div>
+                <span class="block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1.5">Puanın</span>
+                <div id="review-star-input" class="flex items-center gap-1.5"></div>
+                <p id="review-rating-error" class="hidden text-xs font-semibold text-red-600 mt-1">Lütfen 1-5 arası bir puan seç.</p>
+              </div>
+              <div>
+                <label for="review-text" class="block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1.5">Yorumun</label>
+                <textarea id="review-text" rows="4" maxlength="1000" placeholder="Ürün nasıl? Kullanım, kalıcılık, paketleme..." class="w-full px-3 py-2.5 rounded-lg border border-zinc-300 text-sm focus:border-zinc-900 focus:outline-none resize-y"></textarea>
+                <p id="review-text-error" class="hidden text-xs font-semibold text-red-600 mt-1">Yorumun en az 10 karakter olmalı.</p>
+              </div>
+              <p id="review-form-message" class="hidden text-sm font-semibold"></p>
+              <button type="submit" class="px-6 py-3 rounded-lg bg-cyan-700 hover:bg-cyan-800 text-white text-sm font-black uppercase tracking-wider transition-colors">Değerlendirmeyi Gönder</button>
+            </form>
+          </div>`;
+
+  const { page, totalPages } = PP.reviewPagination;
+  const pagination = totalPages > 1 ? `<nav class="flex items-center justify-between gap-3 mt-4" aria-label="Yorum sayfaları">
+    <button type="button" onclick="ppChangeReviewPage(${page - 1})" ${page <= 1 ? 'disabled' : ''} class="px-4 py-2 rounded-lg border border-zinc-300 text-sm font-bold disabled:opacity-40 disabled:cursor-not-allowed">Önceki</button>
+    <span class="text-sm font-bold text-zinc-600">${page} / ${totalPages}</span>
+    <button type="button" onclick="ppChangeReviewPage(${page + 1})" ${page >= totalPages ? 'disabled' : ''} class="px-4 py-2 rounded-lg border border-zinc-300 text-sm font-bold disabled:opacity-40 disabled:cursor-not-allowed">Sonraki</button>
+  </nav>` : '';
+
   return `<div class="grid grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] gap-8">
     <div>
       <div class="flex items-baseline gap-2.5 mb-1">
@@ -261,37 +310,18 @@ function ppReviewsHtml() {
       <div class="space-y-2">${rows}</div>
     </div>
     <div>
-      <div class="p-5 rounded-xl border border-zinc-300 bg-white mb-6">
-        <h3 class="font-display text-lg font-black text-zinc-950 mb-1">Değerlendirme Yaz</h3>
-        <p class="text-sm text-zinc-500 mb-4">Ürünü kullandıktan sonra diğer müşterilere yardımcı ol.</p>
-        <form id="review-form" class="space-y-3.5">
-          <div>
-            <span class="block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1.5">Puanın</span>
-            <div id="review-star-input" class="flex items-center gap-1.5"></div>
-            <p id="review-rating-error" class="hidden text-xs font-semibold text-red-600 mt-1">Lütfen 1-5 arası bir puan seç.</p>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label for="review-name" class="block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1.5">Adın</label>
-              <input type="text" id="review-name" maxlength="40" placeholder="Örn: Ayşe Y." class="w-full px-3 py-2.5 rounded-lg border border-zinc-300 text-sm focus:border-zinc-900 focus:outline-none" />
-            </div>
-            <div>
-              <label for="review-email" class="block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1.5">E-posta (yayımlanmaz)</label>
-              <input type="email" id="review-email" maxlength="80" placeholder="ornek@mail.com" class="w-full px-3 py-2.5 rounded-lg border border-zinc-300 text-sm focus:border-zinc-900 focus:outline-none" />
-            </div>
-          </div>
-          <div>
-            <label for="review-text" class="block text-xs font-bold uppercase tracking-wider text-zinc-500 mb-1.5">Yorumun</label>
-            <textarea id="review-text" rows="4" maxlength="1000" placeholder="Ürün nasıl? Kullanım, kalıcılık, paketleme..." class="w-full px-3 py-2.5 rounded-lg border border-zinc-300 text-sm focus:border-zinc-900 focus:outline-none resize-y"></textarea>
-            <p id="review-text-error" class="hidden text-xs font-semibold text-red-600 mt-1">Yorumun en az 10 karakter olmalı.</p>
-          </div>
-          <p id="review-form-message" class="hidden text-sm font-semibold"></p>
-          <button type="submit" class="px-6 py-3 rounded-lg bg-cyan-700 hover:bg-cyan-800 text-white text-sm font-black uppercase tracking-wider transition-colors">Değerlendirmeyi Gönder</button>
-        </form>
-      </div>
+      ${reviewForm}
       <div class="space-y-3">${list}</div>
+      ${pagination}
     </div>
   </div>`;
+}
+
+async function ppChangeReviewPage(page) {
+  if (!PP.product || page < 1 || page > PP.reviewPagination.totalPages || page === PP.reviewPage) return;
+  await ppLoadReviews(PP.product.id, page);
+  await ppPaint();
+  document.getElementById('yorumlar')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function ppInitReviewStars() {
@@ -318,16 +348,12 @@ function ppSetRating(n) {
 async function ppSubmitReview(event) {
   event.preventDefault();
   if (!PP.product) return;
-  const name = (document.getElementById('review-name').value || '').trim();
-  const email = (document.getElementById('review-email').value || '').trim();
   const text = (document.getElementById('review-text').value || '').trim();
   const msg = document.getElementById('review-form-message');
   const btn = event.target.querySelector('button[type="submit"]');
 
   if (!PP.rating) { document.getElementById('review-rating-error')?.classList.remove('hidden'); return; }
-  if (name.length < 2) { showToast('Adını yazmalısın.', 'error'); return; }
   if (text.length < 10) { document.getElementById('review-text-error')?.classList.remove('hidden'); return; }
-  if (email && !/^\S+@\S+\.\S+$/.test(email)) { showToast('Geçerli bir e-posta gir.', 'error'); return; }
 
   btn.disabled = true;
   btn.textContent = 'Gönderiliyor...';
@@ -335,11 +361,11 @@ async function ppSubmitReview(event) {
     const res = await fetch(`/api/products/${PP.product.id}/reviews`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, rating: PP.rating, text }),
+      body: JSON.stringify({ rating: PP.rating, text }),
     });
     const data = await res.json();
     if (!res.ok || !data.success) throw new Error(data.message || 'Gönderilemedi.');
-    await ppLoadReviews(PP.product.id);
+    await ppLoadReviews(PP.product.id, 1);
     await ppPaint();
     const m = document.getElementById('review-form-message');
     if (m) {

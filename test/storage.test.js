@@ -6,7 +6,9 @@ const { createStorage, createDataRoutes } = require('../lib/storage');
 
 function database({ failCommit = false } = {}) {
   const saved = new Map([['products.json', [{ id: 1, stock: 9 }]]]);
+  const migrations = new Set();
   const statements = [];
+  let commits = 0;
   const pool = {
     on() {}, end: async () => {},
     async connect() {
@@ -17,11 +19,16 @@ function database({ failCommit = false } = {}) {
           statements.push(sql);
           if (sql === 'BEGIN') transaction = structuredClone(saved);
           else if (sql === 'COMMIT') {
-            if (failCommit && statements.some(s => s.startsWith('UPDATE'))) throw new Error('Connection lost');
+            if (failCommit && commits > 0 && statements.some(s => s.startsWith('UPDATE'))) throw new Error('Connection lost');
             saved.clear();
             for (const [name, data] of transaction) saved.set(name, data);
+            commits++;
           } else if (sql === 'ROLLBACK') transaction = undefined;
-          else if (sql.startsWith('INSERT')) {
+          else if (sql.startsWith('INSERT INTO vitrin_migrations')) {
+            if (migrations.has(params[0])) return { rows: [] };
+            migrations.add(params[0]);
+            return { rows: [{ id: params[0] }] };
+          } else if (sql.startsWith('INSERT')) {
             if (!transaction.has(params[0])) transaction.set(params[0], JSON.parse(params[1]));
           } else if (sql.startsWith('SELECT name')) {
             return { rows: [...transaction].map(([name, data]) => ({ name, data })) };
@@ -31,7 +38,7 @@ function database({ failCommit = false } = {}) {
       };
     }
   };
-  return { pool, saved, statements };
+  return { pool, saved, statements, migrations };
 }
 
 test('database storage preserves existing data and commits changes across requests', async () => {
@@ -50,6 +57,8 @@ test('database storage preserves existing data and commits changes across reques
   }, false);
   assert.ok(db.statements.includes('SELECT pg_advisory_xact_lock($1)'));
   assert.ok(db.statements.includes('SELECT pg_advisory_xact_lock_shared($1)'));
+  assert.deepEqual(db.saved.get('reviews.json'), []);
+  assert.equal(db.migrations.size, 1);
 });
 
 test('failed commits return an error instead of success and keep stored data intact', async () => {

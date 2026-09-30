@@ -327,15 +327,34 @@ const reviewsByProduct = () => {
   return map;
 };
 
+const hasPurchasedProduct = (email, productId) => readData('orders.json').some(order => {
+  const orderEmail = ((order.userEmail || order.customer?.email) || '').trim().toLowerCase();
+  const completedPurchase = order.status !== 'İptal Edildi' && order.status !== 'Beklemede';
+  return orderEmail === email && completedPurchase &&
+    (order.items || []).some(item => Number(item.id) === productId);
+});
+
 // --- Yorumlari getir
 dataRoutes.get('/api/products/:id/reviews', (req, res) => {
   const productId = parseInt(req.params.id, 10);
   const reviews = readData('reviews.json').filter(r => r.productId === productId);
   reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
+  const pageSize = 5;
+  const totalPages = Math.max(1, Math.ceil(reviews.length / pageSize));
+  const requestedPage = Math.max(1, parseInt(req.query.page, 10) || 1);
+  const page = Math.min(requestedPage, totalPages);
+  const start = (page - 1) * pageSize;
+  const viewer = auth.authenticate(req);
+  const viewerEmail = (viewer?.email || '').trim().toLowerCase();
+  const hasPurchased = Boolean(viewer && hasPurchasedProduct(viewerEmail, productId));
+  const hasReviewed = Boolean(viewer && reviews.some(review =>
+    (review.email || '').trim().toLowerCase() === viewerEmail
+  ));
+
   res.json({
     success: true,
-    reviews: reviews.map(r => ({
+    reviews: reviews.slice(start, start + pageSize).map(r => ({
       id: r.id,
       name: r.name,
       rating: r.rating,
@@ -344,6 +363,8 @@ dataRoutes.get('/api/products/:id/reviews', (req, res) => {
       verified: !!r.verifiedPurchase,
     })),
     summary: summarizeReviews(reviews),
+    pagination: { page, pageSize, totalPages, totalItems: reviews.length },
+    viewer: { loggedIn: Boolean(viewer), canReview: hasPurchased && !hasReviewed, hasPurchased, hasReviewed },
   });
 });
 
@@ -357,8 +378,8 @@ dataRoutes.post('/api/products/:id/reviews', (req, res) => {
     return res.status(404).json({ success: false, message: 'Ürün bulunamadı.' });
   }
 
-  const name = (req.body.name || '').trim();
-  const email = (req.body.email || '').trim().toLowerCase();
+  const name = (req.user.name || '').trim();
+  const email = (req.user.email || '').trim().toLowerCase();
   const text = (req.body.text || '').trim();
   const rating = parseInt(req.body.rating, 10);
 
@@ -371,21 +392,14 @@ dataRoutes.post('/api/products/:id/reviews', (req, res) => {
   if (text.length < 10 || text.length > 1000) {
     return res.status(400).json({ success: false, message: 'Yorum 10-1000 karakter arasında olmalı.' });
   }
-  if (email && !isEmail(email)) {
-    return res.status(400).json({ success: false, message: 'Geçerli bir e-posta girin.' });
-  }
-
   const reviews = readData('reviews.json');
-  if (email && reviews.some(r => r.productId === productId && r.email === email)) {
+  if (reviews.some(r => r.productId === productId && (r.email || '').toLowerCase() === email)) {
     return res.status(409).json({ success: false, message: 'Bu ürün için zaten değerlendirme yaptınız.' });
   }
 
-  let verified = false;
-  if (email) {
-    verified = readData('orders.json').some(o => {
-      const orderEmail = ((o.customer && o.customer.email) || o.userEmail || '').trim().toLowerCase();
-      return orderEmail === email && (o.items || []).some(it => it.id === productId);
-    });
+  const verified = hasPurchasedProduct(email, productId);
+  if (!verified) {
+    return res.status(403).json({ success: false, message: 'Yalnızca bu ürünü satın alan kullanıcılar değerlendirme yapabilir.' });
   }
 
   const review = {
